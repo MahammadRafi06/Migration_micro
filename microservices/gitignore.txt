@@ -1,0 +1,417 @@
+# Task Management System - .gitignore
+
+# =============================================================================
+# ENVIRONMENT AND CONFIGURATION
+# =============================================================================
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.*.local
+
+# Environment-specific docker compose files (except override)
+docker-compose.*.yml
+!docker-compose.override.yml
+
+# =============================================================================
+# LOGS AND RUNTIME DATA
+# =============================================================================
+
+# Log files
+*.log
+logs/
+*.log.*
+
+# Service-specific log files
+user_service.log
+project_task_service.log
+comment_service.log
+attachment_service.log
+notification_service.log
+activity_log_service.log
+reporting_service.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# =============================================================================
+# DATABASES AND STORAGE
+# =============================================================================
+
+# SQLite databases (for local development)
+*.db
+*.sqlite
+*.sqlite3
+
+# Database dumps and backups
+backups/
+*.sql
+*.dump
+
+# Uploaded files and attachments
+uploads/
+attachments/
+files/
+media/
+
+# =============================================================================
+# PYTHON
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery beat schedule file
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# =============================================================================
+# DOCKER
+# =============================================================================
+
+# Docker build context
+.dockerignore
+
+# Docker volumes (if using bind mounts)
+docker-volumes/
+
+# =============================================================================
+# IDE AND EDITORS
+# =============================================================================
+
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*.un~
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# OPERATING SYSTEMS
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# SECURITY AND CERTIFICATES
+# =============================================================================
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+ssl/
+certificates/
+
+# SSH keys
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+
+# GPG keys
+*.gpg
+*.asc
+
+# =============================================================================
+# MONITORING AND METRICS
+# =============================================================================
+
+# Prometheus data
+prometheus_data/
+
+# Grafana data
+grafana_data/
+
+# Monitoring configurations (contain sensitive data)
+monitoring/*.yml
+monitoring/*.yaml
+!monitoring/prometheus.yml.example
+!monitoring/grafana.yml.example
+
+# =============================================================================
+# TEMPORARY FILES
+# =============================================================================
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.backup
+*.bak
+
+# Cache directories
+.cache/
+cache/
+
+# Node.js (in case of frontend additions)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================================================
+# TERRAFORM (if using for infrastructure)
+# =============================================================================
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+*.tfplan
+
+# =============================================================================
+# KUBERNETES (if deploying to K8s)
+# =============================================================================
+
+# Kubernetes secrets
+*-secret.yaml
+*-secret.yml
+
+# Helm
+charts/*/charts
+charts/*/requirements.lock
+
+# =============================================================================
+# MISCELLANEOUS
+# =============================================================================
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Documentation builds
+docs/_build/
+docs/build/
+
+# Test output
+test-results/
+test-output/
+
+# Profiling data
+*.prof
+
+# Memory dumps
+*.dump
+*.hprof
+
+# API documentation
+api-docs/
+swagger-ui/
+
+# Local configuration overrides
+local.yml
+local.yaml
+local.json
+
+# Performance logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime configuration
+.runtimeconfig.json
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+
+# Migration files (auto-generated)
+migrations/versions/*.py
+!migrations/versions/.gitkeep
+
+# Custom scripts
+scripts/private/
+scripts/local/
+
+# Reports and exports
+reports/
+exports/
+
+# Custom documentation
+docs/private/
+
+# Development utilities
+dev-utils/
+dev-scripts/
+
+# Local testing data
+test-data/
+sample-data/
+
+# Keep these directories but not their contents
+uploads/.gitkeep
+logs/.gitkeep
+backups/.gitkeep
+
+# IDE configurations we want to keep
+!.vscode/launch.json.example
+!.vscode/settings.json.example
+
+# Configuration templates we want to keep
+!.env.example
+!docker-compose.yml.example

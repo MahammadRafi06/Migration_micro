@@ -1,0 +1,462 @@
+version: '3.8'
+
+services:
+  # =============================================================================
+  # INFRASTRUCTURE SERVICES
+  # =============================================================================
+  
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-taskapp_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-user} -d ${POSTGRES_DB:-taskapp_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - taskapp-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - taskapp-network
+
+  # =============================================================================
+  # MICROSERVICES
+  # =============================================================================
+
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.user-service
+    container_name: user-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/user_service_db
+      SECRET_KEY: ${USER_SERVICE_SECRET_KEY}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      PORT: 5001
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5001:5001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  project-task-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.project-task-service
+    container_name: project-task-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/project_task_service_db
+      SECRET_KEY: ${PROJECT_TASK_SERVICE_SECRET_KEY}
+      USER_SERVICE_URL: http://user-service:5001
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      PORT: 5002
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5002:5002"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  comment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.comment-service
+    container_name: comment-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/comment_service_db
+      SECRET_KEY: ${COMMENT_SERVICE_SECRET_KEY}
+      USER_SERVICE_URL: http://user-service:5001
+      PROJECT_TASK_SERVICE_URL: http://project-task-service:5002
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      PORT: 5003
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5003:5003"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+      project-task-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  attachment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.attachment-service
+    container_name: attachment-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/attachment_service_db
+      SECRET_KEY: ${ATTACHMENT_SERVICE_SECRET_KEY}
+      USER_SERVICE_URL: http://user-service:5001
+      PROJECT_TASK_SERVICE_URL: http://project-task-service:5002
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      UPLOAD_FOLDER: /app/uploads
+      PORT: 5004
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5004:5004"
+    volumes:
+      - attachment_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+      project-task-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.notification-service
+    container_name: notification-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/notification_service_db
+      SECRET_KEY: ${NOTIFICATION_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      USER_SERVICE_URL: http://user-service:5001
+      PROJECT_TASK_SERVICE_URL: http://project-task-service:5002
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      MAIL_SERVER: ${MAIL_SERVER}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USE_TLS: ${MAIL_USE_TLS}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+      PORT: 5005
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5005:5005"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # Celery worker for notification service
+  notification-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.notification-service
+    container_name: notification-worker
+    command: ["celery", "-A", "notification_service.celery", "worker", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/notification_service_db
+      SECRET_KEY: ${NOTIFICATION_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      MAIL_SERVER: ${MAIL_SERVER}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USE_TLS: ${MAIL_USE_TLS}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      notification-service:
+        condition: service_healthy
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # Celery beat scheduler for notification service
+  notification-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.notification-service
+    container_name: notification-scheduler
+    command: ["celery", "-A", "notification_service.celery", "beat", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/notification_service_db
+      SECRET_KEY: ${NOTIFICATION_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      notification-service:
+        condition: service_healthy
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  activity-log-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.activity-log-service
+    container_name: activity-log-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/activity_log_service_db
+      SECRET_KEY: ${ACTIVITY_LOG_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/2
+      CELERY_BROKER_URL: redis://redis:6379/2
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      USER_SERVICE_URL: http://user-service:5001
+      LOG_RETENTION_DAYS: ${LOG_RETENTION_DAYS:-90}
+      PORT: 5006
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5006:5006"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # Celery worker for activity log service
+  activity-log-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.activity-log-service
+    container_name: activity-log-worker
+    command: ["celery", "-A", "activity_log_service.celery", "worker", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/activity_log_service_db
+      SECRET_KEY: ${ACTIVITY_LOG_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/2
+      CELERY_BROKER_URL: redis://redis:6379/2
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      LOG_RETENTION_DAYS: ${LOG_RETENTION_DAYS:-90}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      activity-log-service:
+        condition: service_healthy
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # Celery beat scheduler for activity log service
+  activity-log-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.activity-log-service
+    container_name: activity-log-scheduler
+    command: ["celery", "-A", "activity_log_service.celery", "beat", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/activity_log_service_db
+      SECRET_KEY: ${ACTIVITY_LOG_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/2
+      CELERY_BROKER_URL: redis://redis:6379/2
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      LOG_RETENTION_DAYS: ${LOG_RETENTION_DAYS:-90}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      activity-log-service:
+        condition: service_healthy
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  reporting-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.reporting-service
+    container_name: reporting-service
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/reporting_service_db
+      SECRET_KEY: ${REPORTING_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/3
+      CELERY_BROKER_URL: redis://redis:6379/3
+      CELERY_RESULT_BACKEND: redis://redis:6379/3
+      USER_SERVICE_URL: http://user-service:5001
+      PROJECT_TASK_SERVICE_URL: http://project-task-service:5002
+      COMMENT_SERVICE_URL: http://comment-service:5003
+      ATTACHMENT_SERVICE_URL: http://attachment-service:5004
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+      PORT: 5007
+      DEBUG: ${DEBUG:-false}
+    ports:
+      - "5007:5007"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+      project-task-service:
+        condition: service_healthy
+      comment-service:
+        condition: service_healthy
+      attachment-service:
+        condition: service_healthy
+      activity-log-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5007/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # Celery worker for reporting service
+  reporting-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.reporting-service
+    container_name: reporting-worker
+    command: ["celery", "-A", "reporting_service.celery", "worker", "--loglevel=info"]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/reporting_service_db
+      SECRET_KEY: ${REPORTING_SERVICE_SECRET_KEY}
+      REDIS_URL: redis://redis:6379/3
+      CELERY_BROKER_URL: redis://redis:6379/3
+      CELERY_RESULT_BACKEND: redis://redis:6379/3
+      USER_SERVICE_URL: http://user-service:5001
+      PROJECT_TASK_SERVICE_URL: http://project-task-service:5002
+      COMMENT_SERVICE_URL: http://comment-service:5003
+      ATTACHMENT_SERVICE_URL: http://attachment-service:5004
+      ACTIVITY_LOG_SERVICE_URL: http://activity-log-service:5006
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      reporting-service:
+        condition: service_healthy
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+  # =============================================================================
+  # REVERSE PROXY (OPTIONAL)
+  # =============================================================================
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro  # Optional SSL certificates
+    depends_on:
+      - user-service
+      - project-task-service
+      - comment-service
+      - attachment-service
+      - notification-service
+      - activity-log-service
+      - reporting-service
+    networks:
+      - taskapp-network
+    restart: unless-stopped
+
+# =============================================================================
+# VOLUMES
+# =============================================================================
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  attachment_uploads:
+    driver: local
+
+# =============================================================================
+# NETWORKS
+# =============================================================================
+
+networks:
+  taskapp-network:
+    driver: bridge

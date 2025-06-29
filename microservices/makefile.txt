@@ -1,0 +1,250 @@
+# Task Management System - Makefile
+# Useful commands for development and deployment
+
+.PHONY: help build up down restart logs clean test health backup restore
+
+# Default target
+help: ## Show this help message
+	@echo "Task Management System - Microservices"
+	@echo "Available commands:"
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+# Environment setup
+setup: ## Initial setup - copy .env file and generate secrets
+	@echo "Setting up environment..."
+	@if [ ! -f .env ]; then \
+		cp .env.example .env; \
+		echo "Created .env file from template"; \
+		echo "Please edit .env with your configuration"; \
+	else \
+		echo ".env file already exists"; \
+	fi
+	@echo "Setup complete!"
+
+# Docker operations
+build: ## Build all Docker images
+	@echo "Building Docker images..."
+	docker-compose build
+
+up: ## Start all services
+	@echo "Starting all services..."
+	docker-compose up -d
+	@echo "Services started. Use 'make logs' to view logs or 'make health' to check status."
+
+down: ## Stop all services
+	@echo "Stopping all services..."
+	docker-compose down
+
+restart: ## Restart all services
+	@echo "Restarting all services..."
+	docker-compose restart
+
+destroy: ## Stop and remove all containers, networks, and volumes
+	@echo "Destroying all containers, networks, and volumes..."
+	docker-compose down -v --remove-orphans
+	docker system prune -f
+
+# Development
+dev: ## Start services in development mode with live reload
+	@echo "Starting development environment..."
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+dev-logs: ## Follow development logs
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml logs -f
+
+# Logs and monitoring
+logs: ## View logs from all services
+	docker-compose logs -f
+
+logs-user: ## View logs from user service
+	docker-compose logs -f user-service
+
+logs-projects: ## View logs from project-task service
+	docker-compose logs -f project-task-service
+
+logs-comments: ## View logs from comment service
+	docker-compose logs -f comment-service
+
+logs-attachments: ## View logs from attachment service
+	docker-compose logs -f attachment-service
+
+logs-notifications: ## View logs from notification service
+	docker-compose logs -f notification-service
+
+logs-activities: ## View logs from activity log service
+	docker-compose logs -f activity-log-service
+
+logs-reports: ## View logs from reporting service
+	docker-compose logs -f reporting-service
+
+logs-nginx: ## View logs from nginx
+	docker-compose logs -f nginx
+
+logs-workers: ## View logs from all Celery workers
+	docker-compose logs -f notification-worker activity-log-worker reporting-worker
+
+# Health and status
+health: ## Check health of all services
+	@echo "Checking service health..."
+	@echo "Overall system health:"
+	@curl -s http://localhost/health | jq . || echo "Main endpoint not responding"
+	@echo "\nIndividual service health:"
+	@echo "User Service:"
+	@curl -s http://localhost/health/user | jq . || echo "User service not responding"
+	@echo "Project & Task Service:"
+	@curl -s http://localhost/health/projects | jq . || echo "Project service not responding"
+	@echo "Comment Service:"
+	@curl -s http://localhost/health/comments | jq . || echo "Comment service not responding"
+	@echo "Attachment Service:"
+	@curl -s http://localhost/health/attachments | jq . || echo "Attachment service not responding"
+	@echo "Notification Service:"
+	@curl -s http://localhost/health/notifications | jq . || echo "Notification service not responding"
+	@echo "Activity Log Service:"
+	@curl -s http://localhost/health/activities | jq . || echo "Activity service not responding"
+	@echo "Reporting Service:"
+	@curl -s http://localhost/health/reports | jq . || echo "Reporting service not responding"
+
+status: ## Show status of all containers
+	docker-compose ps
+
+# Database operations
+db-migrate: ## Run database migrations for all services
+	@echo "Running database migrations..."
+	docker-compose exec user-service flask db upgrade || echo "User service migration failed"
+	docker-compose exec project-task-service flask db upgrade || echo "Project-task service migration failed"
+	docker-compose exec comment-service flask db upgrade || echo "Comment service migration failed"
+	docker-compose exec attachment-service flask db upgrade || echo "Attachment service migration failed"
+	docker-compose exec notification-service flask db upgrade || echo "Notification service migration failed"
+	docker-compose exec activity-log-service flask db upgrade || echo "Activity log service migration failed"
+	docker-compose exec reporting-service flask db upgrade || echo "Reporting service migration failed"
+
+db-backup: ## Backup all databases
+	@echo "Creating database backup..."
+	@mkdir -p backups
+	docker-compose exec postgres pg_dumpall -U user > backups/backup_$(shell date +%Y%m%d_%H%M%S).sql
+	@echo "Backup created in backups/ directory"
+
+db-restore: ## Restore database from backup (usage: make db-restore BACKUP=backup_file.sql)
+	@if [ -z "$(BACKUP)" ]; then \
+		echo "Usage: make db-restore BACKUP=backup_file.sql"; \
+		exit 1; \
+	fi
+	@echo "Restoring database from $(BACKUP)..."
+	docker-compose exec -T postgres psql -U user < $(BACKUP)
+
+# Testing
+test: ## Run tests for all services
+	@echo "Running tests..."
+	@echo "Note: Implement test suites for each service"
+	# docker-compose exec user-service python -m pytest tests/
+	# docker-compose exec project-task-service python -m pytest tests/
+	# Add test commands for each service
+
+test-api: ## Test API endpoints
+	@echo "Testing API endpoints..."
+	@echo "Testing user registration..."
+	@curl -s -X POST http://localhost/api/register \
+		-H "Content-Type: application/json" \
+		-d '{"username":"testuser","email":"test@example.com","password":"testpass123","full_name":"Test User"}' \
+		| jq . || echo "Registration test failed"
+
+# Cleanup
+clean: ## Clean up Docker resources
+	@echo "Cleaning up Docker resources..."
+	docker system prune -f
+	docker volume prune -f
+
+clean-all: ## Clean up everything including volumes
+	@echo "Cleaning up all Docker resources..."
+	docker-compose down -v --remove-orphans
+	docker system prune -af
+	docker volume prune -f
+
+# Scaling
+scale-user: ## Scale user service (usage: make scale-user REPLICAS=3)
+	docker-compose up -d --scale user-service=$(REPLICAS)
+
+scale-projects: ## Scale project-task service (usage: make scale-projects REPLICAS=2)
+	docker-compose up -d --scale project-task-service=$(REPLICAS)
+
+# Security
+security-scan: ## Run security scan on images
+	@echo "Running security scan..."
+	@if command -v trivy >/dev/null; then \
+		trivy image task-management-microservices_user-service; \
+		trivy image task-management-microservices_project-task-service; \
+	else \
+		echo "Trivy not installed. Install with: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -"; \
+	fi
+
+# Monitoring
+monitor: ## Start monitoring stack (Prometheus, Grafana)
+	@echo "Starting monitoring stack..."
+	docker-compose -f docker-compose.yml -f monitoring/docker-compose.monitoring.yml up -d
+
+# Production
+prod-deploy: ## Deploy to production
+	@echo "Deploying to production..."
+	@if [ ! -f .env.production ]; then \
+		echo "Error: .env.production file not found"; \
+		exit 1; \
+	fi
+	docker-compose --env-file .env.production up -d
+
+prod-backup: ## Create production backup
+	@echo "Creating production backup..."
+	@mkdir -p backups/production
+	docker-compose --env-file .env.production exec postgres pg_dumpall -U user > backups/production/backup_$(shell date +%Y%m%d_%H%M%S).sql
+
+# Utilities
+shell-user: ## Open shell in user service container
+	docker-compose exec user-service /bin/bash
+
+shell-db: ## Open PostgreSQL shell
+	docker-compose exec postgres psql -U user -d user_service_db
+
+shell-redis: ## Open Redis CLI
+	docker-compose exec redis redis-cli
+
+update: ## Update all service images
+	@echo "Updating service images..."
+	docker-compose pull
+	docker-compose up -d
+
+# Install dependencies
+install-tools: ## Install useful development tools
+	@echo "Installing development tools..."
+	@if ! command -v jq >/dev/null; then \
+		echo "Installing jq..."; \
+		sudo apt-get update && sudo apt-get install -y jq || brew install jq; \
+	fi
+	@if ! command -v curl >/dev/null; then \
+		echo "Installing curl..."; \
+		sudo apt-get update && sudo apt-get install -y curl || brew install curl; \
+	fi
+
+# Documentation
+docs: ## Generate API documentation
+	@echo "Generating API documentation..."
+	@echo "This would generate OpenAPI/Swagger docs for each service"
+
+# Quick start
+quick-start: setup build up health ## Complete setup and start (first time setup)
+	@echo ""
+	@echo "🚀 Task Management System is ready!"
+	@echo "🌐 Access the system at: http://localhost"
+	@echo "📚 API Documentation: http://localhost/api/docs (if implemented)"
+	@echo "📊 Health Status: http://localhost/health"
+	@echo ""
+	@echo "Next steps:"
+	@echo "1. Create an admin user: make test-api"
+	@echo "2. View logs: make logs"
+	@echo "3. Monitor health: make health"
+
+# Show current configuration
+config: ## Show current configuration
+	@echo "Current configuration:"
+	@echo "Services: $(shell docker-compose config --services | tr '\n' ' ')"
+	@echo "Environment file: $(shell [ -f .env ] && echo '.env exists' || echo '.env missing')"
+	@echo "Docker Compose version: $(shell docker-compose version --short)"
+	@echo "Docker version: $(shell docker version --format '{{.Server.Version}}')"

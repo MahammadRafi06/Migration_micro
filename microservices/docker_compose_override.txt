@@ -1,0 +1,298 @@
+version: '3.8'
+
+# Development overrides for docker-compose.yml
+# This file is automatically loaded by docker-compose in development
+# Use: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+services:
+  # =============================================================================
+  # INFRASTRUCTURE SERVICES - Development Configuration
+  # =============================================================================
+
+  postgres:
+    ports:
+      - "5432:5432"  # Expose PostgreSQL for external access
+    environment:
+      POSTGRES_DB: taskapp_dev_db
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data  # Use separate dev volume
+
+  redis:
+    ports:
+      - "6379:6379"  # Expose Redis for external access
+    volumes:
+      - redis_dev_data:/data  # Use separate dev volume
+
+  # =============================================================================
+  # MICROSERVICES - Development Configuration
+  # =============================================================================
+
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.user-service
+      target: development  # Multi-stage build target for dev
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./user_service.py:/app/user_service.py:ro  # Mount source for hot reload
+      - user_service_logs:/app/logs
+    command: ["flask", "--app", "user_service", "run", "--host=0.0.0.0", "--port=5001", "--debug"]
+
+  project-task-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.project-task-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./project_task_service.py:/app/project_task_service.py:ro
+      - project_task_service_logs:/app/logs
+    command: ["flask", "--app", "project_task_service", "run", "--host=0.0.0.0", "--port=5002", "--debug"]
+
+  comment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.comment-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./comment_service.py:/app/comment_service.py:ro
+      - comment_service_logs:/app/logs
+    command: ["flask", "--app", "comment_service", "run", "--host=0.0.0.0", "--port=5003", "--debug"]
+
+  attachment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.attachment-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./attachment_service.py:/app/attachment_service.py:ro
+      - attachment_service_logs:/app/logs
+      - attachment_dev_uploads:/app/uploads  # Separate dev uploads
+    command: ["flask", "--app", "attachment_service", "run", "--host=0.0.0.0", "--port=5004", "--debug"]
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.notification-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+      # Use MailHog for development email testing
+      MAIL_SERVER: mailhog
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: "false"
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+    volumes:
+      - ./notification_service.py:/app/notification_service.py:ro
+      - notification_service_logs:/app/logs
+    command: ["flask", "--app", "notification_service", "run", "--host=0.0.0.0", "--port=5005", "--debug"]
+
+  activity-log-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.activity-log-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./activity_log_service.py:/app/activity_log_service.py:ro
+      - activity_log_service_logs:/app/logs
+    command: ["flask", "--app", "activity_log_service", "run", "--host=0.0.0.0", "--port=5006", "--debug"]
+
+  reporting-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.reporting-service
+      target: development
+    environment:
+      DEBUG: "true"
+      LOG_LEVEL: DEBUG
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    volumes:
+      - ./reporting_service.py:/app/reporting_service.py:ro
+      - reporting_service_logs:/app/logs
+    command: ["flask", "--app", "reporting_service", "run", "--host=0.0.0.0", "--port=5007", "--debug"]
+
+  # Celery workers with development configuration
+  notification-worker:
+    environment:
+      LOG_LEVEL: DEBUG
+      MAIL_SERVER: mailhog
+      MAIL_PORT: 1025
+      MAIL_USE_TLS: "false"
+    volumes:
+      - ./notification_service.py:/app/notification_service.py:ro
+    command: ["celery", "-A", "notification_service.celery", "worker", "--loglevel=debug", "--reload"]
+
+  activity-log-worker:
+    environment:
+      LOG_LEVEL: DEBUG
+    volumes:
+      - ./activity_log_service.py:/app/activity_log_service.py:ro
+    command: ["celery", "-A", "activity_log_service.celery", "worker", "--loglevel=debug", "--reload"]
+
+  reporting-worker:
+    environment:
+      LOG_LEVEL: DEBUG
+    volumes:
+      - ./reporting_service.py:/app/reporting_service.py:ro
+    command: ["celery", "-A", "reporting_service.celery", "worker", "--loglevel=debug", "--reload"]
+
+  # =============================================================================
+  # DEVELOPMENT TOOLS
+  # =============================================================================
+
+  # MailHog for email testing in development
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: mailhog
+    ports:
+      - "1025:1025"  # SMTP server
+      - "8025:8025"  # Web UI
+    networks:
+      - taskapp-network
+
+  # pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - taskapp-network
+
+  # Redis Commander for Redis management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - taskapp-network
+
+  # =============================================================================
+  # MONITORING TOOLS (Optional for development)
+  # =============================================================================
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - taskapp-network
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+    networks:
+      - taskapp-network
+
+  # =============================================================================
+  # REVERSE PROXY WITH DEVELOPMENT CONFIGURATION
+  # =============================================================================
+
+  nginx:
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy_params:/etc/nginx/proxy_params:ro
+      - nginx_dev_logs:/var/log/nginx
+    environment:
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: .template
+    # Remove healthcheck in development for faster startup
+    healthcheck:
+      disable: true
+
+# =============================================================================
+# DEVELOPMENT VOLUMES
+# =============================================================================
+
+volumes:
+  postgres_dev_data:
+    driver: local
+  redis_dev_data:
+    driver: local
+  attachment_dev_uploads:
+    driver: local
+  
+  # Service-specific log volumes
+  user_service_logs:
+    driver: local
+  project_task_service_logs:
+    driver: local
+  comment_service_logs:
+    driver: local
+  attachment_service_logs:
+    driver: local
+  notification_service_logs:
+    driver: local
+  activity_log_service_logs:
+    driver: local
+  reporting_service_logs:
+    driver: local
+  
+  # Monitoring volumes
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  
+  # Nginx logs
+  nginx_dev_logs:
+    driver: local
