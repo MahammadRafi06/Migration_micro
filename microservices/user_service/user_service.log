@@ -1,0 +1,263 @@
+2025-06-29 12:10:53,221 INFO __main__ Admin user created
+2025-06-29 12:10:53,224 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:10:53,224 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:11:13,204 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:11:13] "[33mGET / HTTP/1.1[0m" 404 -
+2025-06-29 12:11:13,454 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:11:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-29 12:11:34,051 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:11:34] "[31m[1mGET /api/users/me HTTP/1.1[0m" 401 -
+2025-06-29 12:12:08,225 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:12:08] "[31m[1mGET /api/register HTTP/1.1[0m" 405 -
+2025-06-29 12:18:12,451 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:18:12] "[33mGET /api/ HTTP/1.1[0m" 404 -
+2025-06-29 12:18:26,767 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:18:26] "[33mGET /api/ HTTP/1.1[0m" 404 -
+2025-06-29 12:18:46,673 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:18:46,673 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:18:50,495 ERROR __main__ User accessed login page
+2025-06-29 12:18:50,498 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:18:50] "GET /api/ HTTP/1.1" 200 -
+2025-06-29 12:35:34,901 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:35:34,901 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:35:39,596 ERROR __main__ User accessed login page
+2025-06-29 12:35:39,598 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:35:39] "GET /api/ HTTP/1.1" 200 -
+2025-06-29 12:35:44,296 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:35:44] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:35:44,303 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:35:44] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:38:55,738 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:38:55] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:38:55,747 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:38:55] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:39:31,339 ERROR app Exception on /register [GET]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 195, in register_page
+    return render_template('register.html')
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: register.html
+2025-06-29 12:39:31,341 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:39:31] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-06-29 12:40:21,564 ERROR app Exception on /register [GET]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 195, in register_page
+    return render_template('register.html')
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/register.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+2025-06-29 12:40:21,565 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:40:21] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-06-29 12:40:32,321 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:40:32,321 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:40:35,491 ERROR app Exception on /register [GET]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 195, in register_page
+    return render_template('register.html')
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/register.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: base.html
+2025-06-29 12:40:35,493 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:40:35] "[35m[1mGET /register HTTP/1.1[0m" 500 -
+2025-06-29 12:42:18,527 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:18] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:42:30,485 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:30] "GET /register HTTP/1.1" 200 -
+2025-06-29 12:42:43,666 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:43] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:42:43,673 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:43] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:42:51,093 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:51] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-06-29 12:42:51,100 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:42:51] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:43:06,114 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:43:06] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:43:06,117 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:43:06] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:43:11,360 ERROR app Exception on /web/login [POST]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 253, in web_login
+    token = generate_jwt_token(user.id)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 88, in generate_jwt_token
+    return jwt.encode(payload, app.config['JWT_SECRET_KEY'], algorithm='HS256')
+AttributeError: module 'jwt' has no attribute 'encode'
+2025-06-29 12:43:11,361 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:43:11] "[35m[1mPOST /web/login HTTP/1.1[0m" 500 -
+2025-06-29 12:44:53,232 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:44:53,232 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:45:02,119 ERROR __main__ Failed to log activity: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/activities (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x776568abda20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-06-29 12:45:02,120 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:45:02] "[32mPOST /web/login HTTP/1.1[0m" 302 -
+2025-06-29 12:45:02,136 ERROR app Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 166, in decorated
+    return f(*args, **kwargs)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 202, in dashboard
+    return render_template('dashboard.html', user=user)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/base.html", line 194, in top-level template code
+    {% set current_user = get_user_by_id(request.current_user_id) %}
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'get_user_by_id' is undefined
+2025-06-29 12:45:02,137 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:45:02] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2025-06-29 12:46:09,094 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:46:09,094 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:46:10,027 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:46:10] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-29 12:46:10,041 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:46:10] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:46:14,430 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:46:14] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-29 12:46:14,437 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:46:14] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:47:44,846 ERROR __main__ Failed to log activity: HTTPConnectionPool(host='localhost', port=5006): Max retries exceeded with url: /api/activities (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7237a65d2770>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-06-29 12:47:44,846 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:47:44] "[32mPOST /web/login HTTP/1.1[0m" 302 -
+2025-06-29 12:47:44,862 ERROR app Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 166, in decorated
+    return f(*args, **kwargs)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/app.py", line 202, in dashboard
+    return render_template('dashboard.html', user=user)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/dashboard.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/mahammad-rafi/Migration_micro/microservices/user_service/templates/base.html", line 194, in top-level template code
+    {% set current_user = get_user_by_id(request.current_user_id) %}
+  File "/home/mahammad-rafi/miniconda3/envs/taskmanager/lib/python3.10/site-packages/jinja2/utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'get_user_by_id' is undefined
+2025-06-29 12:47:44,864 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:47:44] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2025-06-29 12:51:52,686 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:51:52,686 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:51:54,871 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:54] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:51:57,647 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:57] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:51:57,652 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:57] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:51:58,440 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:58] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:51:58,444 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:58] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:51:59,155 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:59] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-29 12:51:59,160 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:51:59] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:53:08,126 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:53:08] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:53:13,102 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:53:13,102 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:53:15,557 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:53:15] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:53:16,357 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:53:16] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:53:51,100 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:53:51] "GET /register HTTP/1.1" 200 -
+2025-06-29 12:54:18,189 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:54:18] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:54:23,404 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:54:23,404 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:54:25,426 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:54:25] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:54:52,043 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:54:52] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:54:52,418 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:54:52] "GET /login HTTP/1.1" 200 -
+2025-06-29 12:54:55,319 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 12:54:55,319 INFO werkzeug [33mPress CTRL+C to quit[0m
+2025-06-29 12:54:58,129 INFO werkzeug 127.0.0.1 - - [29/Jun/2025 12:54:58] "GET /login HTTP/1.1" 200 -
+2025-06-29 14:09:52,419 INFO __main__ Admin user created
+2025-06-29 14:09:52,422 INFO werkzeug [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.11:5001
+2025-06-29 14:09:52,422 INFO werkzeug [33mPress CTRL+C to quit[0m

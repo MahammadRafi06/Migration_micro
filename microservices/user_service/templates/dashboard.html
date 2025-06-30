@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - User Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h2 text-white">
+                    <i class="fas fa-tachometer-alt"></i> Welcome, {{ user.full_name }}!
+                </h1>
+                <p class="text-white-50">Manage your account and explore the system</p>
+            </div>
+            <div class="text-end">
+                <span class="badge bg-light text-dark fs-6">
+                    {% if user.is_admin %}
+                        <i class="fas fa-crown text-warning"></i> Administrator
+                    {% else %}
+                        <i class="fas fa-user text-primary"></i> User
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- User Stats -->
+    <div class="col-md-4 mb-4">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="number">{{ user.login_count }}</div>
+            <div>Total Logins</div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="number">
+                {% if user.last_login %}
+                    {{ user.last_login.strftime('%d') }}
+                    <small style="font-size: 1rem;">{{ user.last_login.strftime('%b') }}</small>
+                {% else %}
+                    --
+                {% endif %}
+            </div>
+            <div>Last Login</div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <div class="number">
+                {% if user.is_active %}
+                    <i class="fas fa-check-circle text-success"></i>
+                {% else %}
+                    <i class="fas fa-times-circle text-danger"></i>
+                {% endif %}
+            </div>
+            <div>Account Status</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Account Information -->
+    <div class="col-lg-8 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-transparent border-0">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-user-circle text-primary"></i> Account Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">USERNAME</label>
+                            <div class="fw-bold">{{ user.username }}</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">FULL NAME</label>
+                            <div class="fw-bold">{{ user.full_name }}</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">EMAIL</label>
+                            <div class="fw-bold">{{ user.email }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">ACCOUNT CREATED</label>
+                            <div class="fw-bold">{{ user.created_at.strftime('%B %d, %Y') if user.created_at else 'N/A' }}</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">LAST LOGIN</label>
+                            <div class="fw-bold">
+                                {% if user.last_login %}
+                                    {{ user.last_login.strftime('%B %d, %Y at %I:%M %p') }}
+                                {% else %}
+                                    Never
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">PRIVILEGES</label>
+                            <div>
+                                {% if user.is_admin %}
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="fas fa-crown"></i> Administrator
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-primary">
+                                        <i class="fas fa-user"></i> Standard User
+                                    </span>
+                                {% endif %}
+                                
+                                {% if user.is_active %}
+                                    <span class="badge bg-success ms-2">
+                                        <i class="fas fa-check"></i> Active
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-danger ms-2">
+                                        <i class="fas fa-times"></i> Inactive
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex gap-2 mt-4">
+                    <a href="{{ url_for('profile_page') }}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </a>
+                    {% if user.is_admin %}
+                    <a href="{{ url_for('admin_panel') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-shield-alt"></i> Admin Panel
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-transparent border-0">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-bolt text-warning"></i> Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-3">
+                    <a href="{{ url_for('profile_page') }}" class="btn btn-outline-primary text-start">
+                        <i class="fas fa-user-edit"></i>
+                        <div class="ms-3 d-inline-block">
+                            <div class="fw-bold">Update Profile</div>
+                            <small class="text-muted">Change your personal information</small>
+                        </div>
+                    </a>
+                    
+                    {% if user.is_admin %}
+                    <a href="{{ url_for('admin_panel') }}" class="btn btn-outline-warning text-start">
+                        <i class="fas fa-users-cog"></i>
+                        <div class="ms-3 d-inline-block">
+                            <div class="fw-bold">Manage Users</div>
+                            <small class="text-muted">Administer user accounts</small>
+                        </div>
+                    </a>
+                    {% endif %}
+                    
+                    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger text-start">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <div class="ms-3 d-inline-block">
+                            <div class="fw-bold">Sign Out</div>
+                            <small class="text-muted">End your session securely</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .stats-card {
+        animation: slideInLeft 0.8s ease-out;
+    }
+    
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .btn-outline-primary:hover,
+    .btn-outline-warning:hover,
+    .btn-outline-danger:hover {
+        transform: translateX(5px);
+    }
+</style>
+{% endblock %}

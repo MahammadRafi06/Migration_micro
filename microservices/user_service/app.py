@@ -10,7 +10,7 @@ import secrets
 from datetime import datetime, timedelta
 from functools import wraps
 import jwt
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -148,7 +148,248 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated
 
-# API Routes
+# Web authentication decorator for HTML pages
+def web_login_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'user_token' not in session:
+            flash('Please log in to access this page.', 'warning')
+            return redirect(url_for('login_page'))
+        
+        payload = verify_jwt_token(session['user_token'])
+        if not payload:
+            session.pop('user_token', None)
+            flash('Your session has expired. Please log in again.', 'warning')
+            return redirect(url_for('login_page'))
+        
+        request.current_user_id = payload['user_id']
+        return f(*args, **kwargs)
+    return decorated
+
+def web_admin_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        user = User.query.get(request.current_user_id)
+        if not user or not user.is_admin:
+            flash('Admin privileges required.', 'error')
+            return redirect(url_for('dashboard'))
+        return f(*args, **kwargs)
+    return decorated
+
+# HTML Routes
+@app.route('/')
+def index():
+    """Home page"""
+    if 'user_token' in session:
+        return redirect(url_for('dashboard'))
+    return redirect(url_for('login_page'))
+
+@app.route('/login')
+def login_page():
+    """Show login page"""
+    return render_template('login.html')
+
+@app.route('/register')
+def register_page():
+    """Show registration page"""
+    return render_template('register.html')
+
+@app.route('/dashboard')
+@web_login_required
+def dashboard():
+    """User dashboard"""
+    user = User.query.get(request.current_user_id)
+    return render_template('dashboard.html', user=user)
+
+@app.route('/profile')
+@web_login_required
+def profile_page():
+    """User profile page"""
+    user = User.query.get(request.current_user_id)
+    return render_template('profile.html', user=user)
+
+@app.route('/admin')
+@web_login_required
+@web_admin_required
+def admin_panel():
+    """Admin panel"""
+    users = User.query.all()
+    return render_template('admin.html', users=users)
+
+@app.route('/logout')
+def logout():
+    """Logout user"""
+    session.pop('user_token', None)
+    flash('You have been logged out successfully.', 'success')
+    return redirect(url_for('login_page'))
+
+# Web form handlers
+@app.route('/web/login', methods=['POST'])
+def web_login():
+    """Handle login form submission"""
+    username = request.form.get('username')
+    password = request.form.get('password')
+    
+    if not username or not password:
+        flash('Username and password are required.', 'error')
+        return redirect(url_for('login_page'))
+    
+    user = User.query.filter_by(username=username).first()
+    
+    if not user or not user.check_password(password):
+        flash('Invalid username or password.', 'error')
+        return redirect(url_for('login_page'))
+    
+    if not user.is_active:
+        flash('Your account has been disabled.', 'error')
+        return redirect(url_for('login_page'))
+    
+    # Update login info
+    user.last_login = datetime.utcnow()
+    user.login_count += 1
+    db.session.commit()
+    
+    # Generate JWT token and store in session
+    token = generate_jwt_token(user.id)
+    session['user_token'] = token
+    
+    log_activity(user.id, 'login', 'user', user.id)
+    
+    flash(f'Welcome back, {user.full_name}!', 'success')
+    return redirect(url_for('dashboard'))
+
+@app.route('/web/register', methods=['POST'])
+def web_register():
+    """Handle registration form submission"""
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
+    full_name = request.form.get('full_name')
+    
+    # Validation
+    if not all([username, email, password, confirm_password, full_name]):
+        flash('All fields are required.', 'error')
+        return redirect(url_for('register_page'))
+    
+    if password != confirm_password:
+        flash('Passwords do not match.', 'error')
+        return redirect(url_for('register_page'))
+    
+    if len(password) < 8:
+        flash('Password must be at least 8 characters long.', 'error')
+        return redirect(url_for('register_page'))
+    
+    if '@' not in email or '.' not in email:
+        flash('Please enter a valid email address.', 'error')
+        return redirect(url_for('register_page'))
+    
+    # Check existing users
+    if User.query.filter_by(username=username).first():
+        flash('Username already exists.', 'error')
+        return redirect(url_for('register_page'))
+    
+    if User.query.filter_by(email=email).first():
+        flash('Email already exists.', 'error')
+        return redirect(url_for('register_page'))
+    
+    try:
+        # Create user
+        user = User(
+            username=username,
+            email=email,
+            full_name=full_name
+        )
+        user.set_password(password)
+        
+        db.session.add(user)
+        db.session.commit()
+        
+        log_activity(user.id, 'create', 'user', user.id, {'username': user.username})
+        
+        flash('Registration successful! Please log in.', 'success')
+        return redirect(url_for('login_page'))
+        
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Registration failed: {e}")
+        flash('Registration failed. Please try again.', 'error')
+        return redirect(url_for('register_page'))
+
+@app.route('/web/profile/update', methods=['POST'])
+@web_login_required
+def web_update_profile():
+    """Handle profile update form submission"""
+    user = User.query.get(request.current_user_id)
+    
+    full_name = request.form.get('full_name')
+    email = request.form.get('email')
+    
+    if not full_name or not email:
+        flash('Full name and email are required.', 'error')
+        return redirect(url_for('profile_page'))
+    
+    # Check if email already exists for another user
+    existing_user = User.query.filter(User.email == email, User.id != user.id).first()
+    if existing_user:
+        flash('Email already exists.', 'error')
+        return redirect(url_for('profile_page'))
+    
+    try:
+        user.full_name = full_name
+        user.email = email
+        db.session.commit()
+        
+        log_activity(user.id, 'update', 'user', user.id, {'full_name': full_name, 'email': email})
+        
+        flash('Profile updated successfully!', 'success')
+        return redirect(url_for('profile_page'))
+        
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Profile update failed: {e}")
+        flash('Profile update failed. Please try again.', 'error')
+        return redirect(url_for('profile_page'))
+
+@app.route('/web/admin/user/<int:user_id>/toggle-status', methods=['POST'])
+@web_login_required
+@web_admin_required
+def web_toggle_user_status(user_id):
+    """Toggle user active status"""
+    user = User.query.get_or_404(user_id)
+    
+    user.is_active = not user.is_active
+    db.session.commit()
+    
+    log_activity(request.current_user_id, 'admin_update', 'user', user_id, {'is_active': user.is_active})
+    
+    status = 'activated' if user.is_active else 'deactivated'
+    flash(f'User {user.username} has been {status}.', 'success')
+    return redirect(url_for('admin_panel'))
+
+@app.route('/web/admin/user/<int:user_id>/toggle-admin', methods=['POST'])
+@web_login_required
+@web_admin_required
+def web_toggle_admin_status(user_id):
+    """Toggle user admin status"""
+    user = User.query.get_or_404(user_id)
+    
+    user.is_admin = not user.is_admin
+    db.session.commit()
+    
+    log_activity(request.current_user_id, 'admin_update', 'user', user_id, {'is_admin': user.is_admin})
+    
+    status = 'granted admin privileges' if user.is_admin else 'removed admin privileges'
+    flash(f'User {user.username} has been {status}.', 'success')
+    return redirect(url_for('admin_panel'))
+
+# API Routes (existing routes remain unchanged)
+@app.route('/api/', methods=['GET'])
+def api_login_page():
+    """Show login page for API"""
+    logger.error(f"User accessed login page")
+    return render_template('login.html')
+
 @app.route('/api/register', methods=['POST'])
 def register():
     """User registration"""

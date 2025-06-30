@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel - User Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="h2 text-white">
+                    <i class="fas fa-shield-alt"></i> Admin Panel
+                </h1>
+                <p class="text-white-50">Manage users and system settings</p>
+            </div>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-light">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="number">{{ users|length }}</div>
+            <div>Total Users</div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <div class="number">{{ users|selectattr('is_active')|list|length }}</div>
+            <div>Active Users</div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="number">{{ users|selectattr('is_admin')|list|length }}</div>
+            <div>Administrators</div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 mb-3">
+        <div class="stats-card">
+            <div class="icon">
+                <i class="fas fa-user-times"></i>
+            </div>
+            <div class="number">{{ users|rejectattr('is_active')|list|length }}</div>
+            <div>Inactive Users</div>
+        </div>
+    </div>
+</div>
+
+<!-- Users Management -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-transparent border-0">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-users-cog text-primary"></i> User Management
+                    </h5>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary btn-sm" onclick="filterUsers('all')">
+                            <i class="fas fa-list"></i> All
+                        </button>
+                        <button class="btn btn-outline-success btn-sm" onclick="filterUsers('active')">
+                            <i class="fas fa-check"></i> Active
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" onclick="filterUsers('inactive')">
+                            <i class="fas fa-times"></i> Inactive
+                        </button>
+                        <button class="btn btn-outline-warning btn-sm" onclick="filterUsers('admin')">
+                            <i class="fas fa-crown"></i> Admins
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Created</th>
+                                <th>Last Login</th>
+                                <th>Status</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user_item in users %}
+                            <tr class="user-row" 
+                                data-status="{{ 'active' if user_item.is_active else 'inactive' }}"
+                                data-role="{{ 'admin' if user_item.is_admin else 'user' }}">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 40px; height: 40px;">
+                                            {{ user_item.full_name[0].upper() if user_item.full_name else 'U' }}
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold">{{ user_item.full_name }}</div>
+                                            <small class="text-muted">@{{ user_item.username }}</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ user_item.email }}</td>
+                                <td>
+                                    <div>{{ user_item.created_at.strftime('%b %d, %Y') if user_item.created_at else 'N/A' }}</div>
+                                    <small class="text-muted">{{ user_item.created_at.strftime('%I:%M %p') if user_item.created_at else '' }}</small>
+                                </td>
+                                <td>
+                                    {% if user_item.last_login %}
+                                        <div>{{ user_item.last_login.strftime('%b %d, %Y') }}</div>
+                                        <small class="text-muted">{{ user_item.last_login.strftime('%I:%M %p') }}</small>
+                                    {% else %}
+                                        <span class="text-muted">Never</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user_item.is_active %}
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check"></i> Active
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-danger">
+                                            <i class="fas fa-times"></i> Inactive
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user_item.is_admin %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-crown"></i> Admin
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">
+                                            <i class="fas fa-user"></i> User
+                                        </span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-1">
+                                        <form action="{{ url_for('web_toggle_user_status', user_id=user_item.id) }}" 
+                                              method="POST" style="display: inline;">
+                                            <button type="submit" class="btn btn-sm {{ 'btn-outline-danger' if user_item.is_active else 'btn-outline-success' }}"
+                                                    title="{{ 'Deactivate' if user_item.is_active else 'Activate' }} User">
+                                                <i class="fas {{ 'fa-user-times' if user_item.is_active else 'fa-user-check' }}"></i>
+                                            </button>
+                                        </form>
+                                        
+                                        <form action="{{ url_for('web_toggle_admin_status', user_id=user_item.id) }}" 
+                                              method="POST" style="display: inline;">
+                                            <button type="submit" class="btn btn-sm {{ 'btn-outline-warning' if not user_item.is_admin else 'btn-outline-secondary' }}"
+                                                    title="{{ 'Grant' if not user_item.is_admin else 'Remove' }} Admin">
+                                                <i class="fas {{ 'fa-crown' if not user_item.is_admin else 'fa-user' }}"></i>
+                                            </button>
+                                        </form>
+                                        
+                                        <button class="btn btn-sm btn-outline-info" 
+                                                onclick="showUserDetails({{ user_item.id }})"
+                                                title="View Details">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Details Modal -->
+<div class="modal fade" id="userDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    <i class="fas fa-user-circle text-primary"></i> User Details
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="userDetailsContent">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        animation: fadeInUp 0.6s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .stats-card {
+        animation: slideInLeft 0.8s ease-out;
+    }
+    
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .user-row {
+        transition: all 0.3s ease;
+    }
+    
+    .user-row:hover {
+        background-color: rgba(37, 99, 235, 0.05);
+        transform: scale(1.01);
+    }
+    
+    .avatar {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    .btn-sm:hover {
+        transform: scale(1.1);
+    }
+    
+    .table th {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const users = {{ users|tojson }};
+    
+    function filterUsers(filter) {
+        const rows = document.querySelectorAll('.user-row');
+        
+        rows.forEach(row => {
+            const status = row.dataset.status;
+            const role = row.dataset.role;
+            
+            let show = false;
+            
+            switch(filter) {
+                case 'all':
+                    show = true;
+                    break;
+                case 'active':
+                    show = status === 'active';
+                    break;
+                case 'inactive':
+                    show = status === 'inactive';
+                    break;
+                case 'admin':
+                    show = role === 'admin';
+                    break;
+            }
+            
+            row.style.display = show ? '' : 'none';
+        });
+        
+        // Update filter button states
+        document.querySelectorAll('.btn-outline-primary, .btn-outline-success, .btn-outline-danger, .btn-outline-warning')
+                .forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+    
+    function showUserDetails(userId) {
+        const user = users.find(u => u.id === userId);
+        if (!user) return;
+        
+        const content = `
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">USER ID</label>
+                        <div class="fw-bold">#${user.id}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">USERNAME</label>
+                        <div class="fw-bold">${user.username}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">FULL NAME</label>
+                        <div class="fw-bold">${user.full_name}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">EMAIL</label>
+                        <div class="fw-bold">${user.email}</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">CREATED</label>
+                        <div class="fw-bold">${user.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">LAST LOGIN</label>
+                        <div class="fw-bold">${user.last_login ? new Date(user.last_login).toLocaleDateString() : 'Never'}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">LOGIN COUNT</label>
+                        <div class="fw-bold">${user.login_count} times</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-muted small">STATUS & ROLE</label>
+                        <div>
+                            <span class="badge bg-${user.is_active ? 'success' : 'danger'} me-2">
+                                ${user.is_active ? 'Active' : 'Inactive'}
+                            </span>
+                            <span class="badge bg-${user.is_admin ? 'warning text-dark' : 'secondary'}">
+                                ${user.is_admin ? 'Administrator' : 'User'}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('userDetailsContent').innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+        modal.show();
+    }
+    
+    // Auto-refresh page every 30 seconds
+    setInterval(() => {
+        if (!document.querySelector('.modal.show')) {
+            location.reload();
+        }
+    }, 30000);
+</script>
+{% endblock %}
