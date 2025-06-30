@@ -25,7 +25,11 @@ const sidebars = {
         'migration-guide/kubernetes-deployment',
         'migration-guide/migration-considerations',
         'migration-guide/troubleshooting',
-        'migration-guide/conclusion'
+        'migration-guide/conclusion',
+        './Microservices-Maturity-Levels',
+        'micro-services/architecture-implementation',
+        'micro-services/fundamentals',
+        'micro-services/operations-best-practices'
       ],
     },
   ],

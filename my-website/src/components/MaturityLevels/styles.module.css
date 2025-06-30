@@ -1,0 +1,163 @@
+.maturityLevels {
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-weight: 500;
+}
+
+.tilesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.singleTile {
+  justify-content: center;
+}
+
+.tile {
+  background: var(--ifm-card-background-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+  max-width: 400px;
+  min-width: 300px;
+  border-left: 6px solid;
+  position: relative;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stageNumber {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: 'Helvetica Now Display', sans-serif;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.characteristics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.characteristics li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.characteristics li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: inherit;
+  font-weight: bold;
+}
+
+/* Color themes */
+.red {
+  border-left-color: #e74c3c;
+}
+
+.red .stageNumber {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+}
+
+.orange {
+  border-left-color: #f39c12;
+}
+
+.orange .stageNumber {
+  background: rgba(243, 156, 18, 0.1);
+  color: #f39c12;
+}
+
+.yellow {
+  border-left-color: #f1c40f;
+}
+
+.yellow .stageNumber {
+  background: rgba(241, 196, 15, 0.1);
+  color: #f1c40f;
+}
+
+.blue {
+  border-left-color: #3498db;
+}
+
+.blue .stageNumber {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+}
+
+.green {
+  border-left-color: #1e3a8a;
+}
+
+.green .stageNumber {
+  background: rgba(30, 58, 138, 0.1);
+  color: #1e3a8a;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tile {
+    max-width: 100%;
+    min-width: auto;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+} 
