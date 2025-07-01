@@ -29,7 +29,12 @@ const sidebars = {
         './Microservices-Maturity-Levels',
         'micro-services/architecture-implementation',
         'micro-services/fundamentals',
-        'micro-services/operations-best-practices'
+        'micro-services/operations-best-practices',
+        'Docker Compose to Kubernetese/Docker-Compose-Conversion-Part1',
+        'Docker Compose to Kubernetese/Docker-Compose-Conversion-Part2',
+        'Docker Compose to Kubernetese/Docker-Compose-Conversion-Part3',
+        'Docker Compose to Kubernetese/Docker-Compose-Conversion-Part4'
+
       ],
     },
   ],
