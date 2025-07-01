@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Armada Edge Platform',
+  tagline: 'Armada Edge Platform (AEP) brings powerful, modular infrastructure to solve your hardest problems at the remote edge. With Atlas, Galleon, and Marketplace, AEP delivers seamless, scalable performance where it matters most.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -82,9 +82,8 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Armada Edge Platform Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -92,7 +91,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -109,8 +108,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Migration Guide',
+                to: '/docs/Migration Guide/introduction',
               },
             ],
           },
@@ -145,7 +144,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Armada Edge Platform. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

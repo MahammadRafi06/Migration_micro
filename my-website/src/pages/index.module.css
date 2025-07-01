@@ -8,6 +8,23 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(to bottom, #0a0a1f, #0d1b2a);
+  /* background-image: url('path-to-grid-pattern.png'); */ /* Optional: for the subtle digital grid effect */
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.heroBanner h1 {
+  color: #fff;
+}
+
+.heroBanner .hero__subtitle {
+  color: #ccc;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +37,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.componentsSection {
+  padding: 4rem 0;
+  background: #000;
+  color: #fff;
+}
+
+.componentCard {
+  padding: 2rem;
+  text-align: left;
+}
+
+.componentCard h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.componentCard p {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.ctaSection {
+  padding: 4rem 0;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.ctaContent h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
 }
