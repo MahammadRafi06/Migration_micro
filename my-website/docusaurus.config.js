@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'armada-platform', // Usually your GitHub org/user name.
+  projectName: 'aep-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,6 +41,46 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    // Analytics plugin
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-XXXXXXXXXX', // Replace with your actual Google Analytics 4 tracking ID
+        anonymizeIP: true,
+      },
+    ],
+    // PWA plugin for offline support
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: true,
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)',
+          },
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -52,7 +92,24 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/armada-platform/aep-docs/tree/main/',
+          
+          // Show last update info
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          
+          // Add admonitions
+          admonitions: {
+            keywords: ['note', 'tip', 'info', 'caution', 'danger', 'warning', 'important'],
+          },
+          
+          // Version management
+          versions: {
+            current: {
+              label: 'Latest',
+              path: '/',
+            },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -63,7 +120,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/armada-platform/aep-docs/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -71,6 +128,14 @@ const config = {
         },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        // Enable sitemap
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
         },
       }),
     ],
@@ -81,7 +146,42 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      
+      // Enhanced search configuration
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'YOUR_APP_ID', // Replace with your Algolia app ID
+        // Public API key: it is safe to commit it
+        apiKey: 'YOUR_API_KEY', // Replace with your Algolia API key
+        indexName: 'armada-docs',
+        // Optional: see doc section below
+        contextualSearch: true,
+        // Optional: Specify domains where the navigation should occur through window.location instead of history.push
+        externalUrlRegex: 'external\\.com|domain\\.com',
+        // Optional: Replace parts of the item URLs from Algolia
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
+        // Optional: Algolia search parameters
+        searchParameters: {},
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+        //... other Algolia params
+      },
+      
+      // Announcement bar for important updates
+      announcementBar: {
+        id: 'support_us',
+        content:
+          '⭐️ If you like our documentation, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/armada-platform/aep-docs">GitHub</a>! ⭐️',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+        isCloseable: false,
+      },
+      
       navbar: {
+        title: 'AEP Documentation',
         logo: {
           alt: 'Armada Edge Platform Logo',
           src: 'img/logo.svg',
@@ -95,21 +195,39 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            to: '/docs/glossary',
+            label: 'Glossary',
+            position: 'left',
+          },
+          {
+            type: 'search',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/armada-platform/aep-docs',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
+      
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
                 label: 'Getting Started',
                 to: '/docs/getting-started/platform-overview',
+              },
+              {
+                label: 'Migration Playbooks',
+                to: '/docs/migration-playbooks/overview',
+              },
+              {
+                label: 'Platform Deep Dive',
+                to: '/docs/platform-deep-dive/overview',
               },
             ],
           },
@@ -117,21 +235,21 @@ const config = {
             title: 'Community',
             items: [
               {
+                label: 'Support',
+                to: '/docs/developer-resources/support/support-channels',
+              },
+              {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/armada-edge-platform',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                href: 'https://discord.gg/armada',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Resources',
             items: [
               {
                 label: 'Blog',
@@ -139,18 +257,58 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/armada-platform/aep-docs',
+              },
+              {
+                label: 'Release Notes',
+                to: '/docs/developer-resources/support/release-notes-roadmap',
               },
             ],
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Armada Edge Platform. Built with Docusaurus.`,
       },
+      
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        // Add additional languages for syntax highlighting
+        additionalLanguages: ['bash', 'yaml', 'json', 'dockerfile', 'powershell'],
+      },
+      
+      // Enhanced color mode
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+      
+      // Table of contents configuration
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 5,
+      },
+      
+      // Docs configuration
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
+      
+      // Live code blocks configuration
+      liveCodeBlock: {
+        playgroundPosition: 'bottom',
       },
     }),
+  
+  // Enhanced markdown configuration
+  markdown: {
+    mermaid: true,
+  },
+  
+  themes: ['@docusaurus/theme-mermaid'],
 };
 
 export default config;

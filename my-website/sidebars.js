@@ -35,9 +35,10 @@ const sidebars = {
       label: 'II. Application Modernization & Microservices',
       link: {
         type: 'doc',
-        id: 'application-modernization/microservice-fundamentals', // Link to an intro page
+        id: 'application-modernization/overview', // Link to overview page
       },
       items: [
+        'application-modernization/overview',
         'application-modernization/microservice-fundamentals',
         'application-modernization/design-and-implementation-patterns',
         'application-modernization/operational-best-practices',
@@ -46,7 +47,24 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'III. Migration Playbooks',
+      label: 'III. Packing your application for AEP Deployment',
+      link: {
+        type: 'doc',
+        id: 'application-packaging/overview', // Overview of packaging for AEP
+      },
+      items: [
+        'application-packaging/overview',
+        'application-packaging/container-best-practices',
+        'application-packaging/kubernetes-manifests',
+        'application-packaging/helm-charts',
+        'application-packaging/configuration-management',
+        'application-packaging/resource-requirements',
+        'application-packaging/security-considerations',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'IV. Migration Playbooks',
       link: {
         type: 'doc',
         id: 'migration-playbooks/overview', // A general overview of migration paths
@@ -71,7 +89,7 @@ const sidebars = {
           items: [
             {
               type: 'category',
-              label: '1. Developer Guide',
+              label: 'i. Developer Guide',
               items: [
                 'migration-playbooks/docker-compose-to-kubernetes/developer-guide/introduction-and-core-concepts',
                 'migration-playbooks/docker-compose-to-kubernetes/developer-guide/manual-conversion-process',
@@ -81,7 +99,7 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: '2. Operational Runbook',
+              label: 'ii. Operational Runbook',
               items: [
                 'migration-playbooks/docker-compose-to-kubernetes/operational-runbook/prerequisites-and-setup',
                 'migration-playbooks/docker-compose-to-kubernetes/operational-runbook/converting-with-kompose',
@@ -93,7 +111,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'C. Docker Compose to Helm Charts',
+          label: 'C. Docker Compose to Helm Charts Migration',
           items: [
             'migration-playbooks/docker-compose-to-helm-charts/introduction-and-prerequisites',
             'migration-playbooks/docker-compose-to-helm-charts/conversion-tools-kompose-katenary',
@@ -103,7 +121,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'D. Docker Compose to Virtual Machines (Kubevirt)',
+          label: 'D. Docker Compose to Virtual Machines Migration',
           items: [
             'migration-playbooks/docker-compose-to-virtual-machines/introduction-and-migration-strategy',
             'migration-playbooks/docker-compose-to-virtual-machines/preparing-golden-images',
@@ -115,7 +133,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'IV. Platform Deep Dive & Advanced Concepts',
+      label: 'V. Platform Deep Dive & Advanced Concepts',
       link: {
         type: 'doc',
         id: 'platform-deep-dive/overview', // Placeholder for an overview page
@@ -165,7 +183,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'E. Armada Platform Components', // New section for Armada specifics
+          label: 'E. Armada Platform Components',
           items: [
             'platform-deep-dive/armada-components/galleon-overview',
             'platform-deep-dive/armada-components/atlas-operational-insights',
@@ -176,7 +194,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'V. Application Lifecycle Management (ALM)',
+      label: 'VI. Application Lifecycle Management',
       link: {
         type: 'doc',
         id: 'application-lifecycle/overview', // Placeholder for an overview page
@@ -215,7 +233,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'VI. Developer Resources & Support',
+      label: 'VII. Developer Resources & Support',
       link: {
         type: 'doc',
         id: 'developer-resources/overview', // Placeholder for an overview page
@@ -223,7 +241,7 @@ const sidebars = {
       items: [
         {
           type: 'category',
-          label: 'A. Local Development Environment Setup',
+          label: 'A. Local Development Environment',
           items: [
             'developer-resources/local-dev/mini-kubernetes-solutions',
             'developer-resources/local-dev/edge-simulator-emulator',
@@ -241,7 +259,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'C. Troubleshooting & FAQs',
+          label: 'C. Troubleshooting & Debugging',
           items: [
             'developer-resources/troubleshooting/common-issues-solutions',
             'developer-resources/troubleshooting/error-code-reference',
@@ -261,16 +279,20 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'VII. Cost Management (If Applicable)',
+      label: 'VIII. Cost Management',
       link: {
         type: 'doc',
         id: 'cost-management/overview', // Placeholder for an overview page
       },
       items: [
+        'cost-management/overview',
         'cost-management/pricing-model',
         'cost-management/cost-optimization-strategies',
       ],
     },
+    // Quick reference sections
+    'faq',
+    'glossary',
   ],
 
   // But you can create a sidebar manually

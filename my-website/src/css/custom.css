@@ -18,6 +18,24 @@
   --ifm-font-family-base: 'Helvetica Now Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  
+  /* Enhanced spacing and typography */
+  --ifm-line-height-base: 1.6;
+  --ifm-paragraph-margin-bottom: 1.25rem;
+  --ifm-heading-margin-top: 2rem;
+  --ifm-heading-margin-bottom: 1rem;
+  
+  /* Custom colors for admonitions */
+  --ifm-color-info: #0ea5e9;
+  --ifm-color-success: #10b981;
+  --ifm-color-warning: #f59e0b;
+  --ifm-color-danger: #ef4444;
+  
+  /* Code block improvements */
+  --ifm-code-border-radius: 8px;
+  --ifm-pre-border-radius: 8px;
+  --ifm-code-padding-vertical: 0.2rem;
+  --ifm-code-padding-horizontal: 0.4rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -30,6 +48,12 @@
   --ifm-color-primary-lighter: #93c5fd;
   --ifm-color-primary-lightest: #dbeafe;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
+  /* Dark mode admonition colors */
+  --ifm-color-info: #0ea5e9;
+  --ifm-color-success: #10b981;
+  --ifm-color-warning: #f59e0b;
+  --ifm-color-danger: #ef4444;
 }
 
 /* Load the custom font */
@@ -39,4 +63,290 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+/* Enhanced admonition styling */
+.admonition {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admonition-heading {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admonition-heading:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Specific admonition types */
+.admonition-note {
+  background-color: #f8fafc;
+  border-left-color: var(--ifm-color-info);
+}
+
+.admonition-tip {
+  background-color: #f0fdf4;
+  border-left-color: var(--ifm-color-success);
+}
+
+.admonition-info {
+  background-color: #f0f9ff;
+  border-left-color: var(--ifm-color-info);
+}
+
+.admonition-warning,
+.admonition-caution {
+  background-color: #fffbeb;
+  border-left-color: var(--ifm-color-warning);
+}
+
+.admonition-danger {
+  background-color: #fef2f2;
+  border-left-color: var(--ifm-color-danger);
+}
+
+/* Enhanced code block styling */
+.prism-code {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: var(--ifm-pre-border-radius);
+  overflow-x: auto;
+}
+
+/* Copy button styling */
+.clean-btn {
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.clean-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced table styling */
+.markdown table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.markdown table th {
+  background-color: var(--ifm-color-emphasis-200);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+.markdown table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.markdown table tr:hover {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* Improved focus states for accessibility */
+.clean-btn:focus,
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to content link for screen readers */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--ifm-color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-to-content:focus {
+  top: 6px;
+}
+
+/* Enhanced heading styles */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  scroll-margin-top: 2rem;
+}
+
+.markdown h2 {
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 0.5rem;
+}
+
+/* Improved blockquote styling */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+/* Code inline styling */
+.markdown code:not(.prism-code code) {
+  background-color: var(--ifm-color-emphasis-200);
+  padding: var(--ifm-code-padding-vertical) var(--ifm-code-padding-horizontal);
+  border-radius: var(--ifm-code-border-radius);
+  font-weight: 500;
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .theme-doc-sidebar-container,
+  .pagination-nav,
+  .theme-edit-this-page {
+    display: none !important;
+  }
+  
+  .main-wrapper {
+    margin-left: 0 !important;
+  }
+  
+  .markdown h1,
+  .markdown h2,
+  .markdown h3 {
+    break-after: avoid;
+  }
+  
+  .admonition {
+    break-inside: avoid;
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+  .admonition {
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+  }
+  
+  .markdown table {
+    font-size: 0.875rem;
+  }
+  
+  .markdown table th,
+  .markdown table td {
+    padding: 0.5rem;
+  }
+}
+
+/* Feedback widget styling */
+.feedback-widget {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.feedback-widget h4 {
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.feedback-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.feedback-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-primary);
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.feedback-button:hover {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Enhanced search styling */
+.navbar__search {
+  margin-right: 1rem;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+/* Component card styling for homepage */
+.componentCard {
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  height: 100%;
+  transition: all 0.2s ease;
+  background-color: var(--ifm-background-color);
+}
+
+.componentCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+.componentsSection {
+  padding: 3rem 0;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* Enhanced hero banner */
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
