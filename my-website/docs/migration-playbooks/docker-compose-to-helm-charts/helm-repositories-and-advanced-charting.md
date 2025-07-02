@@ -332,11 +332,11 @@ kubectl logs -n ingress-nginx <ingress-controller-pod>
 
 :::note Debugging Workflow
 When troubleshooting Helm and Kubernetes issues, follow this general workflow:
-1. Check release status: `helm status my-app`
-2. Examine rendered templates: `helm get manifest my-app`
-3. Inspect Kubernetes resources: `kubectl describe` relevant resources
-4. Check pod logs: `kubectl logs <pod-name>`
-5. Look at events: `kubectl get events`
+1. Check release status: `helm status my-app`.
+2. Examine rendered templates: `helm get manifest my-app`.
+3. Inspect Kubernetes resources: `kubectl describe` relevant resources.
+4. Check pod logs: `kubectl logs <pod-name>`.
+5. Look at events: `kubectl get events`.
 :::
 
 ## Cleanup (Optional)
@@ -373,33 +373,29 @@ The `minikube delete` command will permanently delete all resources in your clus
 
 In this guide, we've explored multiple approaches to converting Docker Compose files to Helm charts:
 
-1. **Using Kompose** for a basic automated conversion
-2. **Using Katenary** for a more refined conversion with better templating
-3. **Using Score** for a platform-agnostic workload definition
+1. **Using Kompose** for a basic automated conversion.
+2. **Using Katenary** for a more refined conversion with better templating.
+3. **Using Score** for a platform-agnostic workload definition.
 
 We've also covered important aspects of working with Helm charts:
 
-- Deploying charts to a Kubernetes cluster
-- Verifying and testing charts locally
-- Sharing charts through repositories
-- Implementing security best practices
-- Troubleshooting common issues
+- Deploying charts to a Kubernetes cluster.
+- Verifying and testing charts locally.
+- Sharing charts through repositories.
+- Implementing security best practices.
+- Troubleshooting common issues.
 
 ### Where to Go from Here
 
 As you continue your Kubernetes and Helm journey, consider exploring:
 
 1. **CI/CD Integration**: Automate your Helm chart deployment using CI/CD pipelines with tools like Jenkins, GitHub Actions, or GitLab CI.
-
 2. **Infrastructure as Code**: Combine Helm with tools like Terraform or Pulumi to manage both your Kubernetes clusters and applications.
-
 3. **Advanced Helm Features**:
-   - Subchart dependencies
-   - Custom hook integration
-   - Post-rendering with Kustomize
-
+   - Subchart dependencies.
+   - Custom hook integration.
+   - Post-rendering with Kustomize.
 4. **Kubernetes Operators**: For complex, stateful applications, consider developing Kubernetes Operators that extend Kubernetes' capabilities with application-specific logic.
-
 5. **Monitoring and Observability**: Integrate tools like Prometheus, Grafana, and Jaeger into your Helm deployments for comprehensive monitoring.
 
 Remember that while automated tools can help with the initial conversion from Docker Compose to Helm, understanding the underlying Kubernetes concepts and Helm templating is essential for creating production-ready, maintainable charts.

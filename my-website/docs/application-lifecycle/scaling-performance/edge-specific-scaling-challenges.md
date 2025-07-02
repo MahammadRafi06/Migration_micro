@@ -71,12 +71,12 @@ data:
 
 ## Best Practices
 
-1. **Resource Efficiency**: Optimize for minimal resource usage
-2. **Graceful Degradation**: Handle connectivity issues gracefully
-3. **Local Caching**: Implement aggressive caching strategies
-4. **Edge-Aware Scheduling**: Use node affinity for edge placement
+1. **Resource Efficiency**: Optimize for minimal resource usage.
+2. **Graceful Degradation**: Handle connectivity issues gracefully.
+3. **Local Caching**: Implement aggressive caching strategies.
+4. **Edge-Aware Scheduling**: Use node affinity for edge placement.
 
 ## Next Steps
 
-- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md)
-- [Performance Tuning](./performance-tuning.md) 
+- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md).
+- [Performance Tuning](./performance-tuning.md). 

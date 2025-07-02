@@ -156,5 +156,5 @@ kubectl apply -f deployment.yaml --v=6
 
 ## Next Steps
 
-- [Common Issues & Solutions](./common-issues-solutions.md)
-- [Debugging Guides](./debugging-guides.md) 
+- [Common Issues & Solutions](./common-issues-solutions.md).
+- [Debugging Guides](./debugging-guides.md). 

@@ -124,13 +124,13 @@ cat CONTRIBUTING.md
 
 ## Best Practices for Community Engagement
 
-1. **Be Respectful**: Follow the code of conduct
-2. **Search Before Asking**: Check existing discussions
-3. **Provide Context**: Include relevant details in questions
-4. **Share Knowledge**: Help others with your expertise
-5. **Give Feedback**: Contribute to product improvement
+1. **Be Respectful**: Follow the code of conduct.
+2. **Search Before Asking**: Check existing discussions.
+3. **Provide Context**: Include relevant details in questions.
+4. **Share Knowledge**: Help others with your expertise.
+5. **Give Feedback**: Contribute to product improvement.
 
 ## Next Steps
 
-- [Support Channels](./support-channels.md)
-- [Release Notes & Roadmap](./release-notes-roadmap.md) 
+- [Support Channels](./support-channels.md).
+- [Release Notes & Roadmap](./release-notes-roadmap.md). 

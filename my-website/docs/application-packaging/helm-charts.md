@@ -1,10 +1,10 @@
-# Helm Charts for AEP Applications
+# Helm Charts for the Armada Edge Platform
 
 Learn how to create and manage Helm charts for efficient application deployment on the Armada Edge Platform.
 
 ## Overview
 
-Helm charts provide a powerful way to package, configure, and deploy applications on Kubernetes. This guide covers best practices for creating Helm charts optimized for edge deployments on AEP.
+Helm charts provide a powerful way to package, configure, and deploy applications on Kubernetes. This guide covers best practices for creating Helm charts optimized for edge deployments on the Armada Edge Platform.
 
 ## Chart Structure
 
@@ -29,9 +29,10 @@ myapp-chart/
 ### Chart.yaml
 
 ```yaml
+# Example Chart.yaml for a Helm chart
 apiVersion: v2
 name: myapp
-description: A Helm chart for MyApp on AEP
+description: A Helm chart for MyApp on the Armada Edge Platform
 type: application
 version: 0.1.0
 appVersion: "1.0.0"
@@ -165,6 +166,7 @@ monitoring:
 ### deployment.yaml
 
 ```yaml
+# Example deployment.yaml template for Helm
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -50,9 +50,9 @@ spec:
 
 ## Best Practices
 
-1. **Sampling**: Configure appropriate sampling rates
-2. **Context Propagation**: Ensure trace context is passed between services
-3. **Performance**: Monitor tracing overhead
+1. **Sampling**: Configure appropriate sampling rates.
+2. **Context Propagation**: Ensure trace context is passed between services.
+3. **Performance**: Monitor tracing overhead.
 
 ## Next Steps
 

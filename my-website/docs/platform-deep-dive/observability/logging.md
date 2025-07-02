@@ -31,9 +31,9 @@ spec:
 
 ## Best Practices
 
-1. **Structured Logging**: Use JSON format
-2. **Log Levels**: Implement proper log levels
-3. **Retention**: Set appropriate retention policies
+1. **Structured Logging**: Use JSON format.
+2. **Log Levels**: Implement proper log levels.
+3. **Retention**: Set appropriate retention policies.
 
 ## Logging Architecture
 

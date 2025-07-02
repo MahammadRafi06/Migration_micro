@@ -50,12 +50,12 @@ spec:
 
 ## Best Practices
 
-1. **Profile Applications**: Use profiling tools to identify bottlenecks
-2. **Optimize Images**: Use multi-stage builds and minimal base images
-3. **Resource Requests**: Set accurate resource requests and limits
-4. **Caching**: Implement effective caching strategies
+1. **Profile Applications**: Use profiling tools to identify bottlenecks.
+2. **Optimize Images**: Use multi-stage builds and minimal base images.
+3. **Resource Requests**: Set accurate resource requests and limits.
+4. **Caching**: Implement effective caching strategies.
 
 ## Next Steps
 
-- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md)
-- [Edge-Specific Challenges](./edge-specific-scaling-challenges.md) 
+- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md).
+- [Edge-Specific Challenges](./edge-specific-scaling-challenges.md). 

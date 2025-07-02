@@ -187,16 +187,16 @@ spec:
 ## Best Practices
 
 ### Image Hardening
-- Use minimal base images
-- Regular security updates
-- Remove unnecessary packages
-- Non-root user execution
+- Use minimal base images.
+- Regular security updates.
+- Remove unnecessary packages.
+- Non-root user execution.
 
 ### Supply Chain Security
-- Image signing and verification
-- Trusted registries
-- Build-time security scanning
-- Software Bill of Materials (SBOM)
+- Image signing and verification.
+- Trusted registries.
+- Build-time security scanning.
+- Software Bill of Materials (SBOM).
 
 ## Next Steps
 

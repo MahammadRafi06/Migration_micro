@@ -130,14 +130,14 @@ find . -name "*.yaml" -exec sed -i 's/v1alpha1/v1beta1/g' {} +
 - **Direct Contact**: product@edge-platform.com
 
 ### Feature Request Process
-1. **Submit**: Create a detailed feature request
-2. **Review**: Product team evaluates feasibility
-3. **Community Input**: Gather feedback from users
-4. **Prioritization**: Add to roadmap based on impact
-5. **Development**: Implementation and testing
-6. **Release**: Feature becomes available
+1. **Submit**: Create a detailed feature request.
+2. **Review**: Product team evaluates feasibility.
+3. **Community Input**: Gather feedback from users.
+4. **Prioritization**: Add to roadmap based on impact.
+5. **Development**: Implementation and testing.
+6. **Release**: Feature becomes available.
 
 ## Next Steps
 
-- [Support Channels](./support-channels.md)
-- [Community Resources](./community-resources.md) 
+- [Support Channels](./support-channels.md).
+- [Community Resources](./community-resources.md). 

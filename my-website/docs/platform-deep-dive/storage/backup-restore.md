@@ -121,16 +121,16 @@ spec:
 ## Best Practices
 
 ### Backup Design
-- Implement automated backup schedules
-- Use versioned backup storage
-- Test restore procedures regularly
-- Monitor backup success and failures
+- Implement automated backup schedules.
+- Use versioned backup storage.
+- Test restore procedures regularly.
+- Monitor backup success and failures.
 
 ### Recovery Planning
-- Document recovery procedures
-- Implement point-in-time recovery
-- Plan for partial and full site recovery
-- Maintain backup retention policies
+- Document recovery procedures.
+- Implement point-in-time recovery.
+- Plan for partial and full site recovery.
+- Maintain backup retention policies.
 
 ## Next Steps
 

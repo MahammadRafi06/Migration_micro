@@ -96,4 +96,4 @@ Tracing issues across multiple services and understanding system behavior become
 
 ## Next Steps
 
-Now that you understand the fundamentals, learn about [Architecture and Implementation](./design-and-implementation-patterns) to dive deeper into patterns and implementation strategies.
+Now that you understand the fundamentals, continue to [Architecture and Implementation](./design-and-implementation-patterns) to dive deeper into patterns and implementation strategies.

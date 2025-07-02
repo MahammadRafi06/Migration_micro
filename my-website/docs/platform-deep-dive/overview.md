@@ -33,14 +33,14 @@ Core Armada platform components including Galleon orchestration engine, Atlas op
 Before diving into these advanced concepts, ensure you have:
 
 ### Foundation Knowledge
-- Completed the [Getting Started](../getting-started/platform-overview) section
-- Understanding of [Microservices Fundamentals](../application-modernization/microservice-fundamentals)
-- Experience with basic Kubernetes operations
+- Completed the [Getting Started](../getting-started/platform-overview) section.
+- Understanding of [Microservices Fundamentals](../application-modernization/microservice-fundamentals).
+- Experience with basic Kubernetes operations.
 
 ### Environment Setup
-- Familiarity with your target deployment environment
-- Access to platform administrative tools
-- Understanding of infrastructure requirements
+- Familiarity with your target deployment environment.
+- Access to platform administrative tools.
+- Understanding of infrastructure requirements.
 
 ## Architecture Overview
 
@@ -65,16 +65,14 @@ The Edge Platform provides a comprehensive cloud-native foundation built on:
 ### Core Components
 
 #### Galleon Orchestration Engine
-Intelligent workload placement and resource management
+Intelligent workload placement and resource management.
 
 #### Atlas Operational Insights
-Analytics, monitoring, and predictive intelligence
+Analytics, monitoring, and predictive intelligence.
 
 #### Marketplace Integration
-Application catalog and lifecycle management
+Application catalog and lifecycle management.
 
 ## Getting Started
 
-Start with [Networking & Connectivity](./networking/ingress-egress-management) to understand the foundation of platform networking, then progress through security, storage, and observability based on your specific requirements.
-
-Each section provides both conceptual understanding and practical implementation guidance with real-world examples. 
+Start with [Networking & Connectivity](./networking/ingress-egress-management) to understand the foundation of platform networking. Then, progress through security, storage, and observability based on your specific requirements. Each section provides both conceptual understanding and practical implementation guidance with real-world examples to support your advanced platform journey. 

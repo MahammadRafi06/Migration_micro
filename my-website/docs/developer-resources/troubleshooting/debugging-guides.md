@@ -78,12 +78,12 @@ kubectl describe networkpolicy <policy-name>
 
 ## Best Practices
 
-1. **Systematic Approach**: Follow debugging steps methodically
-2. **Log Everything**: Maintain comprehensive logging
-3. **Monitor Continuously**: Use observability tools
-4. **Document Issues**: Keep track of common problems and solutions
+1. **Systematic Approach**: Follow debugging steps methodically.
+2. **Log Everything**: Maintain comprehensive logging.
+3. **Monitor Continuously**: Use observability tools.
+4. **Document Issues**: Keep track of common problems and solutions.
 
 ## Next Steps
 
-- [Common Issues & Solutions](./common-issues-solutions.md)
-- [Error Code Reference](./error-code-reference.md) 
+- [Common Issues & Solutions](./common-issues-solutions.md).
+- [Error Code Reference](./error-code-reference.md). 

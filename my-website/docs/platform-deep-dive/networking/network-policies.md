@@ -16,10 +16,10 @@ Network policies provide network-level security by controlling traffic flow betw
 ## Network Policy Fundamentals
 
 ### Basic Concepts
-- **Pod Selectors**: Target specific pods
-- **Namespace Selectors**: Target entire namespaces
-- **Policy Types**: Ingress, Egress, or both
-- **Rules**: Allow or deny specific traffic
+- **Pod Selectors**: Target specific pods.
+- **Namespace Selectors**: Target entire namespaces.
+- **Policy Types**: Ingress, Egress, or both.
+- **Rules**: Allow or deny specific traffic.
 
 ### Default Behavior
 ```yaml
@@ -247,10 +247,10 @@ spec:
 ## CNI Compatibility
 
 ### Supported CNIs
-- **Calico**: Full NetworkPolicy support
-- **Cilium**: Extended eBPF-based policies
-- **Weave Net**: Basic NetworkPolicy support
-- **Flannel**: Requires additional plugins
+- **Calico**: Full NetworkPolicy support.
+- **Cilium**: Extended eBPF-based policies.
+- **Weave Net**: Basic NetworkPolicy support.
+- **Flannel**: Requires additional plugins.
 
 ### CNI-Specific Features
 
@@ -322,34 +322,34 @@ kubectl run test-pod --image=busybox --rm -it -- sh
 ## Best Practices
 
 ### Policy Design
-- Start with default deny policies
-- Use specific selectors and ports
-- Document policy intentions
-- Regular policy reviews
+- Start with default deny policies.
+- Use specific selectors and ports.
+- Document policy intentions.
+- Regular policy reviews.
 
 ### Security
-- Implement defense in depth
-- Use least privilege principle
-- Regular security audits
-- Monitor policy violations
+- Implement defense in depth.
+- Use least privilege principle.
+- Regular security audits.
+- Monitor policy violations.
 
 ### Performance
-- Minimize policy complexity
-- Use efficient selectors
-- Monitor resource usage
-- Regular performance testing
+- Minimize policy complexity.
+- Use efficient selectors.
+- Monitor resource usage.
+- Regular performance testing.
 
 ## Monitoring and Alerting
 
 ### Policy Violations
-- Log denied connections
-- Alert on policy changes
-- Monitor compliance
+- Log denied connections.
+- Alert on policy changes.
+- Monitor compliance.
 
 ### Performance Impact
-- Track CNI performance
-- Monitor policy evaluation time
-- Optimize policy rules
+- Track CNI performance.
+- Monitor policy evaluation time.
+- Optimize policy rules.
 
 ## Next Steps
 

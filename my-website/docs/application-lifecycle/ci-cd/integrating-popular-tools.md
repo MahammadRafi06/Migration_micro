@@ -13,24 +13,24 @@ Learn how to integrate popular CI/CD tools with your edge platform to create sea
 ## Supported Tools Overview
 
 ### GitHub Actions
-- **Best for**: GitHub-hosted repositories
-- **Strengths**: Native integration, extensive marketplace
-- **Use case**: Open source and enterprise projects
+- **Best for**: GitHub-hosted repositories.
+- **Strengths**: Native integration, extensive marketplace.
+- **Use case**: Open source and enterprise projects.
 
 ### GitLab CI/CD
-- **Best for**: GitLab-hosted repositories
-- **Strengths**: Built-in container registry, comprehensive DevOps platform
-- **Use case**: End-to-end DevOps workflows
+- **Best for**: GitLab-hosted repositories.
+- **Strengths**: Built-in container registry, comprehensive DevOps platform.
+- **Use case**: End-to-end DevOps workflows.
 
 ### Jenkins
-- **Best for**: On-premises or hybrid deployments
-- **Strengths**: Highly customizable, extensive plugin ecosystem
-- **Use case**: Legacy systems integration
+- **Best for**: On-premises or hybrid deployments.
+- **Strengths**: Highly customizable, extensive plugin ecosystem.
+- **Use case**: Legacy systems integration.
 
 ### CircleCI
-- **Best for**: Fast build times and parallel execution
-- **Strengths**: Docker-first approach, advanced caching
-- **Use case**: Performance-critical pipelines
+- **Best for**: Fast build times and parallel execution.
+- **Strengths**: Docker-first approach, advanced caching.
+- **Use case**: Performance-critical pipelines.
 
 ## GitHub Actions Integration
 
@@ -151,19 +151,19 @@ pipeline {
 ## Tool-Specific Best Practices
 
 ### GitHub Actions
-- Use reusable workflows for common patterns
-- Implement proper secret management
-- Leverage matrix builds for multi-environment deployments
+- Use reusable workflows for common patterns.
+- Implement proper secret management.
+- Leverage matrix builds for multi-environment deployments.
 
 ### GitLab CI/CD
-- Use GitLab Container Registry for image storage
-- Implement review apps for feature branches
-- Leverage GitLab environments for deployment tracking
+- Use GitLab Container Registry for image storage.
+- Implement review apps for feature branches.
+- Leverage GitLab environments for deployment tracking.
 
 ### Jenkins
-- Use shared libraries for common functionality
-- Implement blue-green deployments with plugins
-- Use Jenkins agents for distributed builds
+- Use shared libraries for common functionality.
+- Implement blue-green deployments with plugins.
+- Use Jenkins agents for distributed builds.
 
 ## Security Integration
 

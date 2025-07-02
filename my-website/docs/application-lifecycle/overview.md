@@ -78,17 +78,17 @@ graph TD
 ## Prerequisites
 
 ### Foundation Knowledge
-- Understanding of [Platform Architecture](../platform-deep-dive/overview)
-- Familiarity with container orchestration
-- Basic knowledge of CI/CD concepts
+- Understanding of [Platform Architecture](../platform-deep-dive/overview).
+- Familiarity with container orchestration.
+- Basic knowledge of CI/CD concepts.
 
 ### Technical Skills
-- Experience with version control systems
-- Understanding of containerization concepts
-- Knowledge of Kubernetes fundamentals
+- Experience with version control systems.
+- Understanding of containerization concepts.
+- Knowledge of Kubernetes fundamentals.
 
 ## Getting Started
 
-Begin with CI/CD Integration to establish your development pipeline, then explore deployment strategies and scaling approaches based on your application requirements.
+Begin with CI/CD Integration to establish your development pipeline. Then, explore deployment strategies and scaling approaches based on your application requirements. Each section provides both strategic guidance and hands-on implementation examples to support your ALM journey.
 
 Each section provides both strategic guidance and hands-on implementation examples. 

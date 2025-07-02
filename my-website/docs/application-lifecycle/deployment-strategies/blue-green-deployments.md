@@ -16,10 +16,10 @@ Blue-green deployment is a strategy where you maintain two identical production 
 
 ## Key Benefits
 
-- **Zero Downtime**: Instant traffic switching
-- **Quick Rollback**: Immediate fallback to previous version
-- **Risk Reduction**: Test in production-like environment
-- **Complete Validation**: Full testing before traffic switch
+- **Zero Downtime**: Instant traffic switching.
+- **Quick Rollback**: Immediate fallback to previous version.
+- **Risk Reduction**: Test in production-like environment.
+- **Complete Validation**: Full testing before traffic switch.
 
 ## Implementation Approaches
 
@@ -250,9 +250,9 @@ spec:
 ## Database Considerations
 
 ### Schema Compatibility
-- Ensure backward compatibility during deployment
-- Use database migration strategies
-- Implement feature flags for breaking changes
+- Ensure backward compatibility during deployment.
+- Use database migration strategies.
+- Implement feature flags for breaking changes.
 
 ### Connection Management
 ```yaml
@@ -309,18 +309,18 @@ groups:
 
 ## Best Practices
 
-1. **Resource Planning**: Ensure sufficient resources for both environments
-2. **Data Synchronization**: Plan for data consistency between environments
-3. **Testing Automation**: Implement comprehensive automated testing
-4. **Monitoring**: Monitor both environments during switches
-5. **Rollback Planning**: Have clear rollback procedures
+1. **Resource Planning**: Ensure sufficient resources for both environments.
+2. **Data Synchronization**: Plan for data consistency between environments.
+3. **Testing Automation**: Implement comprehensive automated testing.
+4. **Monitoring**: Monitor both environments during switches.
+5. **Rollback Planning**: Have clear rollback procedures.
 
 ## Troubleshooting
 
 ### Common Issues
-- **Resource Constraints**: Insufficient cluster resources for both environments
-- **Service Discovery**: DNS caching causing traffic routing issues
-- **Data Inconsistency**: Database synchronization problems
+- **Resource Constraints**: Insufficient cluster resources for both environments.
+- **Service Discovery**: DNS caching causing traffic routing issues.
+- **Data Inconsistency**: Database synchronization problems.
 
 ### Debug Commands
 ```bash
@@ -340,6 +340,6 @@ kubectl logs -l app=myapp,version=green
 
 ## Next Steps
 
-- [Canary Deployments](./canary-deployments.md)
-- [Rolling Updates](./rolling-updates.md)
-- [Rollback Procedures](./rollback-procedures.md) 
+- [Canary Deployments](./canary-deployments.md).
+- [Rolling Updates](./rolling-updates.md).
+- [Rollback Procedures](./rollback-procedures.md). 

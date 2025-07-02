@@ -52,12 +52,12 @@ spec:
 
 ## Best Practices
 
-1. **Realistic Constraints**: Use actual edge device specifications
-2. **Network Simulation**: Test under various connectivity conditions
-3. **Failover Testing**: Simulate connectivity loss scenarios
-4. **Performance Monitoring**: Track resource usage patterns
+1. **Realistic Constraints**: Use actual edge device specifications.
+2. **Network Simulation**: Test under various connectivity conditions.
+3. **Failover Testing**: Simulate connectivity loss scenarios.
+4. **Performance Monitoring**: Track resource usage patterns.
 
 ## Next Steps
 
-- [Mini Kubernetes Solutions](./mini-kubernetes-solutions.md)
-- [Debugging Tools](./debugging-tools.md) 
+- [Mini Kubernetes Solutions](./mini-kubernetes-solutions.md).
+- [Debugging Tools](./debugging-tools.md). 

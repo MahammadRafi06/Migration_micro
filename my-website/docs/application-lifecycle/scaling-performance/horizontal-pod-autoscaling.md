@@ -78,20 +78,20 @@ spec:
 
 ## Best Practices
 
-1. **Set Appropriate Limits**: Configure realistic min/max replicas
-2. **Monitor Performance**: Track scaling behavior and adjust thresholds
-3. **Resource Requests**: Ensure pods have proper resource requests
-4. **Stabilization**: Configure scaling behavior to prevent flapping
+1. **Set Appropriate Limits**: Configure realistic min/max replicas.
+2. **Monitor Performance**: Track scaling behavior and adjust thresholds.
+3. **Resource Requests**: Ensure pods have proper resource requests.
+4. **Stabilization**: Configure scaling behavior to prevent flapping.
 
 ## Troubleshooting
 
 ### Common Issues
-- **No Scaling**: Check metrics server and resource requests
-- **Thrashing**: Adjust stabilization windows and thresholds
-- **Resource Limits**: Verify cluster has sufficient resources
+- **No Scaling**: Check metrics server and resource requests.
+- **Thrashing**: Adjust stabilization windows and thresholds.
+- **Resource Limits**: Verify cluster has sufficient resources.
 
 ## Next Steps
 
-- [Vertical Pod Autoscaling](./vertical-pod-autoscaling.md)
-- [Performance Tuning](./performance-tuning.md)
-- [Edge-Specific Challenges](./edge-specific-scaling-challenges.md) 
+- [Vertical Pod Autoscaling](./vertical-pod-autoscaling.md).
+- [Performance Tuning](./performance-tuning.md).
+- [Edge-Specific Challenges](./edge-specific-scaling-challenges.md). 

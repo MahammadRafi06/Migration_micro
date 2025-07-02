@@ -46,17 +46,17 @@ spec:
 
 ## Key Metrics
 
-- **CPU Usage**: Monitor CPU utilization
-- **Memory Usage**: Track memory consumption
-- **Request Rate**: Monitor HTTP requests per second
-- **Error Rate**: Track application errors
-- **Response Time**: Monitor latency
+- **CPU Usage**: Monitor CPU utilization.
+- **Memory Usage**: Track memory consumption.
+- **Request Rate**: Monitor HTTP requests per second.
+- **Error Rate**: Track application errors.
+- **Response Time**: Monitor latency.
 
 ## Best Practices
 
-1. **Label Consistency**: Use consistent metric labels
-2. **Cardinality**: Avoid high-cardinality metrics
-3. **Alerting**: Set up alerts for critical metrics
+1. **Label Consistency**: Use consistent metric labels.
+2. **Cardinality**: Avoid high-cardinality metrics.
+3. **Alerting**: Set up alerts for critical metrics.
 
 ## Next Steps
 

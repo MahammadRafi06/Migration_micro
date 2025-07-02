@@ -17,9 +17,9 @@ We recognize that our partners are at different stages in their adoption and imp
 
 Use this maturity framework to:
 
-- **Assess current state** - Identify where partners currently stand in their microservices journey
-- **Plan progression** - Understand the natural evolution path from one stage to the next
-- **Tailor support** - Provide appropriate guidance and resources based on maturity level
-- **Set expectations** - Establish realistic timelines and outcomes for each stage
+- **Assess current state** - Identify where partners currently stand in their microservices journey.
+- **Plan progression** - Understand the natural evolution path from one stage to the next.
+- **Tailor support** - Provide appropriate guidance and resources based on maturity level.
+- **Set expectations** - Establish realistic timelines and outcomes for each stage.
 
-Each stage represents a significant milestone in the microservices adoption journey, with distinct characteristics, challenges, and capabilities that require different approaches and support strategies.
+Each stage represents a significant milestone in the microservices adoption journey, with distinct characteristics, challenges, and capabilities. Use this framework to guide your planning and support strategies for successful microservices adoption.

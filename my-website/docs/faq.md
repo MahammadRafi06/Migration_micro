@@ -24,10 +24,10 @@ The Armada Edge Platform (AEP) is a comprehensive edge computing solution that b
 ### Who is the target audience for AEP?
 
 AEP is designed for:
-- **Independent Software Vendors (ISVs)** looking to extend their applications to the edge
-- **Enterprise customers** with remote operations requiring local computing
-- **Developers** building edge-native applications
-- **Operations teams** managing distributed infrastructure
+- **Independent Software Vendors (ISVs)** looking to extend their applications to the edge.
+- **Enterprise customers** with remote operations requiring local computing.
+- **Developers** building edge-native applications.
+- **Operations teams** managing distributed infrastructure.
 
 ### How does AEP differ from traditional cloud platforms?
 
@@ -61,10 +61,10 @@ Yes! AEP supports virtual machines through **KubeVirt integration**, allowing yo
 ### What programming languages and frameworks are supported?
 
 AEP supports any language or framework that can run in containers or VMs, including:
-- **Web frameworks**: React, Angular, Vue.js, Django, Flask, Express.js
-- **Languages**: Python, Java, C#, Go, Node.js, Ruby, PHP
-- **Databases**: PostgreSQL, MySQL, MongoDB, Redis
-- **Message queues**: RabbitMQ, Apache Kafka, NATS
+- **Web frameworks**: React, Angular, Vue.js, Django, Flask, Express.js.
+- **Languages**: Python, Java, C#, Go, Node.js, Ruby, PHP.
+- **Databases**: PostgreSQL, MySQL, MongoDB, Redis.
+- **Message queues**: RabbitMQ, Apache Kafka, NATS.
 
 ## Deployment and Migration
 
@@ -83,9 +83,9 @@ Check our [Migration Playbooks](./migration-playbooks/overview) for step-by-step
 ### Can I use Docker Compose files with AEP?
 
 Yes! We provide tools to convert Docker Compose files to Kubernetes manifests:
-- **Kompose**: Automated conversion tool
-- **Manual conversion**: Step-by-step process with optimization
-- **Helm charts**: Advanced packaging for complex applications
+- **Kompose**: Automated conversion tool.
+- **Manual conversion**: Step-by-step process with optimization.
+- **Helm charts**: Advanced packaging for complex applications.
 
 ### How long does a typical migration take?
 
@@ -99,36 +99,36 @@ Migration timelines vary based on application complexity:
 ### What if my application requires specific hardware?
 
 Galleon data centers come in multiple form factors and can be customized with:
-- Specialized GPU cards for AI/ML workloads
-- Industrial-grade networking equipment
-- Custom storage solutions
-- Environmental sensors and controls
+- Specialized GPU cards for AI/ML workloads.
+- Industrial-grade networking equipment.
+- Custom storage solutions.
+- Environmental sensors and controls.
 
 ## Operations and Management
 
 ### How do I monitor my applications on AEP?
 
 Atlas provides comprehensive monitoring including:
-- **Real-time metrics** and alerting
-- **Log aggregation** across all edge locations
-- **Distributed tracing** for microservices
-- **Performance dashboards** and reports
+- **Real-time metrics** and alerting.
+- **Log aggregation** across all edge locations.
+- **Distributed tracing** for microservices.
+- **Performance dashboards** and reports.
 
 ### Can I integrate with my existing monitoring tools?
 
 Yes! Atlas supports integration with popular monitoring platforms:
-- Prometheus and Grafana
-- Datadog, New Relic, Splunk
-- ELK Stack (Elasticsearch, Logstash, Kibana)
-- Custom integrations via APIs
+- Prometheus and Grafana.
+- Datadog, New Relic, Splunk.
+- ELK Stack (Elasticsearch, Logstash, Kibana).
+- Custom integrations via APIs.
 
 ### How do I handle updates and deployments?
 
 AEP supports multiple deployment strategies:
-- **Rolling updates**: Gradual replacement with zero downtime
-- **Blue-green deployments**: Switch between two identical environments
-- **Canary deployments**: Test with a subset of traffic
-- **GitOps workflows**: Automated deployments from Git repositories
+- **Rolling updates**: Gradual replacement with zero downtime.
+- **Blue-green deployments**: Switch between two identical environments.
+- **Canary deployments**: Test with a subset of traffic.
+- **GitOps workflows**: Automated deployments from Git repositories.
 
 ### What happens if connectivity to the cloud is lost?
 
@@ -143,26 +143,26 @@ AEP is designed for autonomous operation:
 ### How secure is data on AEP?
 
 AEP implements multiple security layers:
-- **Encryption**: Data at rest and in transit
-- **Network security**: Micro-segmentation and policies
-- **Identity management**: RBAC and service authentication
-- **Compliance**: SOC 2, ISO 27001, and industry standards
+- **Encryption**: Data at rest and in transit.
+- **Network security**: Micro-segmentation and policies.
+- **Identity management**: RBAC and service authentication.
+- **Compliance**: SOC 2, ISO 27001, and industry standards.
 
 ### Can I use my existing identity provider?
 
 Yes! AEP integrates with:
-- Active Directory and LDAP
-- SAML and OAuth providers
-- Cloud identity services (Azure AD, AWS IAM)
-- Custom authentication systems
+- Active Directory and LDAP.
+- SAML and OAuth providers.
+- Cloud identity services (Azure AD, AWS IAM).
+- Custom authentication systems.
 
 ### How do I ensure compliance in regulated industries?
 
 AEP supports compliance requirements for:
-- **Healthcare**: HIPAA compliance features
-- **Financial services**: PCI DSS requirements
-- **Government**: FedRAMP and other standards
-- **Manufacturing**: Industry-specific regulations
+- **Healthcare**: HIPAA compliance features.
+- **Financial services**: PCI DSS requirements.
+- **Government**: FedRAMP and other standards.
+- **Manufacturing**: Industry-specific regulations.
 
 ## Troubleshooting
 
@@ -170,11 +170,11 @@ AEP supports compliance requirements for:
 
 Follow this troubleshooting checklist:
 
-1. **Check resource utilization** in Atlas dashboards
-2. **Review application logs** for errors or warnings
-3. **Analyze network latency** between components
-4. **Verify storage performance** and availability
-5. **Check for resource constraints** (CPU, memory, storage)
+1. **Check resource utilization** in Atlas dashboards.
+2. **Review application logs** for errors or warnings.
+3. **Analyze network latency** between components.
+4. **Verify storage performance** and availability.
+5. **Check for resource constraints** (CPU, memory, storage).
 
 :::tip Performance Optimization
 Visit our [Performance Tuning Guide](./platform-deep-dive/scaling-performance/performance-tuning) for detailed optimization strategies.
@@ -194,10 +194,10 @@ Common deployment issues and solutions:
 
 Multiple support channels are available:
 
-- **Community forums**: Connect with other users and experts
-- **Documentation**: Comprehensive guides and troubleshooting
-- **GitHub issues**: Report bugs and request features
-- **Professional support**: Enterprise support options available
+- **Community forums**: Connect with other users and experts.
+- **Documentation**: Comprehensive guides and troubleshooting.
+- **GitHub issues**: Report bugs and request features.
+- **Professional support**: Enterprise support options are available for customers with a support agreement.
 
 :::info Support Resources
 - [Community Resources](./developer-resources/support/community-resources)

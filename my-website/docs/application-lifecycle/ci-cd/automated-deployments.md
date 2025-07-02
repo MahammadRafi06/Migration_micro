@@ -16,10 +16,10 @@ Automated deployment pipelines are essential for maintaining consistent, reliabl
 
 ## Key Benefits
 
-- **Consistency**: Eliminates manual deployment errors
-- **Speed**: Faster time-to-production
-- **Reliability**: Repeatable deployment processes
-- **Audibility**: Complete deployment history and rollback capabilities
+- **Consistency**: Eliminates manual deployment errors.
+- **Speed**: Faster time-to-production.
+- **Reliability**: Repeatable deployment processes.
+- **Audibility**: Complete deployment history and rollback capabilities.
 
 ## Pipeline Components
 
@@ -70,24 +70,24 @@ jobs:
 ## Popular CI/CD Tools
 
 ### GitHub Actions
-- Native GitHub integration
-- Extensive marketplace of actions
-- Built-in secrets management
+- Native GitHub integration.
+- Extensive marketplace of actions.
+- Built-in secrets management.
 
 ### GitLab CI/CD
-- Integrated with GitLab repositories
-- Built-in container registry
-- Advanced deployment strategies
+- Integrated with GitLab repositories.
+- Built-in container registry.
+- Advanced deployment strategies.
 
 ### Jenkins
-- Highly customizable
-- Extensive plugin ecosystem
-- Self-hosted or cloud options
+- Highly customizable.
+- Extensive plugin ecosystem.
+- Self-hosted or cloud options.
 
 ### ArgoCD
-- GitOps-focused deployment
-- Kubernetes-native
-- Declarative configuration
+- GitOps-focused deployment.
+- Kubernetes-native.
+- Declarative configuration.
 
 ## Security Considerations
 
@@ -101,31 +101,31 @@ jobs:
 ```
 
 ### Secret Management
-- Use platform-provided secret management
-- Rotate secrets regularly
-- Never commit secrets to source control
+- Use platform-provided secret management.
+- Rotate secrets regularly.
+- Never commit secrets to source control.
 
 ### Access Controls
-- Implement least-privilege access
-- Use service accounts for automation
-- Regular access reviews
+- Implement least-privilege access.
+- Use service accounts for automation.
+- Regular access reviews.
 
 ## Edge-Specific Considerations
 
 ### Bandwidth Optimization
-- Minimize image sizes
-- Use multi-stage builds
-- Leverage image layer caching
+- Minimize image sizes.
+- Use multi-stage builds.
+- Leverage image layer caching.
 
 ### Connectivity Resilience
-- Handle intermittent connectivity
-- Implement deployment retries
-- Use local caching strategies
+- Handle intermittent connectivity.
+- Implement deployment retries.
+- Use local caching strategies.
 
 ### Resource Constraints
-- Optimize for limited resources
-- Implement resource quotas
-- Monitor deployment impact
+- Optimize for limited resources.
+- Implement resource quotas.
+- Monitor deployment impact.
 
 ## Monitoring and Observability
 
@@ -157,19 +157,19 @@ livenessProbe:
 
 ## Best Practices
 
-1. **Start Simple**: Begin with basic pipelines and iterate
-2. **Test Everything**: Include comprehensive testing in pipelines
-3. **Monitor Actively**: Track deployment success rates and performance
-4. **Document Processes**: Maintain clear deployment documentation
-5. **Plan for Failure**: Implement robust rollback mechanisms
+1. **Start Simple**: Begin with basic pipelines and iterate.
+2. **Test Everything**: Include comprehensive testing in pipelines.
+3. **Monitor Actively**: Track deployment success rates and performance.
+4. **Document Processes**: Maintain clear deployment documentation.
+5. **Plan for Failure**: Implement robust rollback mechanisms.
 
 ## Troubleshooting
 
 ### Common Issues
-- **Build Failures**: Check dependencies and build environment
-- **Test Failures**: Verify test environment configuration
-- **Deployment Timeouts**: Adjust timeout values and resource limits
-- **Resource Conflicts**: Check for naming conflicts and resource availability
+- **Build Failures**: Check dependencies and build environment.
+- **Test Failures**: Verify test environment configuration.
+- **Deployment Timeouts**: Adjust timeout values and resource limits.
+- **Resource Conflicts**: Check for naming conflicts and resource availability.
 
 ### Debug Commands
 ```bash
@@ -187,6 +187,6 @@ kubectl top nodes
 
 ## Next Steps
 
-- [GitOps Workflows](./gitops-workflows.md)
-- [Integrating Popular Tools](./integrating-popular-tools.md)
-- [Blue-Green Deployments](../deployment-strategies/blue-green-deployments.md) 
+- [GitOps Workflows](./gitops-workflows.md).
+- [Integrating Popular Tools](./integrating-popular-tools.md).
+- [Blue-Green Deployments](../deployment-strategies/blue-green-deployments.md). 

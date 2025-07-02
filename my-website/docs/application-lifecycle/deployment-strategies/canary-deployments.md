@@ -16,10 +16,10 @@ Canary deployment is a progressive delivery strategy where you release a new ver
 
 ## Key Benefits
 
-- **Risk Mitigation**: Limited exposure to potential issues
-- **Real-world Testing**: Validation with actual production traffic
-- **Gradual Rollout**: Controlled progression of deployment
-- **Quick Detection**: Early identification of problems
+- **Risk Mitigation**: Limited exposure to potential issues.
+- **Real-world Testing**: Validation with actual production traffic.
+- **Gradual Rollout**: Controlled progression of deployment.
+- **Quick Detection**: Early identification of problems.
 
 ## Implementation Approaches
 
@@ -362,18 +362,18 @@ spec:
 
 ## Best Practices
 
-1. **Start Small**: Begin with minimal traffic percentage
-2. **Monitor Closely**: Watch key metrics during rollout
-3. **Define Clear Criteria**: Set specific success/failure thresholds
-4. **Automated Validation**: Use automated testing and monitoring
-5. **Quick Rollback**: Have rapid rollback mechanisms ready
+1. **Start Small**: Begin with minimal traffic percentage.
+2. **Monitor Closely**: Watch key metrics during rollout.
+3. **Define Clear Criteria**: Set specific success/failure thresholds.
+4. **Automated Validation**: Use automated testing and monitoring.
+5. **Quick Rollback**: Have rapid rollback mechanisms ready.
 
 ## Troubleshooting
 
 ### Common Issues
-- **Traffic Split Not Working**: Check service mesh configuration
-- **Metrics Collection**: Verify monitoring stack is properly configured
-- **Rollback Failures**: Ensure stable version is available
+- **Traffic Split Not Working**: Check service mesh configuration.
+- **Metrics Collection**: Verify monitoring stack is properly configured.
+- **Rollback Failures**: Ensure stable version is available.
 
 ### Debug Commands
 ```bash
@@ -420,6 +420,6 @@ data:
 
 ## Next Steps
 
-- [Blue-Green Deployments](./blue-green-deployments.md)
-- [Rolling Updates](./rolling-updates.md)
-- [Rollback Procedures](./rollback-procedures.md) 
+- [Blue-Green Deployments](./blue-green-deployments.md).
+- [Rolling Updates](./rolling-updates.md).
+- [Rollback Procedures](./rollback-procedures.md). 

@@ -42,17 +42,17 @@ spec:
 
 ## Key Metrics
 
-- **Node Status**: Monitor node availability and health
-- **Resource Utilization**: Track CPU, memory, and storage usage
-- **Network Performance**: Monitor bandwidth and latency
-- **Service Health**: Track service availability and response times
+- **Node Status**: Monitor node availability and health.
+- **Resource Utilization**: Track CPU, memory, and storage usage.
+- **Network Performance**: Monitor bandwidth and latency.
+- **Service Health**: Track service availability and response times.
 
 ## Best Practices
 
-1. **Proactive Monitoring**: Set up predictive alerts
-2. **Capacity Planning**: Monitor resource trends
-3. **Health Checks**: Implement comprehensive health checks
-4. **Historical Data**: Maintain long-term metrics
+1. **Proactive Monitoring**: Set up predictive alerts.
+2. **Capacity Planning**: Monitor resource trends.
+3. **Health Checks**: Implement comprehensive health checks.
+4. **Historical Data**: Maintain long-term metrics.
 
 ## Next Steps
 

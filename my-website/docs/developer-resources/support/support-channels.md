@@ -93,13 +93,13 @@ Any other relevant information
 
 ## Best Practices for Getting Help
 
-1. **Search First**: Check documentation and knowledge base
-2. **Provide Context**: Include relevant logs and configuration
-3. **Be Specific**: Clearly describe the issue and expected behavior
-4. **Follow Up**: Respond promptly to support requests
-5. **Share Solutions**: Help others by sharing your solutions
+1. **Search First**: Check documentation and knowledge base.
+2. **Provide Context**: Include relevant logs and configuration.
+3. **Be Specific**: Clearly describe the issue and expected behavior.
+4. **Follow Up**: Respond promptly to support requests.
+5. **Share Solutions**: Help others by sharing your solutions.
 
 ## Next Steps
 
-- [Community Resources](./community-resources.md)
-- [Release Notes & Roadmap](./release-notes-roadmap.md) 
+- [Community Resources](./community-resources.md).
+- [Release Notes & Roadmap](./release-notes-roadmap.md). 

@@ -37,12 +37,12 @@ spec:
 
 ## Best Practices
 
-1. **Monitor Resource Usage**: Track actual vs requested resources
-2. **Set Boundaries**: Configure min/max resource limits
-3. **Test Thoroughly**: Validate VPA behavior in non-production first
-4. **Combine Wisely**: Use with HPA carefully to avoid conflicts
+1. **Monitor Resource Usage**: Track actual vs requested resources.
+2. **Set Boundaries**: Configure min/max resource limits.
+3. **Test Thoroughly**: Validate VPA behavior in non-production first.
+4. **Combine Wisely**: Use with HPA carefully to avoid conflicts.
 
 ## Next Steps
 
-- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md)
-- [Performance Tuning](./performance-tuning.md) 
+- [Horizontal Pod Autoscaling](./horizontal-pod-autoscaling.md).
+- [Performance Tuning](./performance-tuning.md). 

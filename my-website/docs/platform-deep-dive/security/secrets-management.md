@@ -628,16 +628,16 @@ openssl x509 -in cert.pem -text -noout
 ## Best Practices
 
 ### Security Hardening
-- Use external secret management systems
-- Implement proper RBAC for secret access
-- Regular secret rotation
-- Encryption at rest and in transit
+- Use external secret management systems.
+- Implement proper RBAC for secret access.
+- Regular secret rotation.
+- Encryption at rest and in transit.
 
 ### Monitoring and Alerting
-- Secret usage tracking
-- Certificate expiration monitoring
-- Access failure alerts
-- Compliance auditing
+- Secret usage tracking.
+- Certificate expiration monitoring.
+- Access failure alerts.
+- Compliance auditing.
 
 ## Next Steps
 

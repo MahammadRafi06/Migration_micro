@@ -487,22 +487,22 @@ data:
 ## Best Practices
 
 ### Database Design
-- Choose appropriate database types for use cases
-- Implement proper indexing strategies
-- Plan for data growth and scaling
-- Design for eventual consistency when needed
+- Choose appropriate database types for use cases.
+- Implement proper indexing strategies.
+- Plan for data growth and scaling.
+- Design for eventual consistency when needed.
 
 ### Edge Considerations
-- Minimize data synchronization overhead
-- Implement local caching strategies
-- Plan for network partitions
-- Optimize for resource constraints
+- Minimize data synchronization overhead.
+- Implement local caching strategies.
+- Plan for network partitions.
+- Optimize for resource constraints.
 
 ### Security
-- Use strong authentication
-- Encrypt data at rest and in transit
-- Implement proper access controls
-- Regular security updates
+- Use strong authentication.
+- Encrypt data at rest and in transit.
+- Implement proper access controls.
+- Regular security updates.
 
 ## Next Steps
 

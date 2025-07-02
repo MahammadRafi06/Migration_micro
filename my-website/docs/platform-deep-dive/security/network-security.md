@@ -266,16 +266,16 @@ data:
 ## Best Practices
 
 ### Network Hardening
-- Implement network segmentation
-- Use strong encryption protocols
-- Regular security updates
-- Monitor network traffic
+- Implement network segmentation.
+- Use strong encryption protocols.
+- Regular security updates.
+- Monitor network traffic.
 
 ### Threat Detection
-- Deploy intrusion detection systems
-- Implement anomaly detection
-- Real-time security monitoring
-- Incident response procedures
+- Deploy intrusion detection systems.
+- Implement anomaly detection.
+- Real-time security monitoring.
+- Incident response procedures.
 
 ## Next Steps
 

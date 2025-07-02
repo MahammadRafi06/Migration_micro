@@ -1,10 +1,10 @@
-# Container Best Practices for AEP
+# Container Best Practices for the Armada Edge Platform
 
-Learn how to create optimized Docker containers for successful deployment on the Armada Edge Platform.
+Learn how to create optimized Docker containers for deployment on the Armada Edge Platform.
 
 ## Overview
 
-Containers deployed to edge environments have unique requirements compared to traditional cloud deployments. This guide covers best practices for creating efficient, secure, and edge-optimized containers.
+Containers deployed to edge environments have unique requirements compared to those in traditional cloud deployments. This guide covers best practices for creating efficient, secure, and edge-optimized containers.
 
 ## Image Optimization
 
@@ -14,9 +14,9 @@ Containers deployed to edge environments have unique requirements compared to tr
 # ❌ Avoid heavy base images
 FROM ubuntu:latest
 
-# ✅ Use minimal base images
+# ✅ Use minimal base images (keep up to date with latest stable versions)
 FROM alpine:3.18
-# or
+# or (for Java applications)
 FROM gcr.io/distroless/java:11
 ```
 
@@ -26,6 +26,7 @@ FROM gcr.io/distroless/java:11
 # Build stage
 FROM node:18-alpine AS builder
 WORKDIR /app
+# Assumes both package.json and package-lock.json are present
 COPY package*.json ./
 RUN npm ci --only=production
 
@@ -43,7 +44,7 @@ CMD ["npm", "start"]
 ### Non-Root User
 
 ```dockerfile
-# Create non-root user
+# Create non-root user (change username as needed)
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
@@ -71,7 +72,7 @@ RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y wget
 
-# ✅ Combine commands to reduce layers
+# ✅ Combine commands to reduce layers and clean up apt cache
 RUN apt-get update && \
     apt-get install -y curl wget && \
     rm -rf /var/lib/apt/lists/*
@@ -94,6 +95,7 @@ Dockerfile
 ### Health Checks
 
 ```dockerfile
+# Ensure your application implements the /health endpoint
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3000/health || exit 1
 ```
@@ -116,9 +118,9 @@ process.on('SIGTERM', () => {
 
 :::warning Edge Bandwidth Constraints
 Edge locations may have limited bandwidth. Keep images as small as possible:
-- Target < 100MB for optimal performance
-- Use compression and optimization tools
-- Consider image layering strategies
+- Target images under 100MB for optimal performance.
+- Use compression and optimization tools.
+- Consider image layering strategies.
 :::
 
 ### Offline Capabilities
@@ -157,6 +159,7 @@ RUN addgroup -g 1001 -S nodejs && \
 WORKDIR /app
 
 # Copy dependencies and application
+# --chown requires Docker 17.09+
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
 COPY --chown=nextjs:nodejs . .
 
@@ -166,7 +169,7 @@ USER nextjs
 # Expose port
 EXPOSE 3000
 
-# Health check
+# Health check (ensure /health endpoint exists in your app)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3000/health || exit 1
 
@@ -186,7 +189,7 @@ docker build -t myapp:latest .
 # Run locally
 docker run -p 3000:3000 myapp:latest
 
-# Test health check
+# Test health check (replace <container_id> with actual ID)
 docker inspect --format='{{.State.Health.Status}}' <container_id>
 ```
 
@@ -202,24 +205,24 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 
 Before deploying to AEP:
 
-- [ ] **Base Image** - Using minimal, secure base image
-- [ ] **Multi-stage Build** - Optimized build process
-- [ ] **Non-root User** - Running as non-privileged user
-- [ ] **Security Scan** - No critical vulnerabilities
-- [ ] **Health Checks** - Proper liveness/readiness checks
-- [ ] **Signal Handling** - Graceful shutdown implemented
-- [ ] **Resource Limits** - Appropriate memory/CPU settings
-- [ ] **Image Size** - Optimized for edge deployment
-- [ ] **Documentation** - Clear build and run instructions
+- [ ] **Base Image** – Using minimal, secure base image.
+- [ ] **Multi-stage Build** – Optimized build process.
+- [ ] **Non-root User** – Running as non-privileged user.
+- [ ] **Security Scan** – No critical vulnerabilities.
+- [ ] **Health Checks** – Proper liveness/readiness checks.
+- [ ] **Signal Handling** – Graceful shutdown implemented.
+- [ ] **Resource Limits** – Appropriate memory/CPU settings.
+- [ ] **Image Size** – Optimized for edge deployment.
+- [ ] **Documentation** – Clear build and run instructions.
 
 ## Next Steps
 
-- [Kubernetes Manifests](./kubernetes-manifests.md) - Create deployment configurations
-- [Helm Charts](./helm-charts.md) - Package your containerized application
-- [Security Considerations](./security-considerations.md) - Implement additional security measures
+- [Kubernetes Manifests](./kubernetes-manifests.md) – Create deployment configurations
+- [Helm Charts](./helm-charts.md) – Package your containerized application
+- [Security Considerations](./security-considerations.md) – Implement additional security measures
 
 ---
 
 :::tip Container Registry
-Ensure your container images are pushed to a registry accessible from your edge locations. AEP supports various registry types including private registries with authentication.
+Ensure your container images are pushed to a registry accessible from your edge locations. AEP supports various registry types, including private registries with authentication.
 ::: 

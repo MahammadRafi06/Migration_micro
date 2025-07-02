@@ -16,10 +16,10 @@ GitOps is a deployment methodology that uses Git repositories as the source of t
 
 ## Core Principles
 
-1. **Declarative**: System state described declaratively
-2. **Versioned**: All changes tracked in Git
-3. **Automated**: Deployments triggered by Git commits
-4. **Observable**: Current state vs desired state monitoring
+1. **Declarative**: System state described declaratively.
+2. **Versioned**: All changes tracked in Git.
+3. **Automated**: Deployments triggered by Git commits.
+4. **Observable**: Current state vs desired state monitoring.
 
 ## GitOps Tools
 
@@ -71,14 +71,14 @@ myapp-config/
 
 ## Best Practices
 
-1. **Separate Concerns**: Keep application code and configuration separate
-2. **Environment Promotion**: Use branches or directories for environments
-3. **Automated Testing**: Validate configurations before deployment
-4. **Monitoring**: Track sync status and application health
-5. **Security**: Implement proper access controls and secret management
+1. **Separate Concerns**: Keep application code and configuration separate.
+2. **Environment Promotion**: Use branches or directories for environments.
+3. **Automated Testing**: Validate configurations before deployment.
+4. **Monitoring**: Track sync status and application health.
+5. **Security**: Implement proper access controls and secret management.
 
 ## Next Steps
 
-- [Automated Deployments](./automated-deployments.md)
-- [Integrating Popular Tools](./integrating-popular-tools.md)
-- [Deployment Strategies](../deployment-strategies/blue-green-deployments.md) 
+- [Automated Deployments](./automated-deployments.md).
+- [Integrating Popular Tools](./integrating-popular-tools.md).
+- [Deployment Strategies](../deployment-strategies/blue-green-deployments.md). 

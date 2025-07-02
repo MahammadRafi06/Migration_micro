@@ -16,11 +16,11 @@ Atlas serves as the observability and intelligence layer for the Armada platform
 
 ### Key Capabilities
 
-- **Real-time Analytics**: Live monitoring and analysis of edge workloads
-- **Predictive Intelligence**: AI-powered forecasting and anomaly detection
-- **Performance Optimization**: Automated recommendations and tuning
-- **Compliance Monitoring**: Continuous compliance assessment and reporting
-- **Cost Analytics**: Detailed cost tracking and optimization insights
+- **Real-time Analytics**: Live monitoring and analysis of edge workloads.
+- **Predictive Intelligence**: AI-powered forecasting and anomaly detection.
+- **Performance Optimization**: Automated recommendations and tuning.
+- **Compliance Monitoring**: Continuous compliance assessment and reporting.
+- **Cost Analytics**: Detailed cost tracking and optimization insights.
 
 ## Architecture Overview
 
@@ -520,17 +520,17 @@ spec:
 
 ### Data Governance
 
-1. **Privacy Compliance**: Ensure GDPR/CCPA compliance for collected data
-2. **Data Retention**: Implement appropriate retention policies
-3. **Access Controls**: Role-based access to insights and analytics
-4. **Data Quality**: Validate and clean incoming telemetry data
+1. **Privacy Compliance**: Ensure GDPR/CCPA compliance for collected data.
+2. **Data Retention**: Implement appropriate retention policies.
+3. **Access Controls**: Role-based access to insights and analytics.
+4. **Data Quality**: Validate and clean incoming telemetry data.
 
 ### Performance Optimization
 
-1. **Query Optimization**: Use efficient queries for large datasets
-2. **Caching**: Implement intelligent caching for frequently accessed insights
-3. **Resource Management**: Monitor Atlas resource consumption
-4. **Scaling**: Scale analytics components based on data volume
+1. **Query Optimization**: Use efficient queries for large datasets.
+2. **Caching**: Implement intelligent caching for frequently accessed insights.
+3. **Resource Management**: Monitor Atlas resource consumption.
+4. **Scaling**: Scale analytics components based on data volume.
 
 ## Troubleshooting
 

@@ -67,12 +67,12 @@ kubectl top nodes --sort-by=memory
 
 ## Best Practices
 
-1. **Structured Logging**: Use consistent log formats
-2. **Health Checks**: Implement comprehensive health endpoints
-3. **Metrics Collection**: Export relevant application metrics
-4. **Distributed Tracing**: Use tools like Jaeger or Zipkin
+1. **Structured Logging**: Use consistent log formats.
+2. **Health Checks**: Implement comprehensive health endpoints.
+3. **Metrics Collection**: Export relevant application metrics.
+4. **Distributed Tracing**: Use tools like Jaeger or Zipkin.
 
 ## Next Steps
 
-- [Mini Kubernetes Solutions](./mini-kubernetes-solutions.md)
-- [Edge Simulator/Emulator](./edge-simulator-emulator.md) 
+- [Mini Kubernetes Solutions](./mini-kubernetes-solutions.md).
+- [Edge Simulator/Emulator](./edge-simulator-emulator.md). 

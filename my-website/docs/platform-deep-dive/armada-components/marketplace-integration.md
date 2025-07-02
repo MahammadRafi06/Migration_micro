@@ -16,11 +16,11 @@ The Armada Marketplace is a curated catalog of edge-ready applications, services
 
 ### Key Features
 
-- **Curated Application Catalog**: Pre-validated edge-optimized applications
-- **One-Click Deployment**: Simplified deployment with automated configuration
-- **Dependency Management**: Automatic resolution and installation of dependencies
-- **Lifecycle Management**: Automated updates, scaling, and maintenance
-- **Custom Marketplace**: Private catalogs for internal applications
+- **Curated Application Catalog**: Pre-validated edge-optimized applications.
+- **One-Click Deployment**: Simplified deployment with automated configuration.
+- **Dependency Management**: Automatic resolution and installation of dependencies.
+- **Lifecycle Management**: Automated updates, scaling, and maintenance.
+- **Custom Marketplace**: Private catalogs for internal applications.
 
 ## Application Catalog
 
@@ -30,17 +30,17 @@ Applications in the marketplace follow a standardized structure with edge optimi
 
 ### Application Development
 
-1. **Edge Optimization**: Design applications for resource constraints
-2. **Dependency Management**: Minimize external dependencies
-3. **Configuration**: Use environment-specific configurations
-4. **Health Checks**: Implement comprehensive health endpoints
+1. **Edge Optimization**: Design applications for resource constraints.
+2. **Dependency Management**: Minimize external dependencies.
+3. **Configuration**: Use environment-specific configurations.
+4. **Health Checks**: Implement comprehensive health endpoints.
 
 ### Marketplace Management
 
-1. **Curation**: Maintain high-quality application standards
-2. **Documentation**: Provide comprehensive application documentation
-3. **Testing**: Implement automated testing pipelines
-4. **Security**: Regular security scanning and updates
+1. **Curation**: Maintain high-quality application standards.
+2. **Documentation**: Provide comprehensive application documentation.
+3. **Testing**: Implement automated testing pipelines.
+4. **Security**: Regular security scanning and updates.
 
 ## Next Steps
 

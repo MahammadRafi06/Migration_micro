@@ -51,14 +51,14 @@ graph LR
 Before you begin development:
 
 ### Environment Setup
-- [ ] Set up your local development environment
-- [ ] Install essential CLI tools
-- [ ] Configure access credentials
+- [ ] Set up your local development environment.
+- [ ] Install essential CLI tools.
+- [ ] Configure access credentials.
 
 ### Knowledge Base
-- [ ] Familiarize yourself with troubleshooting resources
-- [ ] Join the community channels
-- [ ] Review platform documentation
+- [ ] Familiarize yourself with troubleshooting resources.
+- [ ] Join the community channels.
+- [ ] Review platform documentation.
 
 ## Development Best Practices
 
@@ -97,6 +97,6 @@ Contribute to platform improvement
 
 ## Getting Started
 
-Start with Local Development Environment Setup to configure your development environment, then explore the CLI tools and troubleshooting resources as needed.
+Start with Local Development Environment Setup to configure your development environment. Then, explore the CLI tools and troubleshooting resources as needed. Each section provides practical guidance with examples and step-by-step instructions to support your development journey.
 
 Each section provides practical guidance with examples and step-by-step instructions. 

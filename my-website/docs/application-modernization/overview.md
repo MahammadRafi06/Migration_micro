@@ -7,7 +7,7 @@ sidebar_position: 1
 
 # Application Modernization & Microservices
 
-Comprehensive guidance for transforming legacy applications into modern, cloud-native microservices architectures on the Edge Platform.
+Comprehensive guidance for transforming legacy applications into modern, cloud-native microservices architectures on the Armada Edge Platform.
 
 ## Overview
 
@@ -16,16 +16,16 @@ Application modernization is the process of transforming legacy applications to 
 ## What You'll Learn
 
 ### Microservices Fundamentals
-Introduction to microservices architecture, core principles, benefits, and challenges
+Introduction to microservices architecture, core principles, benefits, and challenges.
 
 ### Design and Implementation Patterns
-Architectural patterns, implementation strategies, and best practices for microservices
+Architectural patterns, implementation strategies, and best practices for microservices.
 
 ### Operational Best Practices
-Day-to-day operational considerations, deployment strategies, and maintenance practices
+Day-to-day operational considerations, deployment strategies, and maintenance practices.
 
 ### Application Maturity Assessment
-Framework for assessing and planning your modernization journey
+Framework for assessing and planning your modernization journey.
 
 ## Modernization Approaches
 
@@ -35,14 +35,14 @@ Framework for assessing and planning your modernization journey
 Move applications to the platform with minimal changes
 
 #### Benefits
-- Quick migration
-- Reduced risk
-- Immediate platform benefits
+- Quick migration.
+- Reduced risk.
+- Immediate platform benefits.
 
 #### Considerations
-- Limited cloud-native advantages
-- Potential performance issues
-- Missed optimization opportunities
+- Limited cloud-native advantages.
+- Potential performance issues.
+- Missed optimization opportunities.
 
 ### Replatforming
 
@@ -50,14 +50,14 @@ Move applications to the platform with minimal changes
 Make targeted optimizations while migrating
 
 #### Benefits
-- Moderate cloud-native benefits
-- Balanced effort and reward
-- Gradual modernization
+- Moderate cloud-native benefits.
+- Balanced effort and reward.
+- Gradual modernization.
 
 #### Considerations
-- Requires some architectural changes
-- More complex than lift-and-shift
-- Ongoing modernization needed
+- Requires some architectural changes.
+- More complex than lift-and-shift.
+- Ongoing modernization needed.
 
 ### Refactoring
 
@@ -65,14 +65,14 @@ Make targeted optimizations while migrating
 Restructure applications for cloud-native patterns
 
 #### Benefits
-- Full cloud-native advantages
-- Improved scalability
-- Enhanced maintainability
+- Full cloud-native advantages.
+- Improved scalability.
+- Enhanced maintainability.
 
 #### Considerations
-- Significant development effort
-- Higher complexity
-- Extended timeline
+- Significant development effort.
+- Higher complexity.
+- Extended timeline.
 
 ### Complete Rewrite
 
@@ -80,30 +80,30 @@ Restructure applications for cloud-native patterns
 Build new applications using modern technologies
 
 #### Benefits
-- Latest technologies and patterns
-- Optimal architecture
-- No legacy constraints
+- Latest technologies and patterns.
+- Optimal architecture.
+- No legacy constraints.
 
 #### Considerations
-- Highest effort and risk
-- Extended development time
-- Complete business logic recreation
+- Highest effort and risk.
+- Extended development time.
+- Complete business logic recreation.
 
 ## Modernization Framework
 
 ### Assessment Phase
 
 #### Current State Analysis
-- Application architecture review
-- Technology stack evaluation
-- Dependencies mapping
-- Performance baseline
+- Application architecture review.
+- Technology stack evaluation.
+- Dependencies mapping.
+- Performance baseline.
 
 #### Business Requirements
-- Scalability needs
-- Reliability requirements
-- Compliance considerations
-- Budget constraints
+- Scalability needs.
+- Reliability requirements.
+- Compliance considerations.
+- Budget constraints.
 
 ### Planning Phase
 
@@ -111,114 +111,112 @@ Build new applications using modern technologies
 Choose appropriate modernization approach based on assessment
 
 #### Roadmap Development
-Create phased implementation plan
+Create a phased implementation plan.
 
 #### Risk Mitigation
-Identify and plan for potential risks
+Identify and plan for potential risks.
 
 #### Success Metrics
-Define measurable success criteria
+Define measurable success criteria.
 
 ### Implementation Phase
 
 #### Environment Setup
-Prepare development and deployment environments
+Prepare development and deployment environments.
 
 #### Pilot Development
-Start with low-risk components
+Start with low-risk components.
 
 #### Iterative Development
-Implement changes incrementally
+Implement changes incrementally.
 
 #### Testing and Validation
-Comprehensive testing at each phase
+Comprehensive testing at each phase.
 
 ### Optimization Phase
 
 #### Performance Tuning
-Optimize application performance
+Optimize application performance.
 
 #### Operational Improvements
-Enhance monitoring and management
+Enhance monitoring and management.
 
 #### Continuous Improvement
-Ongoing optimization and enhancement
+Ongoing optimization and enhancement.
 
 ## Cloud-Native Principles
 
 ### Containerization
 
 #### Benefits
-- Consistent deployment environments
-- Resource efficiency
-- Scalability improvements
+- Consistent deployment environments.
+- Resource efficiency.
+- Scalability improvements.
 
 #### Implementation
-- Containerize applications
-- Optimize container images
-- Implement container orchestration
+- Containerize applications.
+- Optimize container images.
+- Implement container orchestration.
 
 ### Microservices Architecture
 
 #### Benefits
-- Independent scaling
-- Technology diversity
-- Fault isolation
+- Independent scaling.
+- Technology diversity.
+- Fault isolation.
 
 #### Implementation
-- Service decomposition
-- API design
-- Inter-service communication
+- Service decomposition.
+- API design.
+- Inter-service communication.
 
 ### DevOps Integration
 
 #### Benefits
-- Faster delivery cycles
-- Improved reliability
-- Enhanced collaboration
+- Faster delivery cycles.
+- Improved reliability.
+- Enhanced collaboration.
 
 #### Implementation
-- CI/CD pipelines
-- Infrastructure as code
-- Automated testing
+- CI/CD pipelines.
+- Infrastructure as code.
+- Automated testing.
 
 ## Success Factors
 
 ### Organizational Readiness
 
 #### Team Skills
-Ensure teams have necessary cloud-native skills
+Ensure teams have necessary cloud-native skills.
 
 #### Cultural Change
-Embrace DevOps and agile practices
+Embrace DevOps and agile practices.
 
 #### Leadership Support
-Secure executive sponsorship and support
+Secure executive sponsorship and support.
 
 ### Technical Considerations
 
 #### Architecture Planning
-Design for scalability and resilience
+Design for scalability and resilience.
 
 #### Data Strategy
-Plan data migration and management
+Plan data migration and management.
 
 #### Security Integration
-Implement security throughout the stack
+Implement security throughout the stack.
 
 ### Process Optimization
 
 #### Automation
-Automate deployment and operations
+Automate deployment and operations.
 
 #### Monitoring
-Implement comprehensive observability
+Implement comprehensive observability.
 
 #### Continuous Learning
-Foster learning and improvement culture
+Foster a learning and improvement culture.
 
 ## Getting Started
 
-Begin with Microservices Fundamentals to understand the architectural principles, then explore design patterns and operational practices based on your modernization goals.
-
-Each topic provides both conceptual understanding and practical implementation guidance to support your modernization journey. 
+Begin with the Microservices Fundamentals section to understand the architectural principles. Then, explore design patterns and operational practices based on your modernization goals. Each topic provides both conceptual understanding and practical implementation guidance to support your modernization journey. 

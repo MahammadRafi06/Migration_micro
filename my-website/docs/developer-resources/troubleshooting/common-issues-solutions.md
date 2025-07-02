@@ -154,5 +154,5 @@ kubectl get ingress --all-namespaces
 
 ## Next Steps
 
-- [Debugging Guides](./debugging-guides.md)
-- [Error Code Reference](./error-code-reference.md) 
+- [Debugging Guides](./debugging-guides.md).
+- [Error Code Reference](./error-code-reference.md). 

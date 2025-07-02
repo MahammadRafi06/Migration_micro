@@ -57,12 +57,12 @@ nodes:
 
 ## Best Practices
 
-1. **Resource Allocation**: Allocate sufficient memory and CPU
-2. **Addon Management**: Install necessary addons for development
-3. **Port Forwarding**: Set up proper port mappings
-4. **Cleanup**: Regularly clean up unused resources
+1. **Resource Allocation**: Allocate sufficient memory and CPU.
+2. **Addon Management**: Install necessary addons for development.
+3. **Port Forwarding**: Set up proper port mappings.
+4. **Cleanup**: Regularly clean up unused resources.
 
 ## Next Steps
 
-- [Edge Simulator/Emulator](./edge-simulator-emulator.md)
-- [Debugging Tools](./debugging-tools.md) 
+- [Edge Simulator/Emulator](./edge-simulator-emulator.md).
+- [Debugging Tools](./debugging-tools.md). 

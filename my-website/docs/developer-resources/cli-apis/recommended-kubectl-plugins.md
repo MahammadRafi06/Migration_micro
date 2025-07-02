@@ -110,12 +110,12 @@ kubectl whoami
 
 ## Best Practices
 
-1. **Regular Updates**: Keep plugins updated with `kubectl krew upgrade`
-2. **Essential Set**: Install core productivity plugins on all development machines
-3. **Team Standards**: Standardize plugin usage across development teams
-4. **Documentation**: Document custom plugin usage in team guides
+1. **Regular Updates**: Keep plugins updated with `kubectl krew upgrade`.
+2. **Essential Set**: Install core productivity plugins on all development machines.
+3. **Team Standards**: Standardize plugin usage across development teams.
+4. **Documentation**: Document custom plugin usage in team guides.
 
 ## Next Steps
 
-- [Platform-Specific CLIs](./platform-specific-clis.md)
-- [API Reference](./api-reference.md) 
+- [Platform-Specific CLIs](./platform-specific-clis.md).
+- [API Reference](./api-reference.md). 

@@ -73,21 +73,21 @@ spec:
 
 ## Best Practices
 
-1. **Automated Testing**: Implement comprehensive health checks
-2. **Quick Detection**: Set up proper monitoring and alerting
-3. **Clear Procedures**: Document rollback steps and responsibilities
-4. **Testing**: Regularly test rollback procedures
-5. **Communication**: Establish clear incident response protocols
+1. **Automated Testing**: Implement comprehensive health checks.
+2. **Quick Detection**: Set up proper monitoring and alerting.
+3. **Clear Procedures**: Document rollback steps and responsibilities.
+4. **Testing**: Regularly test rollback procedures.
+5. **Communication**: Establish clear incident response protocols.
 
 ## Troubleshooting
 
 ### Common Issues
-- **Rollback Fails**: Check resource constraints and permissions
-- **Data Inconsistency**: Verify database compatibility
-- **Service Dependencies**: Ensure dependent services are compatible
+- **Rollback Fails**: Check resource constraints and permissions.
+- **Data Inconsistency**: Verify database compatibility.
+- **Service Dependencies**: Ensure dependent services are compatible.
 
 ## Next Steps
 
-- [Blue-Green Deployments](./blue-green-deployments.md)
-- [Canary Deployments](./canary-deployments.md)
-- [Rolling Updates](./rolling-updates.md) 
+- [Blue-Green Deployments](./blue-green-deployments.md).
+- [Canary Deployments](./canary-deployments.md).
+- [Rolling Updates](./rolling-updates.md). 

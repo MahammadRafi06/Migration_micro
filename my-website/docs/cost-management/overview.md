@@ -107,28 +107,28 @@ Select cost-effective technology solutions
 
 ## Getting Started
 
-Begin with understanding the Pricing Model to establish cost baseline, then implement Cost Optimization Strategies based on your specific deployment requirements.
+Begin by understanding the Pricing Model to establish your cost baseline. Then, implement Cost Optimization Strategies based on your specific deployment requirements.
 
 ### Cost Management Tips
-- Start with monitoring and visibility
-- Implement gradual optimization changes
-- Measure impact of optimization efforts
-- Maintain balance between cost and performance
+- Start with monitoring and visibility.
+- Implement gradual optimization changes.
+- Measure impact of optimization efforts.
+- Maintain balance between cost and performance.
 
 ## Cost Management Tools
 
 The platform provides built-in tools for:
 
 ### Real-time Monitoring
-- Real-time cost monitoring
-- Resource utilization analytics
+- Real-time cost monitoring.
+- Resource utilization analytics.
 
 ### Alerting & Notifications
-- Budget alerts and notifications
-- Cost threshold warnings
+- Budget alerts and notifications.
+- Cost threshold warnings.
 
 ### Reporting & Analytics
-- Cost allocation and reporting
-- Trend analysis and forecasting
+- Cost allocation and reporting.
+- Trend analysis and forecasting.
 
 Each tool helps maintain financial visibility and control over your edge platform deployment. 

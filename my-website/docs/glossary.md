@@ -195,7 +195,7 @@ If you can't find a term you're looking for, please [open an issue on GitHub](ht
 :::
 
 :::info Related Resources
-- [Platform Overview](./getting-started/platform-overview.md)
-- [Key Concepts](./getting-started/key-concepts.md)
-- [Developer Resources](./developer-resources/overview.md)
+- [Platform Overview](./getting-started/platform-overview.md).
+- [Key Concepts](./getting-started/key-concepts.md).
+- [Developer Resources](./developer-resources/overview.md).
 ::: 

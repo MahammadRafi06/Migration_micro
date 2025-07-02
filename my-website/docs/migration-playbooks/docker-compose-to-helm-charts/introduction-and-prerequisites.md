@@ -11,9 +11,9 @@ sidebar_label: Introduction & Prerequisites
 This guide provides a comprehensive walkthrough for converting Docker Compose files into Kubernetes Helm Charts. Helm Charts are a powerful way to package and deploy applications on Kubernetes, offering templating, versioning, and easier management compared to raw Kubernetes manifests.
 
 We'll explore multiple approaches including:
-- Using open-source tools like Kompose and Katenary for direct conversion
-- Using Score as an alternative, platform-agnostic approach
-- Manually refining and optimizing the generated charts
+- Using open-source tools like Kompose and Katenary for direct conversion.
+- Using Score as an alternative, platform-agnostic approach.
+- Manually refining and optimizing the generated charts.
 
 :::tip Key Insight
 While automated tools can assist with the conversion process, understanding the underlying concepts and manual refinement steps is crucial for production-ready deployments.

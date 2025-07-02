@@ -1,4 +1,4 @@
-# Security Considerations for AEP
+# Security Considerations for the Armada Edge Platform
 
 Learn essential security practices and considerations when packaging applications for deployment on the Armada Edge Platform.
 
@@ -11,15 +11,15 @@ Security in edge computing environments requires special attention due to distri
 ### Secure Base Images
 
 ```dockerfile
-# ❌ Avoid using latest or unknown base images
+# Avoid using latest or unknown base images
 FROM ubuntu:latest
 
-# ✅ Use specific, minimal, and trusted base images
+# Use specific, minimal, and trusted base images
 FROM alpine:3.18.4
 # or
 FROM gcr.io/distroless/java:11-debian11
 
-# ✅ Use official images with security patches
+# Use official images with security patches
 FROM nginx:1.25.3-alpine
 ```
 
@@ -542,37 +542,39 @@ spec:
 
 ## Security Checklist
 
+Before deploying your application, use this checklist to ensure all critical security measures are in place.
+
 ### Container Security
 
-- [ ] **Base Images** - Using minimal, trusted base images
-- [ ] **Non-Root User** - Running as non-privileged user
-- [ ] **Vulnerability Scanning** - No critical vulnerabilities
-- [ ] **Read-Only Filesystem** - Using read-only root filesystem
-- [ ] **Dropped Capabilities** - Minimal required capabilities only
-- [ ] **Image Signing** - Container images digitally signed
+- [ ] **Base Images** - Using minimal, trusted base images.
+- [ ] **Non-Root User** - Running as non-privileged user.
+- [ ] **Vulnerability Scanning** - No critical vulnerabilities.
+- [ ] **Read-Only Filesystem** - Using read-only root filesystem.
+- [ ] **Dropped Capabilities** - Minimal required capabilities only.
+- [ ] **Image Signing** - Container images digitally signed.
 
 ### Kubernetes Security
 
-- [ ] **Pod Security Standards** - Restricted PSS enforced
-- [ ] **Network Policies** - Traffic properly restricted
-- [ ] **RBAC** - Least privilege access controls
-- [ ] **Service Accounts** - Dedicated service accounts
-- [ ] **Secrets Management** - Proper secret handling
-- [ ] **Security Contexts** - Appropriate security contexts
+- [ ] **Pod Security Standards** - Restricted PSS enforced.
+- [ ] **Network Policies** - Traffic properly restricted.
+- [ ] **RBAC** - Least privilege access controls.
+- [ ] **Service Accounts** - Dedicated service accounts.
+- [ ] **Secrets Management** - Proper secret handling.
+- [ ] **Security Contexts** - Appropriate security contexts.
 
 ### Edge Security
 
-- [ ] **Certificate Management** - Automated cert provisioning
-- [ ] **Node Security** - Trusted edge node deployment
-- [ ] **Data Encryption** - Data encrypted in transit/rest
-- [ ] **Audit Logging** - Security events logged
-- [ ] **Runtime Monitoring** - Security monitoring enabled
+- [ ] **Certificate Management** - Automated cert provisioning.
+- [ ] **Node Security** - Trusted edge node deployment.
+- [ ] **Data Encryption** - Data encrypted in transit/rest.
+- [ ] **Audit Logging** - Security events logged.
+- [ ] **Runtime Monitoring** - Security monitoring enabled.
 
 ## Next Steps
 
-- [Application Lifecycle Management](../application-lifecycle/overview.md) - Secure deployment and updates
-- [Platform Security](../platform-deep-dive/security/overview.md) - Platform-level security features
-- [Compliance and Certifications](../platform-deep-dive/security/compliance-certifications.md) - Regulatory compliance
+- [Application Lifecycle Management](../application-lifecycle/overview.md) - Secure deployment and updates.
+- [Platform Security](../platform-deep-dive/security/overview.md) - Platform-level security features.
+- [Compliance and Certifications](../platform-deep-dive/security/compliance-certifications.md) - Regulatory compliance.
 
 ---
 

@@ -1,10 +1,10 @@
-# Configuration Management for AEP
+# Configuration Management for the Armada Edge Platform
 
 Learn advanced strategies for managing application configuration, secrets, and environment variables on the Armada Edge Platform.
 
 ## Overview
 
-Effective configuration management is crucial for edge deployments where applications may run in various environments with different requirements. This guide covers best practices for externalizing and managing configuration in AEP.
+Effective configuration management is crucial for edge deployments where applications may run in various environments with different requirements. This guide covers best practices for externalizing and managing configuration in the Armada Edge Platform.
 
 ## Configuration Strategies
 
@@ -26,10 +26,10 @@ graph TD
 
 :::tip Configuration Principles
 Follow the 12-Factor App methodology:
-- Store config in environment variables
-- Strict separation between code and config
-- No config constants in code
-- Config varies substantially across deployments
+- Store config in environment variables.
+- Strict separation between code and config.
+- No config constants in code.
+- Config varies substantially across deployments.
 :::
 
 ## ConfigMaps
@@ -37,6 +37,7 @@ Follow the 12-Factor App methodology:
 ### Basic ConfigMap
 
 ```yaml
+# Example ConfigMap with key-value pairs, multi-line files, and JSON
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -117,6 +118,7 @@ data:
 ### Using ConfigMaps in Deployments
 
 ```yaml
+# Example of using ConfigMap in a Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -154,6 +156,7 @@ spec:
 ### Basic Secret
 
 ```yaml
+# Values must be base64-encoded
 apiVersion: v1
 kind: Secret
 metadata:
@@ -234,6 +237,7 @@ spec:
 ### Environment Variable Sources
 
 ```yaml
+# Example of using environment variables from different sources
 spec:
   containers:
   - name: myapp
@@ -248,25 +252,6 @@ spec:
         configMapKeyRef:
           name: app-config
           key: log_level
-    
-    # From Secret
-    - name: DB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: app-secrets
-          key: database-password
-    
-    # From field reference
-    - name: NODE_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
-    
-    # From resource reference
-    - name: CPU_LIMIT
-      valueFrom:
-        resourceFieldRef:
-          resource: limits.cpu
 ```
 
 ### Edge-Specific Environment Variables

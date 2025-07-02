@@ -336,16 +336,16 @@ spec:
 ## Best Practices
 
 ### Storage Design Principles
-- Plan for data locality
-- Implement proper backup strategies
-- Monitor storage performance
-- Use appropriate storage classes
+- Plan for data locality.
+- Implement proper backup strategies.
+- Monitor storage performance.
+- Use appropriate storage classes.
 
 ### Edge Considerations
-- Handle intermittent connectivity
-- Optimize for limited resources
-- Implement data synchronization
-- Plan for disaster recovery
+- Handle intermittent connectivity.
+- Optimize for limited resources.
+- Implement data synchronization.
+- Plan for disaster recovery.
 
 ## Next Steps
 

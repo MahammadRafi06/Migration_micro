@@ -16,15 +16,15 @@ This section provides comprehensive, step-by-step guidance for migrating applica
 Transform monolithic applications into microservices architecture for improved scalability, maintainability, and team velocity.
 
 #### When to Use
-- Large, complex applications with multiple business domains
-- Teams looking to improve development velocity
-- Applications requiring independent scaling of components
+- Large, complex applications with multiple business domains.
+- Teams looking to improve development velocity.
+- Applications requiring independent scaling of components.
 
 #### Key Benefits
-- Independent service deployment
-- Technology diversity
-- Improved fault isolation
-- Enhanced scalability
+- Independent service deployment.
+- Technology diversity.
+- Improved fault isolation.
+- Enhanced scalability.
 
 ### B. Docker Compose to Kubernetes Migration
 
@@ -41,19 +41,19 @@ Practical operational procedures for deployment teams managing the migration pro
 Package Docker Compose applications as Helm charts for better versioning, templating, and deployment management.
 
 #### Benefits
-- Template-based configuration
-- Version management
-- Easy rollbacks
-- Simplified deployments
+- Template-based configuration.
+- Version management.
+- Easy rollbacks.
+- Simplified deployments.
 
 ### D. Docker Compose to Virtual Machines
 
 Deploy Docker Compose applications in KubeVirt virtual machines for legacy compatibility while leveraging Kubernetes orchestration.
 
 #### Use Cases
-- Applications with complex system dependencies
-- Gradual migration strategies
-- Hybrid container-VM architectures
+- Applications with complex system dependencies.
+- Gradual migration strategies.
+- Hybrid container-VM architectures.
 
 ## Choosing the Right Migration Path
 
@@ -62,65 +62,65 @@ Consider these factors when selecting your migration approach:
 ### Application Complexity
 
 #### Simple Applications
-Direct containerization
+Direct containerization.
 
 #### Complex Monoliths
-Consider microservices decomposition
+Consider microservices decomposition.
 
 #### Legacy Dependencies
-VM-based deployment
+VM-based deployment.
 
 ### Team Readiness
 
 #### Kubernetes Experience
-Direct migration to Kubernetes
+Direct migration to Kubernetes.
 
 #### Limited Cloud-Native Experience
-Start with lift-and-shift
+Start with lift-and-shift.
 
 ### Business Requirements
 
 #### Rapid Migration
-Lift-and-shift approach
+Lift-and-shift approach.
 
 #### Long-term Modernization
-Microservices transformation
+Microservices transformation.
 
 #### Incremental Changes
-Hybrid approaches
+Hybrid approaches.
 
 ### Risk Tolerance
 
 #### Low Risk
-VM-based migration
+VM-based migration.
 
 #### Medium Risk
-Containerization
+Containerization.
 
 #### Higher Risk
-Full microservices transformation
+Full microservices transformation.
 
 ## Migration Process Overview
 
 Each migration playbook follows a structured approach:
 
 ### 1. Assessment
-Analyze current application architecture
+Analyze current application architecture.
 
 ### 2. Planning
-Define migration strategy and timeline
+Define migration strategy and timeline.
 
 ### 3. Preparation
-Set up tools and environments
+Set up tools and environments.
 
 ### 4. Execution
-Implement the migration
+Implement the migration.
 
 ### 5. Validation
-Test and verify the migrated application
+Test and verify the migrated application.
 
 ### 6. Optimization
-Fine-tune performance and operations
+Fine-tune performance and operations.
 
 ## Getting Started
 
@@ -129,15 +129,15 @@ Choose the migration path that best fits your application and organizational nee
 ### Migration Paths
 
 #### Monolith to Microservices
-For large application transformations
+For large application transformations.
 
 #### Docker Compose to Kubernetes
-For containerized applications
+For containerized applications.
 
 #### Docker Compose to Helm Charts
-For better package management
+For better package management.
 
 #### Docker Compose to Virtual Machines
-For legacy compatibility
+For legacy compatibility.
 
 Each playbook provides detailed guidance, practical examples, and troubleshooting tips to ensure successful migration to the Edge Platform. 

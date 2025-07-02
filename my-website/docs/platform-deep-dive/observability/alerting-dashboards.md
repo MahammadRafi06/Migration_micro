@@ -30,9 +30,9 @@ spec:
 
 ## Best Practices
 
-1. **Tiered Alerting**: Different severity levels
-2. **Runbooks**: Link alerts to documentation
-3. **Dashboard Organization**: Group related metrics
+1. **Tiered Alerting**: Different severity levels.
+2. **Runbooks**: Link alerts to documentation.
+3. **Dashboard Organization**: Group related metrics.
 
 ## Next Steps
 

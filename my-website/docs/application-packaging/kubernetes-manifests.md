@@ -1,16 +1,17 @@
-# Kubernetes Manifests for AEP
+# Kubernetes Manifests for the Armada Edge Platform
 
-Learn how to create effective Kubernetes manifests specifically optimized for Armada Edge Platform deployments.
+Learn how to create effective Kubernetes manifests optimized for deployments on the Armada Edge Platform.
 
 ## Overview
 
-Kubernetes manifests define how your applications run on the AEP infrastructure. This guide covers best practices for creating manifests that work efficiently in edge environments.
+Kubernetes manifests define how your applications run on the Armada Edge Platform infrastructure. This guide covers best practices for creating manifests that work efficiently in edge environments.
 
 ## Deployment Manifests
 
 ### Basic Deployment
 
 ```yaml
+# Customize the namespace and labels as needed
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -59,6 +60,7 @@ spec:
 ### Edge-Optimized Deployment
 
 ```yaml
+# Ensure the node label 'node-type: edge' exists on target nodes
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -85,7 +87,7 @@ spec:
       # Node selection for edge locations
       nodeSelector:
         node-type: edge
-      # Tolerate edge-specific taints
+      # Tolerate edge-specific taints (ensure taint is set on edge nodes)
       tolerations:
       - key: "edge-node"
         operator: "Equal"
@@ -117,6 +119,7 @@ spec:
 ### ClusterIP Service
 
 ```yaml
+# ClusterIP is the default and is only accessible within the cluster
 apiVersion: v1
 kind: Service
 metadata:
@@ -136,6 +139,7 @@ spec:
 ### LoadBalancer for Edge Exposure
 
 ```yaml
+# The annotation keys below are DigitalOcean-specific; change as needed for your environment
 apiVersion: v1
 kind: Service
 metadata:
@@ -159,6 +163,7 @@ spec:
 ### ConfigMap
 
 ```yaml
+# Multi-line values (like nginx.conf) are supported
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -180,6 +185,7 @@ data:
 ### Secret
 
 ```yaml
+# Values must be base64-encoded
 apiVersion: v1
 kind: Secret
 metadata:
@@ -196,6 +202,7 @@ data:
 ### Comprehensive Health Checks
 
 ```yaml
+# The endpoints /health/live, /health/ready, and /health/startup must be implemented in your application
 spec:
   containers:
   - name: myapp
@@ -234,6 +241,7 @@ spec:
 ### Resource Quotas
 
 ```yaml
+# Quotas are set at the namespace level
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -251,6 +259,7 @@ spec:
 ### Horizontal Pod Autoscaler
 
 ```yaml
+# metrics-server must be installed in the cluster
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -282,6 +291,7 @@ spec:
 ### Pod Security Context
 
 ```yaml
+# These settings enforce running as a non-root user
 spec:
   template:
     spec:
@@ -309,6 +319,7 @@ spec:
 ### Network Policy
 
 ```yaml
+# This policy restricts ingress and egress to specific pods
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -343,6 +354,7 @@ spec:
 ### Node Affinity for Edge Deployment
 
 ```yaml
+# Node labels must be set on the target nodes
 spec:
   template:
     spec:
@@ -370,6 +382,7 @@ spec:
 ### Pod Disruption Budget
 
 ```yaml
+# Ensures at least one pod is always available
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
@@ -386,6 +399,7 @@ spec:
 ### Using kubeval
 
 ```bash
+# kubeval validates against the Kubernetes API schema
 # Install kubeval
 curl -L https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz
 sudo cp kubeval /usr/local/bin
@@ -397,7 +411,7 @@ kubeval deployment.yaml
 ### Using kubectl dry-run
 
 ```bash
-# Validate without applying
+# This checks for syntax errors without applying the manifest
 kubectl apply -f deployment.yaml --dry-run=client -o yaml
 ```
 
@@ -406,6 +420,7 @@ kubectl apply -f deployment.yaml --dry-run=client -o yaml
 ### Local Testing with kind
 
 ```bash
+# kind is a tool for running local Kubernetes clusters using Docker containers
 # Create local cluster
 kind create cluster --name test
 
@@ -419,7 +434,7 @@ kubectl port-forward svc/myapp-service 8080:80
 ## Complete Example
 
 ```yaml
-# deployment.yaml
+# deployment.yaml (minimal example, customize for production use)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -487,9 +502,9 @@ data:
 
 ## Next Steps
 
-- [Helm Charts](./helm-charts.md) - Package your manifests for easy deployment
-- [Configuration Management](./configuration-management.md) - Advanced configuration strategies
-- [Security Considerations](./security-considerations.md) - Enhance security posture
+- [Helm Charts](./helm-charts.md) – Package your manifests for easy deployment.
+- [Configuration Management](./configuration-management.md) – Advanced configuration strategies.
+- [Security Considerations](./security-considerations.md) – Enhance security posture.
 
 ---
 

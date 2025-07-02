@@ -17,19 +17,19 @@ Galleon serves as the central brain of the Armada platform, making intelligent d
 ### Key Capabilities
 
 #### Edge-Aware Scheduling
-Intelligent placement based on latency, resources, and compliance requirements
+Intelligent placement based on latency, resources, and compliance requirements.
 
 #### Multi-Region Orchestration
-Seamless workload distribution across geographical regions
+Seamless workload distribution across geographical regions.
 
 #### Resource Optimization
-Dynamic resource allocation and optimization for edge constraints
+Dynamic resource allocation and optimization for edge constraints.
 
 #### Application Lifecycle Management
-Automated deployment, scaling, and maintenance
+Automated deployment, scaling, and maintenance.
 
 #### Compliance Management
-Built-in support for data sovereignty and regulatory requirements
+Built-in support for data sovereignty and regulatory requirements.
 
 ## Architecture Overview
 
@@ -220,16 +220,16 @@ spec:
 ### Configuration Management
 
 #### Gradual Rollouts
-Use staged deployments for policy changes
+Use staged deployments for policy changes.
 
 #### Resource Monitoring
-Continuously monitor resource utilization
+Continuously monitor resource utilization.
 
 #### Policy Validation
-Test placement policies in staging environments
+Test placement policies in staging environments.
 
 #### Performance Tuning
-Regular optimization based on workload patterns
+Regular optimization based on workload patterns.
 
 ### Monitoring and Observability
 
@@ -290,14 +290,14 @@ kubectl logs -n armada-system deployment/galleon-resource-manager
 ## Integration Points
 
 ### With Atlas
-- Operational insights and analytics
-- Performance optimization recommendations
-- Compliance monitoring and reporting
+- Operational insights and analytics.
+- Performance optimization recommendations.
+- Compliance monitoring and reporting.
 
 ### With Marketplace
-- Application placement requirements
-- Resource dependency management
-- Automated deployment pipelines
+- Application placement requirements.
+- Resource dependency management.
+- Automated deployment pipelines.
 
 ## Next Steps
 

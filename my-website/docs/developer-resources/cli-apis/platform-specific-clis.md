@@ -69,12 +69,12 @@ edge helm upgrade myapp ./chart --cluster edge-east-1
 
 ## Best Practices
 
-1. **Authentication**: Use secure authentication methods
-2. **Configuration**: Maintain separate configs for environments
-3. **Automation**: Integrate CLI commands into CI/CD pipelines
-4. **Documentation**: Keep CLI usage documented for team members
+1. **Authentication**: Use secure authentication methods.
+2. **Configuration**: Maintain separate configs for environments.
+3. **Automation**: Integrate CLI commands into CI/CD pipelines.
+4. **Documentation**: Keep CLI usage documented for team members.
 
 ## Next Steps
 
-- [API Reference](./api-reference.md)
-- [Recommended kubectl Plugins](./recommended-kubectl-plugins.md) 
+- [API Reference](./api-reference.md).
+- [Recommended kubectl Plugins](./recommended-kubectl-plugins.md). 

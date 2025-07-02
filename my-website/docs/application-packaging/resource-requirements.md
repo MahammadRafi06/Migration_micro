@@ -1,4 +1,4 @@
-# Resource Requirements for AEP
+# Resource Requirements for the Armada Edge Platform
 
 Learn how to define, optimize, and manage resource requirements for applications deployed on the Armada Edge Platform.
 
@@ -48,6 +48,7 @@ storage: "100M"   # 100 Megabytes
 ### Basic Resource Configuration
 
 ```yaml
+# Example Deployment with resource requests and limits
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -85,20 +86,21 @@ spec:
         image: edge-app:latest
         resources:
           requests:
-            memory: "64Mi"     # Minimal memory footprint
-            cpu: "50m"         # Low CPU baseline
+            memory: "64Mi"     # Minimal memory footprint.
+            cpu: "50m"         # Low CPU baseline.
           limits:
-            memory: "128Mi"    # Conservative limit for edge
-            cpu: "100m"        # Burst capacity
+            memory: "128Mi"    # Conservative limit for edge.
+            cpu: "100m"        # Burst capacity.
         # Memory-efficient environment variables
         env:
         - name: NODE_OPTIONS
-          value: "--max-old-space-size=96"  # Limit heap size
+          value: "--max-old-space-size=96"  # Limit heap size.
 ```
 
 ### Multi-Container Resource Planning
 
 ```yaml
+# Example Deployment with multiple containers
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -173,7 +175,7 @@ resources:
 
 ```yaml
 # Best Effort QoS - no requests or limits
-# Not recommended for production edge deployments
+# Not recommended for production edge deployments.
 resources: {}
 ```
 
@@ -182,6 +184,7 @@ resources: {}
 ### CPU-Based Autoscaling
 
 ```yaml
+# Example HPA based on CPU utilization
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -205,6 +208,7 @@ spec:
 ### Memory-Based Autoscaling
 
 ```yaml
+# Example HPA based on memory utilization
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -228,6 +232,7 @@ spec:
 ### Custom Metrics Autoscaling
 
 ```yaml
+# Example HPA using custom metrics
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -463,29 +468,31 @@ data:
 
 ## Resource Planning Checklist
 
+Before deploying your application on the Armada Edge Platform, use this checklist to ensure all resource requirements are properly defined and optimized.
+
 ### Pre-Deployment Assessment
 
-- [ ] **Load Testing** - Performed under realistic conditions
-- [ ] **Memory Profiling** - Identified memory patterns and leaks
-- [ ] **CPU Profiling** - Analyzed CPU usage patterns
-- [ ] **Storage Analysis** - Estimated persistent and ephemeral needs
-- [ ] **Scaling Requirements** - Defined min/max replica needs
-- [ ] **Edge Constraints** - Considered edge node limitations
+- [ ] **Load Testing** - Performed under realistic conditions.
+- [ ] **Memory Profiling** - Identified memory patterns and leaks.
+- [ ] **CPU Profiling** - Analyzed CPU usage patterns.
+- [ ] **Storage Analysis** - Estimated persistent and ephemeral needs.
+- [ ] **Scaling Requirements** - Defined min/max replica needs.
+- [ ] **Edge Constraints** - Considered edge node limitations.
 
 ### Resource Configuration
 
-- [ ] **Requests Set** - Appropriate resource requests defined
-- [ ] **Limits Set** - Conservative but functional limits
-- [ ] **QoS Class** - Appropriate QoS class selected
-- [ ] **Autoscaling** - HPA/VPA configured if needed
-- [ ] **Monitoring** - Resource metrics collection enabled
+- [ ] **Requests Set** - Appropriate resource requests defined.
+- [ ] **Limits Set** - Conservative but functional limits.
+- [ ] **QoS Class** - Appropriate QoS class selected.
+- [ ] **Autoscaling** - HPA/VPA configured if needed.
+- [ ] **Monitoring** - Resource metrics collection enabled.
 
 ### Edge Optimization
 
-- [ ] **Minimal Footprint** - Optimized for edge constraints
-- [ ] **Graceful Degradation** - Handles resource pressure
-- [ ] **Local Storage** - Efficient use of local storage
-- [ ] **Network Efficiency** - Minimized network resource usage
+- [ ] **Minimal Footprint** - Optimized for edge constraints.
+- [ ] **Graceful Degradation** - Handles resource pressure.
+- [ ] **Local Storage** - Efficient use of local storage.
+- [ ] **Network Efficiency** - Minimized network resource usage.
 
 ## Resource Testing
 
@@ -539,9 +546,9 @@ kubectl run cpu-stress --image=polinux/stress \
 
 ## Next Steps
 
-- [Security Considerations](./security-considerations.md) - Implement security best practices
-- [Application Lifecycle Management](../application-lifecycle/overview.md) - Manage deployed resources
-- [Platform Deep Dive](../platform-deep-dive/overview.md) - Understand platform capabilities
+- [Security Considerations](./security-considerations.md) - Implement security best practices.
+- [Application Lifecycle Management](../application-lifecycle/overview.md) - Manage deployed resources.
+- [Platform Deep Dive](../platform-deep-dive/overview.md) - Understand platform capabilities.
 
 ---
 

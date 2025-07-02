@@ -420,22 +420,22 @@ rules:
 ## Best Practices
 
 ### Security Hardening
-- Enable least privilege access
-- Regular access reviews and audits
-- Strong password policies
-- Multi-factor authentication enforcement
+- Enable least privilege access.
+- Regular access reviews and audits.
+- Strong password policies.
+- Multi-factor authentication enforcement.
 
 ### Monitoring and Alerting
-- Failed authentication tracking
-- Privilege escalation detection
-- Unusual access pattern monitoring
-- Real-time security alerts
+- Failed authentication tracking.
+- Privilege escalation detection.
+- Unusual access pattern monitoring.
+- Real-time security alerts.
 
 ### Compliance
-- Regular security assessments
-- Documentation of access controls
-- Incident response procedures
-- Change management processes
+- Regular security assessments.
+- Documentation of access controls.
+- Incident response procedures.
+- Change management processes.
 
 ## Troubleshooting
 

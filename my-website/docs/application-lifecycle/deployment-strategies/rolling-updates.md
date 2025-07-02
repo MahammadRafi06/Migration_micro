@@ -64,20 +64,20 @@ spec:
 
 ## Best Practices
 
-1. **Proper Health Checks**: Implement readiness and liveness probes
-2. **Resource Planning**: Set appropriate maxSurge and maxUnavailable
-3. **Testing**: Validate deployments in staging environments
-4. **Monitoring**: Track deployment progress and application health
+1. **Proper Health Checks**: Implement readiness and liveness probes.
+2. **Resource Planning**: Set appropriate maxSurge and maxUnavailable.
+3. **Testing**: Validate deployments in staging environments.
+4. **Monitoring**: Track deployment progress and application health.
 
 ## Troubleshooting
 
 ### Common Issues
-- **Pods Not Ready**: Check readiness probe configuration
-- **Deployment Stuck**: Verify resource availability and image accessibility
-- **Service Disruption**: Ensure proper load balancer configuration
+- **Pods Not Ready**: Check readiness probe configuration.
+- **Deployment Stuck**: Verify resource availability and image accessibility.
+- **Service Disruption**: Ensure proper load balancer configuration.
 
 ## Next Steps
 
-- [Blue-Green Deployments](./blue-green-deployments.md)
-- [Canary Deployments](./canary-deployments.md)
-- [Rollback Procedures](./rollback-procedures.md) 
+- [Blue-Green Deployments](./blue-green-deployments.md).
+- [Canary Deployments](./canary-deployments.md).
+- [Rollback Procedures](./rollback-procedures.md). 
