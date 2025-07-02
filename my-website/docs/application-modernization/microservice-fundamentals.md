@@ -15,11 +15,20 @@ This architectural style contrasts with monolithic architectures, where all comp
 
 ### Key Characteristics
 
-* **Service Independence:** Each microservice can be developed, deployed, and scaled independently by different teams using different technologies.
-* **Business-Focused Services:** Services are organized around business capabilities rather than technical layers.
-* **Decentralized Governance:** Teams have autonomy over their service's technology stack, development processes, and deployment strategies.
-* **Failure Isolation:** Failures in one service don't necessarily cascade to other services, improving overall system resilience.
-* **Technology Diversity:** Different services can use different programming languages, databases, and frameworks best suited to their specific requirements.
+#### Service Independence
+Each microservice can be developed, deployed, and scaled independently by different teams using different technologies.
+
+#### Business-Focused Services
+Services are organized around business capabilities rather than technical layers.
+
+#### Decentralized Governance
+Teams have autonomy over their service's technology stack, development processes, and deployment strategies.
+
+#### Failure Isolation
+Failures in one service don't necessarily cascade to other services, improving overall system resilience.
+
+#### Technology Diversity
+Different services can use different programming languages, databases, and frameworks best suited to their specific requirements.
 
 ## Core Principles
 
@@ -47,21 +56,43 @@ The architecture should support **continuous evolution**, allowing services to b
 
 ### Benefits
 
-* **Scalability:** Individual services can be scaled independently based on demand, optimizing resource utilization and performance.
-* **Technology Flexibility:** Teams can choose the most appropriate technology stack for each service's requirements.
-* **Team Independence:** Small, cross-functional teams can work independently, reducing coordination overhead and increasing development velocity.
-* **Fault Isolation:** Service failures are contained, preventing system-wide outages and improving overall reliability.
-* **Deployment Flexibility:** Services can be deployed independently, enabling continuous delivery and reducing deployment risks.
-* **Business Alignment:** Services align with business domains, making it easier to understand and modify business logic.
+#### Scalability
+Individual services can be scaled independently based on demand, optimizing resource utilization and performance.
+
+#### Technology Flexibility
+Teams can choose the most appropriate technology stack for each service's requirements.
+
+#### Team Independence
+Small, cross-functional teams can work independently, reducing coordination overhead and increasing development velocity.
+
+#### Fault Isolation
+Service failures are contained, preventing system-wide outages and improving overall reliability.
+
+#### Deployment Flexibility
+Services can be deployed independently, enabling continuous delivery and reducing deployment risks.
+
+#### Business Alignment
+Services align with business domains, making it easier to understand and modify business logic.
 
 ### Challenges
 
-* **Distributed System Complexity:** Managing network communication, data consistency, and service discovery adds significant complexity.
-* **Operational Overhead:** More services mean more moving parts to monitor, deploy, and maintain.
-* **Testing Complexity:** End-to-end testing becomes more challenging with multiple independent services.
-* **Data Consistency:** Maintaining data consistency across services without distributed transactions requires careful design.
-* **Network Latency:** Inter-service communication introduces latency that must be carefully managed.
-* **Debugging and Troubleshooting:** Tracing issues across multiple services and understanding system behavior becomes more complex.
+#### Distributed System Complexity
+Managing network communication, data consistency, and service discovery adds significant complexity.
+
+#### Operational Overhead
+More services mean more moving parts to monitor, deploy, and maintain.
+
+#### Testing Complexity
+End-to-end testing becomes more challenging with multiple independent services.
+
+#### Data Consistency
+Maintaining data consistency across services without distributed transactions requires careful design.
+
+#### Network Latency
+Inter-service communication introduces latency that must be carefully managed.
+
+#### Debugging and Troubleshooting
+Tracing issues across multiple services and understanding system behavior becomes more complex.
 
 ## Next Steps
 

@@ -5,13 +5,15 @@ sidebar_label: Introduction
 sidebar_position: 1
 ---
 
-# Runbook: Migrating a Monolith to Microservices for AEP Kubernetes
+# Migrating a Monolith to Microservices for AEP Kubernetes
 
 ## Purpose and Audience
 
 This document is crafted as a detailed, step-by-step runbook for technical teams—including architects, developers, and operations engineers—who are actively involved in onboarding their monolithic applications into AEP. While we'll walk through a simplified example to clarify core principles and procedures, the insights here are foundational and directly applicable to even the most complex enterprise systems you might be working with.
 
 ## Migration Approaches Comparison
+
+### Overview of Migration Strategies
 
 | Approach | Description | Strategy | Pros | Cons |
 | :---- | :---- | :---- | :---- | :---- |
@@ -21,19 +23,36 @@ This document is crafted as a detailed, step-by-step runbook for technical teams
 
 ## Why Microservices on Kubernetes?
 
-Moving to a microservices architecture orchestrated by Kubernetes unlocks a world of significant benefits for your applications and teams:
+Moving to a microservices architecture orchestrated by Kubernetes unlocks significant benefits for your applications and teams:
 
-- **Scalability:** Imagine being able to scale just the parts of your application that are under heavy demand, rather than the entire system. That's the beauty of microservices, leading to optimized resource use.
-- **Resilience:** When one small service experiences an issue, it's isolated. This prevents a domino effect that could bring down your entire application, making your system much more robust.
-- **Agility:** With smaller, independent services, development, testing, and deployment cycles become significantly faster. Your teams can move with greater speed and confidence.
-- **Technology Diversity:** Teams gain the freedom to choose the best technology stack for each individual service, fostering innovation and leveraging specialized tools.
-- **Operational Efficiency:** Kubernetes offers powerful capabilities for automation, self-healing, and declarative management, simplifying complex operational tasks.
+### Scalability Benefits
+Imagine being able to scale just the parts of your application that are under heavy demand, rather than the entire system. That's the beauty of microservices, leading to optimized resource use.
 
-## A Note on Your Migration Strategy
+### Resilience Improvements
+When one small service experiences an issue, it's isolated. This prevents a domino effect that could bring down your entire application, making your system much more robust.
 
+### Development Agility
+With smaller, independent services, development, testing, and deployment cycles become significantly faster. Your teams can move with greater speed and confidence.
+
+### Technology Diversity
+Teams gain the freedom to choose the best technology stack for each individual service, fostering innovation and leveraging specialized tools.
+
+### Operational Efficiency
+Kubernetes offers powerful capabilities for automation, self-healing, and declarative management, simplifying complex operational tasks.
+
+## Migration Strategy Considerations
+
+### Real-World Complexity
 It's important to keep in mind that real-world enterprise applications from ISVs are typically far more complex in their architecture, data management, integration, and operational needs than the simplified example we'll explore in this runbook.
 
-While our focus here is on a full microservices transformation for clarity, don't overlook the value of running existing Virtual Machines (VMs) on Kubernetes (using KubeVirt). This can be a quicker initial step to get your VM-based applications onto Kubernetes. While it might mean you don't immediately reap all the benefits of cloud-native containerization, it's a solid start. A very effective strategy we often see is to begin by running your current VMs on Kubernetes to achieve an immediate migration, and then gradually modularize and containerize those workloads over time. This phased approach allows you to fully leverage Kubernetes' cloud-native features for scalability and operational efficiency when you're ready.
+### Phased Approach
+While our focus here is on a full microservices transformation for clarity, don't overlook the value of running existing Virtual Machines (VMs) on Kubernetes (using KubeVirt). This can be a quicker initial step to get your VM-based applications onto Kubernetes.
+
+### Immediate Benefits
+While VM-based deployment might mean you don't immediately reap all the benefits of cloud-native containerization, it's a solid start. A very effective strategy we often see is to begin by running your current VMs on Kubernetes to achieve an immediate migration, and then gradually modularize and containerize those workloads over time.
+
+### Progressive Modernization
+This phased approach allows you to fully leverage Kubernetes' cloud-native features for scalability and operational efficiency when you're ready.
 
 ---
 

@@ -50,27 +50,50 @@ graph LR
 
 Before you begin development:
 
+### Environment Setup
 - [ ] Set up your local development environment
 - [ ] Install essential CLI tools
+- [ ] Configure access credentials
+
+### Knowledge Base
 - [ ] Familiarize yourself with troubleshooting resources
 - [ ] Join the community channels
+- [ ] Review platform documentation
 
 ## Development Best Practices
 
 ### Environment Management
-- Use consistent development environments across team members
-- Implement proper resource isolation
-- Maintain environment parity with production
+
+#### Consistency
+Use consistent development environments across team members
+
+#### Isolation
+Implement proper resource isolation
+
+#### Parity
+Maintain environment parity with production
 
 ### Debugging & Troubleshooting
-- Implement comprehensive logging strategies
-- Use distributed tracing for complex applications
-- Maintain runbooks for common issues
+
+#### Logging Strategy
+Implement comprehensive logging strategies
+
+#### Distributed Tracing
+Use distributed tracing for complex applications
+
+#### Runbooks
+Maintain runbooks for common issues
 
 ### Community Engagement
-- Participate in community discussions
-- Share knowledge and best practices
-- Contribute to platform improvement
+
+#### Participation
+Participate in community discussions
+
+#### Knowledge Sharing
+Share knowledge and best practices
+
+#### Contribution
+Contribute to platform improvement
 
 ## Getting Started
 

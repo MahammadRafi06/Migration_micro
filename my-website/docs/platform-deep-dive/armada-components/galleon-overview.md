@@ -16,11 +16,20 @@ Galleon serves as the central brain of the Armada platform, making intelligent d
 
 ### Key Capabilities
 
-- **Edge-Aware Scheduling**: Intelligent placement based on latency, resources, and compliance requirements
-- **Multi-Region Orchestration**: Seamless workload distribution across geographical regions
-- **Resource Optimization**: Dynamic resource allocation and optimization for edge constraints
-- **Application Lifecycle Management**: Automated deployment, scaling, and maintenance
-- **Compliance Management**: Built-in support for data sovereignty and regulatory requirements
+#### Edge-Aware Scheduling
+Intelligent placement based on latency, resources, and compliance requirements
+
+#### Multi-Region Orchestration
+Seamless workload distribution across geographical regions
+
+#### Resource Optimization
+Dynamic resource allocation and optimization for edge constraints
+
+#### Application Lifecycle Management
+Automated deployment, scaling, and maintenance
+
+#### Compliance Management
+Built-in support for data sovereignty and regulatory requirements
 
 ## Architecture Overview
 
@@ -210,10 +219,17 @@ spec:
 
 ### Configuration Management
 
-1. **Gradual Rollouts**: Use staged deployments for policy changes
-2. **Resource Monitoring**: Continuously monitor resource utilization
-3. **Policy Validation**: Test placement policies in staging environments
-4. **Performance Tuning**: Regular optimization based on workload patterns
+#### Gradual Rollouts
+Use staged deployments for policy changes
+
+#### Resource Monitoring
+Continuously monitor resource utilization
+
+#### Policy Validation
+Test placement policies in staging environments
+
+#### Performance Tuning
+Regular optimization based on workload patterns
 
 ### Monitoring and Observability
 
@@ -247,7 +263,7 @@ spec:
 
 ### Common Issues
 
-**Placement Failures**
+#### Placement Failures
 ```bash
 # Check placement policy violations
 kubectl get placementpolicy -o yaml
@@ -259,7 +275,7 @@ kubectl logs -n armada-system deployment/galleon-scheduler
 kubectl describe node <node-name>
 ```
 
-**Resource Conflicts**
+#### Resource Conflicts
 ```bash
 # Verify resource policies
 kubectl get resourcepolicy -o yaml

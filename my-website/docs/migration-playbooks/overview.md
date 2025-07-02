@@ -11,22 +11,22 @@ This section provides comprehensive, step-by-step guidance for migrating applica
 
 ## Available Migration Paths
 
-### 1. Monolith to Microservices Migration
+### A. Monolith to Microservices Migration
 
 Transform monolithic applications into microservices architecture for improved scalability, maintainability, and team velocity.
 
-**When to Use:**
+#### When to Use
 - Large, complex applications with multiple business domains
 - Teams looking to improve development velocity
 - Applications requiring independent scaling of components
 
-**Key Benefits:**
+#### Key Benefits
 - Independent service deployment
 - Technology diversity
 - Improved fault isolation
 - Enhanced scalability
 
-### 2. Docker Compose to Kubernetes Migration
+### B. Docker Compose to Kubernetes Migration
 
 Migrate multi-container applications from Docker Compose to Kubernetes for production-ready orchestration.
 
@@ -36,21 +36,21 @@ Step-by-step technical instructions for developers converting Docker Compose fil
 #### Operational Runbook
 Practical operational procedures for deployment teams managing the migration process.
 
-### 3. Docker Compose to Helm Charts
+### C. Docker Compose to Helm Charts
 
 Package Docker Compose applications as Helm charts for better versioning, templating, and deployment management.
 
-**Benefits:**
+#### Benefits
 - Template-based configuration
 - Version management
 - Easy rollbacks
 - Simplified deployments
 
-### 4. Docker Compose to Virtual Machines
+### D. Docker Compose to Virtual Machines
 
 Deploy Docker Compose applications in KubeVirt virtual machines for legacy compatibility while leveraging Kubernetes orchestration.
 
-**Use Cases:**
+#### Use Cases
 - Applications with complex system dependencies
 - Gradual migration strategies
 - Hybrid container-VM architectures
@@ -60,42 +60,84 @@ Deploy Docker Compose applications in KubeVirt virtual machines for legacy compa
 Consider these factors when selecting your migration approach:
 
 ### Application Complexity
-- **Simple applications**: Direct containerization
-- **Complex monoliths**: Consider microservices decomposition
-- **Legacy dependencies**: VM-based deployment
+
+#### Simple Applications
+Direct containerization
+
+#### Complex Monoliths
+Consider microservices decomposition
+
+#### Legacy Dependencies
+VM-based deployment
 
 ### Team Readiness
-- **Kubernetes experience**: Direct migration to Kubernetes
-- **Limited cloud-native experience**: Start with lift-and-shift
+
+#### Kubernetes Experience
+Direct migration to Kubernetes
+
+#### Limited Cloud-Native Experience
+Start with lift-and-shift
 
 ### Business Requirements
-- **Rapid migration**: Lift-and-shift approach
-- **Long-term modernization**: Microservices transformation
-- **Incremental changes**: Hybrid approaches
+
+#### Rapid Migration
+Lift-and-shift approach
+
+#### Long-term Modernization
+Microservices transformation
+
+#### Incremental Changes
+Hybrid approaches
 
 ### Risk Tolerance
-- **Low risk**: VM-based migration
-- **Medium risk**: Containerization
-- **Higher risk**: Full microservices transformation
+
+#### Low Risk
+VM-based migration
+
+#### Medium Risk
+Containerization
+
+#### Higher Risk
+Full microservices transformation
 
 ## Migration Process Overview
 
 Each migration playbook follows a structured approach:
 
-1. **Assessment**: Analyze current application architecture
-2. **Planning**: Define migration strategy and timeline
-3. **Preparation**: Set up tools and environments
-4. **Execution**: Implement the migration
-5. **Validation**: Test and verify the migrated application
-6. **Optimization**: Fine-tune performance and operations
+### 1. Assessment
+Analyze current application architecture
+
+### 2. Planning
+Define migration strategy and timeline
+
+### 3. Preparation
+Set up tools and environments
+
+### 4. Execution
+Implement the migration
+
+### 5. Validation
+Test and verify the migrated application
+
+### 6. Optimization
+Fine-tune performance and operations
 
 ## Getting Started
 
 Choose the migration path that best fits your application and organizational needs:
 
-- **[Monolith to Microservices](./monolith-to-microservices/overview)**: For large application transformations
-- **[Docker Compose to Kubernetes](./docker-compose-to-kubernetes/developer-guide/introduction-and-core-concepts)**: For containerized applications
-- **[Docker Compose to Helm Charts](./docker-compose-to-helm-charts/introduction-and-prerequisites)**: For better package management
-- **[Docker Compose to Virtual Machines](./docker-compose-to-virtual-machines/introduction-and-migration-strategy)**: For legacy compatibility
+### Migration Paths
+
+#### Monolith to Microservices
+For large application transformations
+
+#### Docker Compose to Kubernetes
+For containerized applications
+
+#### Docker Compose to Helm Charts
+For better package management
+
+#### Docker Compose to Virtual Machines
+For legacy compatibility
 
 Each playbook provides detailed guidance, practical examples, and troubleshooting tips to ensure successful migration to the Edge Platform. 

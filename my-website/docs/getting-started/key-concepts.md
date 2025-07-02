@@ -5,67 +5,108 @@ sidebar_label: Key Concepts
 sidebar_position: 2
 ---
 
-# Key Platform Concepts
+# Key Concepts: Understanding the Armada Edge Platform
 
-Understanding these fundamental concepts will help you navigate the Edge Platform effectively.
+To effectively utilize the Armada Edge Platform (AEP), it's important to grasp some fundamental concepts that underpin its architecture and operation. This section clarifies key terminology and principles.
 
-## Kubernetes Foundation
+## Edge Computing
 
-### Pods and Containers
-- **Pods**: The smallest deployable units containing one or more containers
-- **Containers**: Lightweight, portable application packaging
-- **Container Images**: Immutable snapshots of application code and dependencies
+Edge computing is a distributed computing paradigm that brings computation and data storage closer to the sources of data. Instead of sending all data to a centralized cloud or data center for processing, edge computing processes data locally at or near the "edge" of the network.
 
-### Workload Management
-- **Deployments**: Manage application replicas and rolling updates
-- **Services**: Network abstraction for accessing applications
-- **ConfigMaps & Secrets**: Configuration and credential management
+### Why it matters for ISVs
 
-## Application Patterns
+#### Reduced Latency
+Critical for applications requiring immediate responses (e.g., real-time analytics, industrial control).
 
-### Microservices Architecture
-- **Service Decomposition**: Breaking monoliths into smaller, focused services
-- **API-First Design**: Well-defined interfaces between services
-- **Independent Deployment**: Services can be updated independently
+#### Bandwidth Efficiency
+Minimizes the need to transmit large volumes of raw data over potentially limited or expensive network connections.
 
-### Cloud-Native Principles
-- **Containerization**: Applications packaged in containers
-- **Orchestration**: Automated deployment and scaling
-- **Observability**: Comprehensive monitoring and logging
+#### Improved Reliability
+Operations can continue even with intermittent or no connectivity to a central cloud.
 
-## Migration Strategies
+#### Enhanced Security
+Data can be processed and stored locally, reducing exposure during transit.
 
-### Lift-and-Shift
-- Move existing applications to the platform with minimal changes
-- Use virtual machines for legacy applications
-- Quick migration with gradual modernization
+## Galleon: The Modular Edge Data Center
 
-### Containerization
-- Package applications in containers
-- Leverage Docker Compose for multi-container applications
-- Migrate to Kubernetes for orchestration
+Galleon is the physical manifestation of our edge computing infrastructure. It is a ruggedized, modular data center designed for deployment in challenging environments. Think of it as a mini-cloud environment that can be deployed wherever your operations are.
 
-### Microservices Transformation
-- Decompose monolithic applications
-- Implement domain-driven design
-- Adopt cloud-native patterns
+### Key Characteristics
 
-## Platform Services
+#### Containerized
+Often housed in standard or custom container-like structures for easy transport and deployment.
 
-### Container Orchestration
-- Kubernetes for container management
-- Helm for package management
-- Service mesh for advanced networking
+#### Self-contained
+Includes compute (CPUs, GPUs), storage, networking, and environmental controls (cooling, heating).
 
-### Virtual Machine Support
-- KubeVirt for VM management
-- Hybrid container-VM deployments
-- Legacy application support
+#### Scalable
+Multiple Galleons can be deployed and managed as a distributed fleet.
 
-### Development Tools
-- CI/CD pipelines
-- Container registries
-- Development environments
+#### Resilient
+Engineered to withstand harsh physical and environmental conditions.
+
+### Value for ISVs
+
+For ISVs, Galleons provide the localized compute power necessary to run your applications, including demanding AI/ML workloads, directly at the point of data generation.
+
+## Atlas: Operational Insights & Management
+
+Atlas is Armada's operational insights platform, providing a single pane of glass for comprehensive visibility and control over your distributed edge assets. It's designed to simplify the management of a fleet of Galleons and connected IoT devices.
+
+### Key Capabilities
+
+#### Centralized Monitoring
+Track the health, performance, and status of your Galleons and deployed applications.
+
+#### IoT Device Management
+Seamlessly integrate and manage various IoT devices.
+
+#### Connectivity Optimization
+Tools for managing network connections, including Starlink integration.
+
+#### Predictive Analytics
+Leverage AI to provide insights for proactive maintenance and operational efficiency.
+
+### ISV Benefits
+
+Atlas empowers ISVs to remotely manage, monitor, and update their applications across a vast, geographically dispersed edge infrastructure.
+
+## Marketplace: Your Edge Ecosystem
+
+The Marketplace is an integral part of the Armada Edge Platform, serving as a curated hub for hardware and software solutions optimized for the edge.
+
+### Benefits for ISVs
+
+#### Discoverability
+Showcase and distribute your edge-native applications to other AEP users.
+
+#### Accelerated Deployment
+Access pre-validated hardware and software components that are guaranteed to work seamlessly with Galleons.
+
+#### Ecosystem Leverage
+Benefit from a growing ecosystem of solutions tailored for remote and edge environments.
+
+## Kubernetes at the Edge
+
+While Galleon provides the physical infrastructure, Kubernetes serves as the orchestration layer for containerized applications running on the Armada Edge Platform. It allows ISVs to deploy, scale, and manage their microservices-based applications consistently across edge locations, leveraging familiar cloud-native tools and practices.
+
+### Key Benefits of Kubernetes on AEP
+
+#### Portability
+Run your containerized applications consistently from the cloud to the edge.
+
+#### Scalability
+Automatically scale your applications up or down based on demand and available resources.
+
+#### Resilience
+Kubernetes' self-healing capabilities ensure your applications remain available even if individual components fail.
+
+#### Declarative Management
+Define your desired application state, and Kubernetes works to maintain it.
+
+## Foundation for Success
+
+Understanding these core concepts will provide a strong foundation as you explore the more detailed migration guides and advanced features of the Armada Edge Platform.
 
 ## Next Steps
 

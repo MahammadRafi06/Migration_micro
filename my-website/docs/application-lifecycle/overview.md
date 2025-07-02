@@ -27,19 +27,37 @@ Scaling strategies, performance optimization techniques, and edge-specific consi
 ## Key Concepts
 
 ### Continuous Integration & Deployment
-- **Automated Testing**: Comprehensive testing strategies for edge applications
-- **Pipeline Orchestration**: Managing complex deployment pipelines
-- **Environment Promotion**: Safe progression through development, staging, and production
+
+#### Automated Testing
+Comprehensive testing strategies for edge applications
+
+#### Pipeline Orchestration
+Managing complex deployment pipelines
+
+#### Environment Promotion
+Safe progression through development, staging, and production
 
 ### Deployment Excellence
-- **Zero-Downtime Deployments**: Maintaining service availability during updates
-- **Progressive Delivery**: Gradual rollout strategies with automated validation
-- **Rollback Strategies**: Quick recovery from deployment issues
+
+#### Zero-Downtime Deployments
+Maintaining service availability during updates
+
+#### Progressive Delivery
+Gradual rollout strategies with automated validation
+
+#### Rollback Strategies
+Quick recovery from deployment issues
 
 ### Scaling & Performance
-- **Auto-scaling**: Automatic resource adjustment based on demand
-- **Performance Monitoring**: Continuous performance assessment and optimization
-- **Resource Optimization**: Efficient resource utilization at the edge
+
+#### Auto-scaling
+Automatic resource adjustment based on demand
+
+#### Performance Monitoring
+Continuous performance assessment and optimization
+
+#### Resource Optimization
+Efficient resource utilization at the edge
 
 ## ALM Workflow
 
@@ -59,10 +77,15 @@ graph TD
 
 ## Prerequisites
 
+### Foundation Knowledge
 - Understanding of [Platform Architecture](../platform-deep-dive/overview)
 - Familiarity with container orchestration
 - Basic knowledge of CI/CD concepts
+
+### Technical Skills
 - Experience with version control systems
+- Understanding of containerization concepts
+- Knowledge of Kubernetes fundamentals
 
 ## Getting Started
 
