@@ -108,8 +108,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Migration Guide',
-                to: '/docs/Migration Guide/introduction',
+                label: 'Getting Started',
+                to: '/docs/getting-started/platform-overview',
               },
             ],
           },
