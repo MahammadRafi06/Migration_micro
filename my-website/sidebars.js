@@ -163,6 +163,15 @@ const sidebars = {
             'platform-deep-dive/observability/platform-level-monitoring',
           ],
         },
+        {
+          type: 'category',
+          label: 'E. Armada Platform Components', // New section for Armada specifics
+          items: [
+            'platform-deep-dive/armada-components/galleon-overview',
+            'platform-deep-dive/armada-components/atlas-operational-insights',
+            'platform-deep-dive/armada-components/marketplace-integration',
+          ],
+        },
       ],
     },
     {
