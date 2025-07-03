@@ -511,26 +511,26 @@ helm uninstall myapp
 
 ### Security
 
-- ✅ Use non-root containers
-- ✅ Implement proper RBAC
-- ✅ Set resource limits
-- ✅ Use read-only filesystems
-- ✅ Validate inputs with JSON Schema
+-  Use non-root containers
+-  Implement proper RBAC
+-  Set resource limits
+-  Use read-only filesystems
+-  Validate inputs with JSON Schema
 
 ### Maintainability
 
-- ✅ Clear documentation in NOTES.txt
-- ✅ Comprehensive default values
-- ✅ Proper versioning strategy
-- ✅ Consistent naming conventions
-- ✅ Thorough testing
+-  Clear documentation in NOTES.txt
+-  Comprehensive default values
+-  Proper versioning strategy
+-  Consistent naming conventions
+-  Thorough testing
 
 ### Edge Optimization
 
-- ✅ Efficient resource allocation
-- ✅ Edge-specific configurations
-- ✅ Bandwidth-aware image management
-- ✅ Local caching strategies
+-  Efficient resource allocation
+-  Edge-specific configurations
+-  Bandwidth-aware image management
+-  Local caching strategies
 
 ## Chart Validation Schema
 

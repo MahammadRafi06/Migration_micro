@@ -23,7 +23,7 @@ After successfully creating your images, you'll need to store them in a remote c
 
 Here's a Dockerfile example for our User Service (`Dockerfile.user`). When you're ready for production, consider using multi-stage builds for even smaller image sizes and improved security.
 
-```dockerfile
+```docker
 # Stage 1: Build environment
 FROM python:3.9-slim-buster as builder
 

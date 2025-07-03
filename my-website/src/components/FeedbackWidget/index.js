@@ -54,14 +54,14 @@ const FeedbackWidget = () => {
           onClick={() => handleFeedback(true)}
           aria-label="Mark this page as helpful"
         >
-          👍 Yes
+          Yes
         </button>
         <button
           className="feedback-button"
           onClick={() => handleFeedback(false)}
           aria-label="Mark this page as not helpful"
         >
-          👎 No
+          No
         </button>
         <a
           href="https://github.com/armada-platform/aep-docs/edit/main/docs"
@@ -70,7 +70,7 @@ const FeedbackWidget = () => {
           className="feedback-button"
           aria-label="Edit this page on GitHub"
         >
-          ✏️ Edit Page
+          Edit Page
         </a>
       </div>
     </div>

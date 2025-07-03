@@ -10,11 +10,11 @@ Containers deployed to edge environments have unique requirements compared to th
 
 ### Use Minimal Base Images
 
-```dockerfile
-# ❌ Avoid heavy base images
+```docker
+# AVOID: Avoid heavy base images
 FROM ubuntu:latest
 
-# ✅ Use minimal base images (keep up to date with latest stable versions)
+# RECOMMENDED: Use minimal base images (keep up to date with latest stable versions)
 FROM alpine:3.18
 # or (for Java applications)
 FROM gcr.io/distroless/java:11
@@ -22,7 +22,7 @@ FROM gcr.io/distroless/java:11
 
 ### Multi-Stage Builds
 
-```dockerfile
+```docker
 # Build stage
 FROM node:18-alpine AS builder
 WORKDIR /app
@@ -43,7 +43,7 @@ CMD ["npm", "start"]
 
 ### Non-Root User
 
-```dockerfile
+```docker
 # Create non-root user (change username as needed)
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
@@ -66,13 +66,13 @@ trivy image myapp:latest
 
 ### Layer Optimization
 
-```dockerfile
-# ❌ Each RUN creates a new layer
+```docker
+# AVOID: Each RUN creates a new layer
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y wget
 
-# ✅ Combine commands to reduce layers and clean up apt cache
+# RECOMMENDED: Combine commands to reduce layers and clean up apt cache
 RUN apt-get update && \
     apt-get install -y curl wget && \
     rm -rf /var/lib/apt/lists/*
@@ -94,7 +94,7 @@ Dockerfile
 
 ### Health Checks
 
-```dockerfile
+```docker
 # Ensure your application implements the /health endpoint
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:3000/health || exit 1
@@ -125,14 +125,14 @@ Edge locations may have limited bandwidth. Keep images as small as possible:
 
 ### Offline Capabilities
 
-```dockerfile
+```docker
 # Include necessary dependencies for offline operation
 COPY ./offline-assets /app/assets
 ```
 
 ## Example Dockerfile
 
-```dockerfile
+```docker
 # Multi-stage build for Node.js application
 FROM node:18-alpine AS builder
 

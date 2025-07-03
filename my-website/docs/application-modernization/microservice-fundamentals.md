@@ -15,20 +15,33 @@ This architectural style contrasts with monolithic architectures, where all comp
 
 ### Key Characteristics
 
-#### Service Independence
+## Key Characteristics
+
+<details>
+<summary><strong>Service Independence</strong></summary>
 Each microservice can be developed, deployed, and scaled independently by different teams using different technologies.
+</details>
 
-#### Business-Focused Services
+<details>
+<summary><strong>Business-Focused Services</strong></summary>
 Services are organized around business capabilities rather than technical layers.
+</details>
 
-#### Decentralized Governance
+<details>
+<summary><strong>Decentralized Governance</strong></summary>
 Teams have autonomy over their service's technology stack, development processes, and deployment strategies.
+</details>
 
-#### Failure Isolation
+<details>
+<summary><strong>Failure Isolation</strong></summary>
 Failures in one service don't necessarily cascade to other services, improving overall system resilience.
+</details>
 
-#### Technology Diversity
+<details>
+<summary><strong>Technology Diversity</strong></summary>
 Different services can use different programming languages, databases, and frameworks best suited to their specific requirements.
+</details>
+
 
 ## Core Principles
 

@@ -10,7 +10,7 @@ Security in edge computing environments requires special attention due to distri
 
 ### Secure Base Images
 
-```dockerfile
+```docker
 # Avoid using latest or unknown base images
 FROM ubuntu:latest
 
@@ -25,7 +25,7 @@ FROM nginx:1.25.3-alpine
 
 ### Non-Root User Implementation
 
-```dockerfile
+```docker
 # Create dedicated user and group
 RUN addgroup -g 1001 -S appgroup && \
     adduser -S appuser -u 1001 -G appgroup

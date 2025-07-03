@@ -350,3 +350,87 @@ select:focus {
 * {
   transition: color 0.2s ease, background-color 0.2s ease;
 }
+
+/* Move sidebar down */
+.theme-doc-sidebar-container {
+  margin-top: 0;
+}
+
+/* Adjust main content area to match sidebar positioning */
+.main-wrapper {
+  padding-top: 1rem;
+}
+
+/* Add toggle button to right sidebar (TOC) similar to left sidebar */
+.theme-doc-toc-desktop {
+  position: relative;
+}
+
+.toc-toggle-btn {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  background: var(--ifm-color-emphasis-200);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px 0 0 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--ifm-color-emphasis-700);
+  z-index: 10;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.toc-toggle-btn:hover {
+  background: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.toc-toggle-btn:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* When TOC is hidden, expand main content */
+.toc-hidden .theme-doc-toc-desktop {
+  display: none;
+}
+
+.toc-hidden .col--9 {
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  transition: all 0.3s ease;
+}
+
+/* Show a small indicator when TOC is hidden */
+.toc-hidden .toc-toggle-btn {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.toc-hidden .toc-toggle-btn:hover {
+  background: var(--ifm-color-primary-dark);
+  color: white;
+}
+
+/* Reduce navbar height and padding to minimize gap above sidebar */
+.navbar {
+  min-height: 40px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Reduce logo image height and remove extra space in navbar */
+.navbar__logo img {
+  max-height: 32px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

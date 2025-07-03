@@ -13,7 +13,7 @@ To effectively utilize the Armada Edge Platform (AEP), it's important to grasp s
 
 Edge computing is a distributed computing paradigm that brings computation and data storage closer to the sources of data. Instead of sending all data to a centralized cloud or data center for processing, edge computing processes data locally at or near the "edge" of the network.
 
-### Why it matters for ISVs
+### Why it matters for Customers
 
 #### Reduced Latency
 Critical for applications requiring immediate responses (e.g., real-time analytics, industrial control).
@@ -45,9 +45,9 @@ Multiple Galleons can be deployed and managed as a distributed fleet.
 #### Resilient
 Engineered to withstand harsh physical and environmental conditions.
 
-### Value for ISVs
+### Value for Customers
 
-For ISVs, Galleons provide the localized compute power necessary to run your applications, including demanding AI/ML workloads, directly at the point of data generation.
+For Customers, Galleons provide the localized compute power necessary to run your applications, including demanding AI/ML workloads, directly at the point of data generation.
 
 ## Atlas: Operational Insights & Management
 
@@ -67,15 +67,15 @@ Tools for managing network connections, including Starlink integration.
 #### Predictive Analytics
 Leverage AI to provide insights for proactive maintenance and operational efficiency.
 
-### ISV Benefits
+### Customer Benefits
 
-Atlas empowers ISVs to remotely manage, monitor, and update their applications across a vast, geographically dispersed edge infrastructure.
+Atlas empowers Customers to remotely manage, monitor, and update their applications across a vast, geographically dispersed edge infrastructure.
 
 ## Marketplace: Your Edge Ecosystem
 
 The Marketplace is an integral part of the Armada Edge Platform, serving as a curated hub for hardware and software solutions optimized for the edge.
 
-### Benefits for ISVs
+### Benefits for Customers
 
 #### Discoverability
 Showcase and distribute your edge-native applications to other AEP users.
@@ -88,7 +88,7 @@ Benefit from a growing ecosystem of solutions tailored for remote and edge envir
 
 ## Kubernetes at the Edge
 
-While Galleon provides the physical infrastructure, Kubernetes serves as the orchestration layer for containerized applications running on the Armada Edge Platform. It allows ISVs to deploy, scale, and manage their microservices-based applications consistently across edge locations, leveraging familiar cloud-native tools and practices.
+While Galleon provides the physical infrastructure, Kubernetes serves as the orchestration layer for containerized applications running on the Armada Edge Platform. It allows Customers to deploy, scale, and manage their microservices-based applications consistently across edge locations, leveraging familiar cloud-native tools and practices.
 
 ### Key Benefits of Kubernetes on AEP
 

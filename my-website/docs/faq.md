@@ -53,7 +53,7 @@ AEP is built on **Kubernetes**, providing:
 
 ### Can I run virtual machines on AEP?
 
-Yes! AEP supports virtual machines through **KubeVirt integration**, allowing you to:
+Yes, AEP supports virtual machines through **KubeVirt integration**, allowing you to:
 - Run legacy applications without modification
 - Manage VMs alongside containers
 - Migrate existing VM workloads to the edge
@@ -82,7 +82,7 @@ Check our [Migration Playbooks](./migration-playbooks/overview) for step-by-step
 
 ### Can I use Docker Compose files with AEP?
 
-Yes! We provide tools to convert Docker Compose files to Kubernetes manifests:
+Yes, We provide tools to convert Docker Compose files to Kubernetes manifests:
 - **Kompose**: Automated conversion tool.
 - **Manual conversion**: Step-by-step process with optimization.
 - **Helm charts**: Advanced packaging for complex applications.
@@ -116,7 +116,7 @@ Atlas provides comprehensive monitoring including:
 
 ### Can I integrate with my existing monitoring tools?
 
-Yes! Atlas supports integration with popular monitoring platforms:
+Yes, Atlas supports integration with popular monitoring platforms:
 - Prometheus and Grafana.
 - Datadog, New Relic, Splunk.
 - ELK Stack (Elasticsearch, Logstash, Kibana).
@@ -150,7 +150,7 @@ AEP implements multiple security layers:
 
 ### Can I use my existing identity provider?
 
-Yes! AEP integrates with:
+Yes, AEP integrates with:
 - Active Directory and LDAP.
 - SAML and OAuth providers.
 - Cloud identity services (Azure AD, AWS IAM).
@@ -219,7 +219,7 @@ See our [Pricing Model](./cost-management/pricing-model) for detailed informatio
 
 ### Can I start with a proof of concept?
 
-Yes! We offer several options for getting started:
+Yes, We offer several options for getting started:
 - **Free trial**: Limited-time access to platform features
 - **Pilot programs**: Small-scale deployments for evaluation
 - **Developer sandbox**: Testing environment for application development
@@ -229,7 +229,7 @@ Yes! We offer several options for getting started:
 
 ### Does AEP provide APIs for integration?
 
-Yes! AEP offers comprehensive APIs for:
+Yes, AEP offers comprehensive APIs for:
 - **Deployment management**: Deploy and manage applications
 - **Monitoring and metrics**: Access operational data
 - **Resource management**: Control computing resources
@@ -239,7 +239,7 @@ See our [API Reference](./developer-resources/cli-apis/api-reference) for comple
 
 ### Can I integrate with CI/CD pipelines?
 
-Absolutely! AEP supports integration with:
+Absolutely, AEP supports integration with:
 - **GitHub Actions, GitLab CI, Jenkins**
 - **ArgoCD, Flux for GitOps**
 - **Docker registries and Helm repositories**

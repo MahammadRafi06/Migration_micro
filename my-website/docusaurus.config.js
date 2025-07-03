@@ -148,40 +148,31 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       
       // Enhanced search configuration
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID', // Replace with your Algolia app ID
-        // Public API key: it is safe to commit it
-        apiKey: 'YOUR_API_KEY', // Replace with your Algolia API key
-        indexName: 'armada-docs',
-        // Optional: see doc section below
-        contextualSearch: true,
-        // Optional: Specify domains where the navigation should occur through window.location instead of history.push
-        externalUrlRegex: 'external\\.com|domain\\.com',
-        // Optional: Replace parts of the item URLs from Algolia
-        replaceSearchResultPathname: {
-          from: '/docs/', // or as RegExp: /\/docs\//
-          to: '/',
-        },
-        // Optional: Algolia search parameters
-        searchParameters: {},
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-        //... other Algolia params
-      },
+      // algolia: {
+      //   appId: 'YOUR_APP_ID', // Replace with your Algolia app ID
+      //   apiKey: 'YOUR_API_KEY', // Replace with your Algolia API key
+      //   indexName: 'armada-docs',
+      //   contextualSearch: true,
+      //   externalUrlRegex: 'external\\.com|domain\\.com',
+      //   replaceSearchResultPathname: {
+      //     from: '/docs/',
+      //     to: '/',
+      //   },
+      //   searchParameters: {},
+      //   searchPagePath: 'search',
+      // },
       
       // Announcement bar for important updates
       announcementBar: {
         id: 'support_us',
         content:
-          '⭐️ If you like our documentation, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/armada-platform/aep-docs">GitHub</a>! ⭐️',
+          'If you like our documentation, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/armada-platform/aep-docs">GitHub</a>!',
         backgroundColor: '#fafbfc',
         textColor: '#091E42',
         isCloseable: false,
       },
       
       navbar: {
-        title: 'AEP Documentation',
         logo: {
           alt: 'Armada Edge Platform Logo',
           src: 'img/logo.svg',
@@ -199,10 +190,10 @@ const config = {
             label: 'Glossary',
             position: 'left',
           },
-          {
-            type: 'search',
-            position: 'right',
-          },
+          // {
+          //   type: 'search',
+          //   position: 'right',
+          // },
           {
             href: 'https://github.com/armada-platform/aep-docs',
             label: 'GitHub',
@@ -273,7 +264,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         // Add additional languages for syntax highlighting
-        additionalLanguages: ['bash', 'yaml', 'json', 'dockerfile', 'powershell'],
+        additionalLanguages: ['bash', 'yaml', 'json', 'docker', 'powershell'],
       },
       
       // Enhanced color mode

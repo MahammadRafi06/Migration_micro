@@ -526,26 +526,26 @@ spec:
 
 ### Security
 
-- ✅ Never store secrets in ConfigMaps
-- ✅ Use Secret objects for sensitive data
-- ✅ Implement proper RBAC for config access
-- ✅ Encrypt etcd data at rest
-- ✅ Use external secret management systems
+-  Never store secrets in ConfigMaps
+-  Use Secret objects for sensitive data
+-  Implement proper RBAC for config access
+-  Encrypt etcd data at rest
+-  Use external secret management systems
 
 ### Maintainability
 
-- ✅ Version your configuration
-- ✅ Document configuration options
-- ✅ Use descriptive key names
-- ✅ Implement configuration validation
-- ✅ Monitor configuration changes
+-  Version your configuration
+-  Document configuration options
+-  Use descriptive key names
+-  Implement configuration validation
+-  Monitor configuration changes
 
 ### Edge Optimization
 
-- ✅ Minimize configuration size
-- ✅ Use local caching strategies
-- ✅ Implement graceful degradation
-- ✅ Consider offline scenarios
+-  Minimize configuration size
+-  Use local caching strategies
+-  Implement graceful degradation
+-  Consider offline scenarios
 
 ## Next Steps
 
